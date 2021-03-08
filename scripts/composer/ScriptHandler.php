@@ -1,5 +1,5 @@
 <?php
-namespace Premium\scripts;
+namespace Premium\composer;
 
 use Composer\Script\Event;
 
