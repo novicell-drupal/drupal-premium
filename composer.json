@@ -1,0 +1,153 @@
+{
+  "name": "novicell/drupal-premium",
+  "description": "Novicell Drupal Premium package for Drupal 9 projects",
+  "type": "project",
+  "homepage": "https://www.drupal.org/project/drupal",
+  "support": {
+    "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+    "chat": "https://www.drupal.org/node/314178"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.dk/php/"
+    },
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "bower-asset/jquery-simple-color": "^1.2",
+    "bower-asset/spectrum": "^1.8",
+    "composer/installers": "^1.2",
+    "cweagans/composer-patches": "^1.6.5",
+    "drupal/admin_toolbar": "^2.4",
+    "drupal/adminimal_admin_toolbar": "^1.11",
+    "drupal/adminimal_theme": "^1.6",
+    "drupal/components": "^2.0@beta",
+    "drupal/config_ignore": "^2.3",
+    "drupal/config_split": "^1.7.0",
+    "drupal/cookiebot": "^1.0.0-alpha8",
+    "drupal/core": "^9.0",
+    "drupal/core-composer-scaffold": "^9.0",
+    "drupal/core-project-message": "^9.0",
+    "drupal/core-vendor-hardening": "^9.0",
+    "drupal/editor_advanced_link": "^1.8",
+    "drupal/monolog": "^2.0.0-beta2",
+    "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
+    "drupal/search_api_page": "^1.0@beta",
+    "drush/drush": "^10.0",
+    "monolog/monolog": "^2.2",
+    "novicell/content_hierarchy": "^0.1",
+    "novicell/dynamic_key_value": "^0.1",
+    "novicell/atomic_content": "^0.1",
+    "novicell/media_icons": "^0.1",
+    "novicell/system_feed": "^0.1"
+  },
+  "require-dev": {
+    "drupal/devel": "~4.0",
+    "kint-php/kint": "^3.3"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ]
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "DrupalProject\\composer\\ScriptHandler::postRootPackageInstall"
+    ]
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "allowed-packages": [
+        "drupal/core"
+      ],
+      "locations": {
+        "web-root": "webroot/"
+      },
+      "file-mapping": {
+        "[web-root]/robots.txt": {
+          "append": "assets/robots-additions.txt"
+        },
+        "[web-root]/sites/development.services.yml": {
+          "mode": "replace",
+          "path": "assets/development.services.yml",
+          "overwrite": false
+        }
+      }
+    },
+    "installer-paths": {
+      "webroot/core": ["type:drupal-core"],
+      "webroot/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
+      "webroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "webroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "webroot/themes/contrib/{$name}": ["type:drupal-theme"],
+      "webroot/drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+      "webroot/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "webroot/themes/custom/{$name}": ["type:drupal-custom-theme"]
+    },
+    "drupal-core-project-message": {
+      "include-keys": ["homepage", "support"],
+      "post-create-project-cmd-message": [
+        "<bg=blue;fg=white>                                                         </>",
+        "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+        "<bg=blue;fg=white>  from the novicell/dds_core template!                   </>",
+        "<bg=blue;fg=white>                                                         </>",
+        "",
+        "<bg=yellow;fg=black>Next steps</>:",
+
+        "  * Install the site: https://www.drupal.org/docs/8/install",
+        "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+        "  * Get support: https://www.drupal.org/support",
+        "  * Get involved with the Drupal community:",
+        "      https://www.drupal.org/getting-involved",
+        "  * Remove the plugin that prints this message:",
+        "      composer remove drupal/core-project-message"
+      ]
+    },
+    "installer-types": [
+      "npm-asset",
+      "bower-asset"
+    ],
+    "patches": {
+      "drupal/core": {
+        "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
+        "(#3042190) Creating a block that uses Ajax adds multiple blocks": "https://www.drupal.org/files/issues/2019-05-04/3042190-3.patch",
+        "(#2449895) Imported PO files have no public URL but have a link at admin/content/files": "https://www.drupal.org/files/issues/2020-02-06/2449895-72.patch",
+        "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2020-06-18/3080606-reorder-layout-sections-43.patch",
+        "(#2893933) claimItem in the database and memory queues does not use expire correctly": "https://www.drupal.org/files/issues/2021-01-14/2893933-40.patch",
+        "(#2975602) Html::serialize() escapes \\r to &#13;": "https://www.drupal.org/files/issues/2018-05-27/2975602-2-html_serialize.patch",
+        "(#2893407) POST /quickedit/metadata returning HTTP 503": "https://www.drupal.org/files/issues/2020-01-09/2893407-39.patch",
+        "(#3062819) Cloned entities don't retain their Inline Block usage": "https://www.drupal.org/files/issues/2020-03-06/3062819-inline-cloned-COMBINED_2.patch",
+        "(#2985199) Extensions in Multisite Directories Not Registered When Rebuilding Cache": "https://www.drupal.org/files/issues/2019-10-05/drupal-Rebuilding_Cache-2985199-48.patch",
+        "(2958588) Off-canvas style resets are overriding styles (especially SVGs) in Safari, Firefox and Chromium Edge resulting in display issues": "https://www.drupal.org/files/issues/2021-01-06/off-canvas-style-resets-2958588-13.patch"
+      },
+      "drupal/paragraphs": {
+        "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2019-08-10/paragraphs-set_langcode_widgets-290139_updated.patch"
+      },
+      "drupal/cookiebot": {
+        "(#3172479) Switch path.alias_manager to path_alias.manager for D9 compatibility": "https://www.drupal.org/files/issues/2020-12-14/3172479-6.patch"
+      },
+      "novicell/dds_layouts": {
+        "Fix lazy builder conflicts": "patches/dds_layouts-fix-lazy-builder.patch"
+      }
+    }
+  }
+}
