@@ -1,0 +1,31 @@
+name: PROJECT_NAME
+type: theme
+description: 'DDS Premium subtheme'
+package: Drupal Premium
+version: VERSION
+core_version_requirement: ^8.8 || ^9
+base theme: stable
+
+libraries:
+  - PROJECT_NAME/master
+
+regions:
+  preheader: Pre header
+  header: Header
+  breadcrumb: Breadcrumb
+  content: Content
+  burgermenu: Burgermenu
+
+component-libraries:
+  atoms:
+    paths:
+      - build-assets/src/01-atoms
+  molecules:
+    paths:
+      - build-assets/src/02-molecules
+  organisms:
+    paths:
+      - build-assets/src/03-organisms
+
+interface translation project: PROJECT_NAME
+interface translation server pattern: PROJECT_NAME/translations/%language.po

@@ -1,0 +1,4 @@
+color_themes:
+  secondary:
+    name: Gray
+    color: '#d1d1d1'

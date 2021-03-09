@@ -1,0 +1,171 @@
+article-overview-headline:
+  type: textfield
+  title: Headline
+  description: The headline in filter section.
+  category: Components
+  group: Article overview
+  default:
+    da: 'Klik på eventet eller nyheden for at læse mere'
+
+opening-hours-headline:
+  type: textfield
+  title: Open this week
+  description: The headline for opening hours element on shop subpages.
+  category: Components
+  group: Opening hours
+  default:
+    en: 'Open this week'
+    da: 'Åbent i denne uge'
+
+opening-hours-separator:
+  type: textfield
+  title: Opening hours separator
+  description: Separator between opening hours in the hero.
+  category: Components
+  group: Opening hours
+  default:
+    en: ' // '
+    da: ' // '
+
+prefooter-header:
+  type: textfield
+  title: Header
+  description: The header in the pre-footer sektion.
+  category: Page layout
+  group: Pre-footer
+  weight: -10
+  default:
+    da: 'Vores butikker'
+
+prefooter-text:
+  type: text_format
+  title: Body
+  description: The text in the pre-footer column.
+  category: Page layout
+  group: Pre-footer
+  weight: 0
+  options:
+    format: full_html
+  default:
+    da: '<p>Vi har butikkerne til dine behov og lidt mere.</p><p>Find det, du søger her:</p>'
+
+footer-col1-button:
+  type: icon_button
+  title: Button
+  description: The button in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 1
+
+footer-col1-header:
+  type: textfield
+  title: Header
+  description: The header in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 1
+  default:
+    da: 'Facts'
+
+footer-col1-text:
+  type: text_format
+  title: Text
+  description: The text in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 1
+  options:
+    format: full_html
+  default:
+    da: '<p></p>'
+
+footer-col2-button:
+  type: icon_button
+  title: Button
+  description: The button in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 2
+
+footer-col2-header:
+  type: textfield
+  title: Header
+  description: The header in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 2
+  default:
+    da: 'Inspiration'
+
+footer-col2-text:
+  type: text_format
+  title: Text
+  description: The text in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 2
+  options:
+    format: full_html
+  default:
+    da: '<p></p>'
+
+footer-col3-button:
+  type: icon_button
+  title: Button
+  description: The button in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 3
+
+footer-col3-header:
+  type: textfield
+  title: Header
+  description: The header in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 3
+  default:
+    da: 'Kundeservice'
+
+footer-col3-text:
+  type: text_format
+  title: Text
+  description: The text in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 3
+  options:
+    format: full_html
+  default:
+    da: '<p></p>'
+
+footer-col4-button:
+  type: icon_button
+  title: Button
+  description: The button in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 4
+
+footer-col4-header:
+  type: textfield
+  title: Header
+  description: The header in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 4
+  default:
+    da: 'Kolding Storcenter'
+
+footer-col4-text:
+  type: text_format
+  title: Text
+  description: The text in the footer column.
+  category: Page layout
+  group: Footer
+  subgroup: Column 4
+  options:
+    format: full_html
+  default:
+    da: '<p>Skovvangen 42</p><p>6000 Kolding</p><p>Tlf. 75 50 96 06</p><p><a href="mailto:info@koldingstorcenter.dk">info@koldingstorcenter.dk</a></p><p>&nbsp;</p><p><a href="/infozonen.aspx"><strong>Log på intranet</strong></a></p>'
+
