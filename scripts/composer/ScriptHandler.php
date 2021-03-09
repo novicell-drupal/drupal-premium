@@ -1,16 +1,9 @@
 <?php
 namespace Premium\composer;
 
-use Composer\Command\RequireCommand;
 use Composer\Package\Link;
-use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
-use Composer\Semver\Constraint\MatchAllConstraint;
-use Composer\Semver\Constraint\MultiConstraint;
-use JsonSchema\Constraints\UndefinedConstraint;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
 
 class ScriptHandler {
   private static $optional_modules = [
@@ -51,7 +44,7 @@ class ScriptHandler {
     $values = [0];
 
     $links = $event->getComposer()->getPackage()->getRequires();
-    $links[] = new Link('novicell/drupal-premium', 'drupal/cookiebot', new Constraint('>=', '1.0.0-alpha8'), Link::TYPE_REQUIRE, '^1.0.0-alpha8');
+    $links[] = new Link('novicell/drupal-premium', 'drupal/cookiebot', new Constraint('>=', '1.0.0-alpha8'), 'requires', '^1.0.0-alpha8');
     $event->getComposer()->getPackage()->setRequires($links);
     foreach ($values as $choice) {
       $packages = array_values(self::$optional_modules)[$choice];
