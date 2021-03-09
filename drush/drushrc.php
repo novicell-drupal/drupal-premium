@@ -1,3 +1,3 @@
 <?php
 
-$options['uri'] = 'DOMAIN';
+$options['uri'] = 'DOMAIN_NAME';
