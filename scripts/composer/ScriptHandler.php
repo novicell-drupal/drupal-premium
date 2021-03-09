@@ -1,6 +1,7 @@
 <?php
 namespace Premium\composer;
 
+use Composer\Factory;
 use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
@@ -43,22 +44,19 @@ class ScriptHandler {
     $domain_name = 'test.dk';
     $values = [0];
 
+    // Add optional modules to composer.json and current running instance
+    $json_file = Factory::getComposerFile();
+    $json = json_decode(file_get_contents($json_file));
     $links = $event->getComposer()->getPackage()->getRequires();
-    $links[] = new Link('novicell/drupal-premium', 'drupal/cookiebot', new Constraint('>=', '1.0.0-alpha8'), 'requires', '^1.0.0-alpha8');
-    $event->getComposer()->getPackage()->setRequires($links);
     foreach ($values as $choice) {
       $packages = array_values(self::$optional_modules)[$choice];
-      /*$command = new RequireCommand();
-      $input = new ArrayInput(array(
-          'packages' => $packages,
-          ),
-          $command->getDefinition()
-      );
-      $command->addOption('no-plugins');
-      $command->setComposer($event->getComposer()->);
-      $command->setApplication();
-      $command->run($input, new NullOutput());*/
+      $package = 'drupal/cookiebot';
+      $version = '1.0.0-alpha8';
+      $links[] = new Link($event->getComposer()->getPackage()->getName(), $package, new Constraint('>=', $version), 'requires', '^' . $version);
+      $json->require->$package = '^' . $version;
     }
+    $event->getComposer()->getPackage()->setRequires($links);
+    file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
     $site_dir = 'webroot/sites/' . $domain_name;
     rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
