@@ -33,7 +33,7 @@ prod:
 staging:
   <<: *base
   stage: develop
-  deploy_path: /data/www/vhost/staging.koldingstorcenter.drupal.dk
+  deploy_path: /data/www/vhost/STAGING_SITE
   hostname: '81.95.247.111'
   user: PROJECT_NAME
   disable_slack: true

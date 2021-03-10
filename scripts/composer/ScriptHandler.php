@@ -5,6 +5,7 @@ use Composer\Factory;
 use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
+use Composer\Semver\Constraint\MultiConstraint;
 
 class ScriptHandler {
   /**
@@ -105,6 +106,7 @@ class ScriptHandler {
    */
   public static function postRootPackageInstall(Event $event) {
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
+    $deployment_steps = [];
     $environment = [];
     if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
       $environment['PROJECT_NAME'] = $project_name;
@@ -115,6 +117,7 @@ class ScriptHandler {
     if ($modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE)) {
     }
     if ($deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE)) {
+      $deployment_steps = array_values(self::$deployment_options)[$deployment];
     }
 
     if (!$in_ddev) {
@@ -150,12 +153,12 @@ class ScriptHandler {
     foreach ($modules as $choice) {
       $packages = array_values(self::$optional_modules)[$choice];
       foreach ($packages as $requirement) {
+        $links[] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $package = $requirement['package'];
-        $version = $requirement['version'];
-        $links[] = new Link($event->getComposer()->getPackage()->getName(), $package, new Constraint('>=', $version), 'requires', '^' . $version);
         $json->require->$package = $requirement['operator'] . $requirement['version'];
       }
     }
+    var_dump($links);
     $event->getComposer()->getPackage()->setRequires($links);
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
@@ -164,6 +167,7 @@ class ScriptHandler {
     $file = '';
     foreach ($environment as $key => $value) {
       $file .= $key . '=' . $value . "\n";
+      putenv($key . '=' . $value);
     }
     file_put_contents('.env', $file);
 
@@ -182,7 +186,6 @@ class ScriptHandler {
 
     // Preparing deployment method
     $event->getIO()->write('Preparing deployment method...');
-    $deployment_steps = array_values(self::$deployment_options)[$deployment];
     foreach ($deployment_steps['dirs'] as $directory) {
       mkdir($directory);
     }
@@ -210,9 +213,36 @@ class ScriptHandler {
     $event->getIO()->write('Installing composer packages...');
   }
 
+  /**
+   * @param string $filename
+   * @param array $environment
+   */
   protected static function replaceAllTokensInFile($filename, array $environment) {
     $file = file_get_contents($filename);
     $file = str_replace(array_keys($environment), array_values($environment), $file);
     file_put_contents($filename, $file);
+  }
+
+  /**
+   * @param Event $event
+   * @param string $package
+   * @param string $operator
+   * @param string $version
+   * @return Link
+   */
+  protected static function createComposerLink(Event $event, $package, $operator, $version, $description = 'requires') {
+    $prettyConstraint = $operator . $version;
+    if ($operator == '=') {
+      $prettyConstraint = $version;
+    }
+    if ($operator == '^') {
+      $parts = explode('.', $version);
+      $nextVersion = (intval($parts[0]) + 1) . '.0.0.0-dev';
+      $upperConstraint = new Constraint('<', $nextVersion);
+      $lowerConstraint = new Constraint('>=', $version);
+      return new Link($event->getComposer()->getPackage()->getName(), $package, new MultiConstraint([$upperConstraint, $lowerConstraint]), $description, $prettyConstraint);
+    } else {
+      return new Link($event->getComposer()->getPackage()->getName(), $package, new Constraint($operator, $version), $description, $prettyConstraint);
+    }
   }
 }
