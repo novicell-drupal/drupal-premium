@@ -143,7 +143,7 @@ class ScriptHandler {
     $deployment = 0;*/
 
     // Add optional modules to composer.json and current running instance
-    $event->getIO()->info('Adding optional modules to composer.json...');
+    $event->getIO()->write('Adding optional modules to composer.json...');
     $json_file = Factory::getComposerFile();
     $json = json_decode(file_get_contents($json_file));
     $links = $event->getComposer()->getPackage()->getRequires();
@@ -160,7 +160,7 @@ class ScriptHandler {
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
     // Writing environment file
-    $event->getIO()->info('Writing environment file...');
+    $event->getIO()->write('Writing environment file...');
     $file = '';
     foreach ($environment as $key => $value) {
       $file .= $key . '=' . $value . "\n";
@@ -168,21 +168,21 @@ class ScriptHandler {
     file_put_contents('.env', $file);
 
     // Renaming directories
-    $event->getIO()->info('Renaming directories...');
+    $event->getIO()->write('Renaming directories...');
     $site_dir = 'webroot/sites/' . $domain_name;
     rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
     rename('webroot/sites/DOMAIN_NAME', $site_dir);
 
     // Preparing site configuration
-    $event->getIO()->info('Preparing site configuration...');
+    $event->getIO()->write('Preparing site configuration...');
     self::replaceAllTokensInFile('webroot/sites/' . $domain_name . '/settings.php', $environment);
     foreach (self::$configuration_files as $filename) {
       self::replaceAllTokensInFile($filename, $environment);
     }
 
     // Preparing deployment method
-    $event->getIO()->info('Preparing deployment method...');
-    $deployment_steps = self::$deployment_options[$deployment];
+    $event->getIO()->write('Preparing deployment method...');
+    $deployment_steps = array_values(self::$deployment_options)[$deployment];
     foreach ($deployment_steps['dirs'] as $directory) {
       mkdir($directory);
     }
@@ -199,7 +199,7 @@ class ScriptHandler {
     }
 
     // Renaming files in subtheme and replacing token in subtheme files with actual project name
-    $event->getIO()->info('Preparing "%PROJECT_NAME" subtheme...', ['%PROJECT_NAME' => $project_name]);
+    $event->getIO()->write('Preparing "%PROJECT_NAME" subtheme...', ['%PROJECT_NAME' => $project_name]);
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
@@ -207,7 +207,7 @@ class ScriptHandler {
       self::replaceAllTokensInFile($filename, $environment);
     }
 
-    $event->getIO()->info('Installing composer packages...');
+    $event->getIO()->write('Installing composer packages...');
   }
 
   protected static function replaceAllTokensInFile($filename, array $environment) {
