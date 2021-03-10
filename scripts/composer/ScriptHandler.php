@@ -106,19 +106,15 @@ class ScriptHandler {
    */
   public static function postRootPackageInstall(Event $event) {
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
-    $deployment_steps = [];
     $environment = [];
-    if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
+    /*if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
       $environment['PROJECT_NAME'] = $project_name;
     }
     if (!empty($domain_name = $event->getIO()->ask('Domain name:'))) {
       $environment['DOMAIN_NAME'] = $domain_name;
     }
-    if ($modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE)) {
-    }
-    if ($deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE)) {
-      $deployment_steps = array_values(self::$deployment_options)[$deployment];
-    }
+    $modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE);
+    $deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE);
 
     if (!$in_ddev) {
       if (!empty($db_host = $event->getIO()->ask('Database host:'))) {
@@ -138,12 +134,20 @@ class ScriptHandler {
       }
     } else {
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
-    }
+    }*/
 
-    /*$project_name = 'test';
-    $domain_name = 'test.dk';
+    $environment['PROJECT_NAME'] = $project_name = 'test';
+    $environment['DOMAIN_NAME'] = $domain_name = 'test.dk';
+    $environment['DB_HOST'] = 'localhost';
+    $environment['DB_PORT'] = '3306';
+    $environment['DB_NAME'] = $project_name;
+    $environment['DB_USER'] = $project_name;
+    $environment['DB_PASS'] = $project_name;
     $modules = [0];
-    $deployment = 0;*/
+    $deployment = 0;
+
+    $tokens = $environment;
+    $deployment_steps = array_values(self::$deployment_options)[$deployment];
 
     // Add optional modules to composer.json and current running instance
     $event->getIO()->write('Adding optional modules to composer.json...');
@@ -186,18 +190,14 @@ class ScriptHandler {
 
     // Preparing deployment method
     $event->getIO()->write('Preparing deployment method...');
-    foreach ($deployment_steps['dirs'] as $directory) {
+    foreach ($deployment_steps['dirs'] ?? [] as $directory) {
       mkdir($directory);
     }
-    foreach ($deployment_steps['copy'] as $source => $destination) {
+    foreach ($deployment_steps['copy'] ?? [] as $source => $destination) {
       $file = file_get_contents($source);
       file_put_contents($destination, $file);
     }
-    foreach ($deployment_steps['copy'] as $source => $destination) {
-      $file = file_get_contents($source);
-      file_put_contents($destination, $file);
-    }
-    foreach ($deployment_steps['token_replace'] as $filename) {
+    foreach ($deployment_steps['token_replace'] ?? [] as $filename) {
       self::replaceAllTokensInFile($filename, $environment);
     }
 
