@@ -92,6 +92,7 @@ class ScriptHandler {
    * @var string[]
    */
   private static $configuration_files = [
+    'webroot/profiles/custom/premium_profile/premium_profile.info.yml',
     'webroot/sites/sites.php',
     'drush/drush.yml',
     'drush/drushrc.php',
