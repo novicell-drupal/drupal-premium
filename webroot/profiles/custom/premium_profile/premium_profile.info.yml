@@ -22,8 +22,8 @@ distribution:
   # To set your theme as the theme for the distribution installation uncomment the following:
   #
   install:
-    theme: PROJECT_NAME
-  langcode: dk
+    theme: adminimal_theme
+  langcode: da
 
 install:
   - node
@@ -86,7 +86,7 @@ install:
   - monolog
   - noreferrer
   - pathauto
-  - paragraph
+  - paragraphs
   - paragraphs_asymmetric_translation_widgets
   - search_api
   - search_api_page
