@@ -108,7 +108,7 @@ class ScriptHandler {
   public static function postRootPackageInstall(Event $event) {
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
     $environment = [];
-    /*if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
+    if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
       $environment['PROJECT_NAME'] = $project_name;
     }
     if (!empty($domain_name = $event->getIO()->ask('Domain name (without www.):'))) {
@@ -134,10 +134,15 @@ class ScriptHandler {
         $environment['DB_PASS'] = $db_pass;
       }
     } else {
+      $environment['DB_HOST'] = 'db';
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
-    }*/
+      $environment['DB_NAME'] = 'db';
+      $environment['DB_USER'] = 'db';
+      $environment['DB_PASS'] = 'db';
+    }
 
-    $environment['PROJECT_NAME'] = $project_name = 'premium';
+    // Testing values
+    /*$environment['PROJECT_NAME'] = $project_name = 'premium';
     $environment['DOMAIN_NAME'] = $domain_name = 'test.dk';
     $environment['DB_HOST'] = 'localhost';
     $environment['DB_PORT'] = '3306';
@@ -145,7 +150,7 @@ class ScriptHandler {
     $environment['DB_USER'] = $project_name;
     $environment['DB_PASS'] = $project_name;
     $modules = [0, 1];
-    $deployment = 0;
+    $deployment = 0;*/
 
     $tokens = [
       'PROJECT_NAME' => $project_name,
