@@ -146,8 +146,11 @@ class ScriptHandler {
     $modules = [0, 1];
     $deployment = 0;
 
-    $environment['hash_salt'] = $hash_salt = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55)));
-    $tokens = $environment;
+    $tokens = [
+      'PROJECT_NAME' => $project_name,
+      'DOMAIN_NAME' => $domain_name
+    ];
+    $environment['HASH_SALT'] = $hash_salt = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55)));
     $deployment_steps = array_values(self::$deployment_options)[$deployment];
 
     // TODO: find a way to handle second level domains
@@ -226,7 +229,7 @@ class ScriptHandler {
 
     // Install node modules and build front end assets...
     $event->getIO()->write('Install node modules and build front end assets...');
-    exec('cd ' . $theme_dir . ' && npm ci && npm run build:prod');
+    exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
     $event->getIO()->write('Installing composer packages...');
