@@ -1,0 +1,18 @@
+{{ attach_library('dds_premium/list-view-item') }}
+
+<a href="{{ url }}" class="list-view-item">
+  <figure{{ create_attribute().addClass('list-view-item__image').addClass(not image ? 'list-view-item__image--fallback') }}>
+    {% if image %}
+      {{ image|responsive_image('list_view', 'lazyload') }}
+    {% else %}
+      {% include '@atoms/svg-icon/svg-icon.twig' with {
+        'svgIconName': 'no-image'
+      } %}
+    {% endif %}
+  </figure>
+  <div class="list-view-item__content">
+    <h3 class="list-view-item__title">{{- title -}}</h3>
+    <p class="list-view-item__text">{{- excerpt -}}</p>
+    <span class="text-link">{{ 'Read more'|t({}, {'context' : 'premium search-item'}) }}</span>
+  </div>
+</a>

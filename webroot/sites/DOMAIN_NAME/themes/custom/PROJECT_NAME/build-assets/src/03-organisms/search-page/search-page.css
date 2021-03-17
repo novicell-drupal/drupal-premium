@@ -1,0 +1,66 @@
+/**
+ * Type: Organisms.
+ * Search page.
+ */
+js-form-item form-item js-form-type-search form-item-keys js-form-item-keys form-no-label
+.search-page {
+  .form-item {
+    margin-bottom: 0;
+    margin-right: 20px;
+    width: 100%;
+
+    input[type="search"] {
+      height: 100%;
+    }
+  }
+
+
+  &__form,
+  &__no-of-results {
+    margin-top: 25px;
+  }
+
+  &__results {
+    margin-top: 60px;
+  }
+
+  &__pager {
+    margin-bottom: 40px;
+  }
+}
+
+.search-result__page {
+
+  .search-form {
+    display: flex;
+    margin-bottom: 30px;
+
+    .form-item {
+      float: left;
+      display: inline;
+      margin-bottom: 0;
+      margin-right: 20px;
+      width: 300px;
+    }
+
+    .form-item-keys {
+
+      input {
+        height: 100%;
+
+      }
+    }
+
+    .form-actions {
+      margin-top: 0;
+    }
+
+    .search-help-link {
+      display: none;
+    }
+  }
+
+  h2 {
+    margin: 40px 0;
+  }
+}

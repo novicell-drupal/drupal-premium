@@ -1,0 +1,20 @@
+{{ attach_library('dds_premium/language-menu') }}
+
+<div class="language-menu" id="js-language-menu">
+  <div class="language-menu__trigger" id="js-language-menu-trigger" @click="toggleLanguageMenu()">
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'globe'
+    } %}
+    {{ 'Choose Country'|t({}, {'context' : 'premium'}) }}
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'arrow-down'
+    } %}
+  </div>
+  <ul class="language-menu-list" :class="{ 'language-menu-list--open': isOpen }" id="js-language-menu-list">
+    {%- for item in links -%}
+      <li class="language-menu-list-item">
+        {{ item.link }}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>

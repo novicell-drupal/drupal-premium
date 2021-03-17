@@ -1,0 +1,25 @@
+{{ attach_library('dds_premium/newsletter-signup') }}
+
+<div class="newsletter-signup">
+  <h2 class="newsletter-signup__title">{{ title }}</h2>
+  {% if text %}
+    <div class="newsletter-signup__text">{{ text }}</div>
+  {% endif %}
+  {% block content %}
+    <form action="" method="post">
+      <div>
+        <div class="form-item">
+          {% include '@label' with {'text': 'E-mail address'} %}
+          {% render '@input' %}
+        </div>
+        <div class="form-item">
+          {% include '@label' with {'text': 'First name'} %}
+          {% render '@input' %}
+        </div>
+      </div>
+      <div class="form-actions">
+        {% include "@molecules/cta/cta.twig" with cta %}
+      </div>
+    </form>
+  {% endblock %}
+</div>

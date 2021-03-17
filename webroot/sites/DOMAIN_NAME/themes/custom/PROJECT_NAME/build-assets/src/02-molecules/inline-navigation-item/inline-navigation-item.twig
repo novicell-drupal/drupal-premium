@@ -1,0 +1,20 @@
+{{ attach_library('dds_premium/inline-navigation-item') }}
+
+<li class="inline-navigation-item">
+  <a href="{{ url }}" class="inline-navigation-item__link">
+    <figure{{ (not image_container_attribute ? create_attribute() : image_container_attribute).addClass('inline-navigation-item__image').addClass(not image ? 'inline-navigation-item__image--fallback') }}>
+      {% if image %}
+        {{ image|responsive_image('inline_navigation_1_1', 'lazyload') }}
+      {% else %}
+        {% include '@atoms/svg-icon/svg-icon.twig' with {
+          'svgIconName': 'no-image'
+        } %}
+      {% endif %}
+    </figure>
+    <h3 class="inline-navigation-item__title">{{ label }}</h3>
+    {% if inline_navigation_teaser %}
+      <p class="inline-navigation-item__text">{{ inline_navigation_teaser }}</p>
+    {% endif %}
+    <span class="text-link">{{ 'Read more'|t({}, {'context' : 'premium inline-navigation'}) }}</span>
+  </a>
+</li>

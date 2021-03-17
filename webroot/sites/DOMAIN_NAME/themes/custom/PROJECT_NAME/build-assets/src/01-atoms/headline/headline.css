@@ -1,0 +1,30 @@
+.headline {
+  font-size: var(--base-font-size-xxxlarge);
+  padding: 20px 0;
+  text-transform: uppercase;
+  text-align: center;
+  border-top: 1px solid var(--color-gray);
+  border-bottom: 1px solid var(--color-gray);
+
+  &--weight-light {
+    h1,
+    h2 {
+      font-weight: 300;
+    }
+  }
+
+  &--space-top {
+    margin-top: 30px;
+  }
+
+  h1:last-child,
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+.date-interval {
+  padding: 20px 0;
+  text-align: center;
+  font-size: var(--base-font-size-medium);
+  color: var(--color-light-gray-2);
+}

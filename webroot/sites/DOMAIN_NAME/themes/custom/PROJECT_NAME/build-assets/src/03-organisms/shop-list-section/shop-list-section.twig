@@ -1,0 +1,22 @@
+{{ attach_library('dds_premium/shop-list-section') }}
+
+<div class="shop-list-section">
+  <div class="container">
+    <div class="row">
+      {% for col in cols %}
+        <div class="col-xs-12 col-md-3">
+        {% for group in col.groups %}
+          <div class="shop-list-section__group">
+            {% if group.title %}
+              <div><b>{{ group.title }}</b></div>
+            {% endif %}
+            {% for link in group.links %}
+              {{ link }}
+            {% endfor %}
+          </div>
+        {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{{ attach_library('dds_premium/image-slideshow') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('image-slideshow-wrapper').addClass('js-image-slideshow-wrapper').setAttribute('data-autoplay', autoplay ? 'true' : 'false') }}>
+  <ul class="image-slideshow js-image-slideshow">
+    {% for item in items %}
+      <li class="image-slideshow-slide">
+        {{ item.image|responsive_image('wide', 'lazyload') }}
+      </li>
+    {% endfor %}
+  </ul>
+  <ul class="image-slideshow-navigation js-image-slideshow-navigation">
+    {% for item in items %}
+      <li class="image-slideshow-navigation__dot"></li>
+    {% endfor %}
+  </ul>
+</div>

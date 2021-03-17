@@ -89,6 +89,16 @@
  * @endcode
  */
 $databases = [];
+$databases['default']['default'] = [
+  'database' => getenv('DB_NAME'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASS'),
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'driver' => 'mysql',
+  'prefix' => '',
+  'collation' => 'utf8mb4_general_ci',
+];
 
 /**
  * Customizing database settings.
@@ -290,7 +300,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'Yud3iCghlgK-xr5DKaWMjMqtUpEnTalI51fNMtOM3IJHukeQ4zr0Sl0-gnNJkO1EuvkndUg5Ng';
+$settings['hash_salt'] = getenv('HASH_SALT');
 
 /**
  * Deployment identifier.
@@ -708,6 +718,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
+$settings['trusted_host_patterns'] = TRUSTED_HOST_PATTERNS;
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.

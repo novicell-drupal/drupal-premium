@@ -1,0 +1,61 @@
+/**
+ * Type: Organisms.
+ * Header.
+ */
+
+.header {
+  position: fixed;
+  background-color: var(--header-background-color);
+  font-family: var(--header-font-family);
+  font-weight: var(--header-font-weight);
+  color: var(--header-text-color);
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 100;
+  height: var(--header-height-mobile);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  transition: height .1s ease-in-out;
+
+  @media (--viewport-md-min) {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    height: var(--header-height);
+  }
+
+  &.scroll {
+    height: 120px;
+
+    .logo__image {
+      height: 80px;
+    }
+  }
+
+  .container,
+  &__inner {
+    height: 100%;
+  }
+
+  &__inner {
+    display: flex;
+  }
+
+  &__right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+    @media (--viewport-md-min) {
+      flex-direction: column;
+      align-items: flex-end;
+      margin-left: auto;
+
+      .search-toggle,
+      .navigation {
+        margin-top: auto;
+      }
+    }
+  }
+}

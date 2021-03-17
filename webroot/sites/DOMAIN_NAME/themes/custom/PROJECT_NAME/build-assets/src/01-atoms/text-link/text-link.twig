@@ -1,0 +1,10 @@
+{% set attributes = (not attributes ? create_attribute() : attributes) %}
+
+{% if target %}
+  {% set attributes = attributes.setAttribute('target', target) %}
+  {% if target == '_blank' %}
+    {% set attributes = attributes.setAttribute('rel', 'noopener') %}
+  {% endif %}
+{% endif %}
+
+<a {{ attributes.setAttribute('href', url) }}>{{ text }}</a>

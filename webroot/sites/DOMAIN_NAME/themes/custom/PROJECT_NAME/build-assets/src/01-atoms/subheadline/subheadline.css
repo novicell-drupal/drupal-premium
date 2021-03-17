@@ -1,0 +1,17 @@
+.subheadline {
+  max-width: 50%;
+  margin: 0 auto 60px;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--color-light-gray);
+  font-size: var(--base-font-size-xlarge);
+
+  h2 {
+    font-weight: 400;
+  }
+
+  h2:last-child,
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

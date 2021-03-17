@@ -1,0 +1,108 @@
+{{ attach_library('dds_premium/burger-menu') }}
+
+<nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu">
+  <div @click="closeBurgerMenu()" class="burger-menu__close">
+    <div class="burger-menu__close-label">{{ 'Close (Esc)'|t({}, {'context' : 'premium'}) }}</div>
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'close'
+    } %}
+  </div>
+  <div class="container">
+    <div class="burger-menu__inner">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-6">
+          {% block navigation %}
+            {% if navigation %}
+              <div class="burger-menu-list__label">{{ navigation.title }}</div>
+              <ul class="burger-menu-list">
+                {% for item in navigation.items %}
+                  <li class="burger-menu-list-item js-burger-menu-list-item">
+                    <a href="{{ item.url }}" class="burger-menu-list-item__link">
+                      {{ item.title }}
+                      {% if item.below %}
+                        {% include '@atoms/svg-icon/svg-icon.twig' with {
+                          'attributes': create_attribute().setAttribute('@click', 'triggerSubNavigation($event)'),
+                          'svgIconName': 'arrow-line-down'
+                        } %}
+                      {% endif %}
+                    </a>
+                    {% if item.below %}
+                      <ul class="burger-menu-list burger-menu-list--secondary">
+                        <div class="burger-menu-list__label">{{ item.below.title }}</div>
+                        {% for sub_item in navigation.items %}
+                          <li class="burger-menu-list-item">
+                            <a href="{{ sub_item.url }}" class="burger-menu-list-item__link">{{ sub_item.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endblock %}
+        </div>
+        <div class="col-xs-12 col-md-4">
+          {% block meta_menu %}
+            {% if meta_menu %}
+              <div class="burger-menu-list__label">{{ meta_menu.title }}</div>
+              <ul class="burger-menu-list burger-menu-list--highlighted">
+                {% for item in meta_menu.items %}
+                  <li class="burger-menu-list-item">
+                    <a href="{{ item.url }}" class="burger-menu-list-item__link">
+                      {{ item.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endblock %}
+        </div>
+      </div>
+      {% if contacts|length > 0 %}
+        <div class="row">
+          {% for contact in contacts %}
+            <div class="col-xs-12 col-md-4">
+              <address vocab="http://schema.org/" typeof="Organization">
+                <div class="burger-menu-contact-info">
+                  <h3 class="burger-menu-contact-info__title" property="name">{{ contact.title }}</h3>
+                  <p class="burger-menu-contact-info__text">
+                    {% if contact.cvr is not empty %}
+                      <span property="identifier">{{ contact.cvr }}</span>
+                      <br>
+                    {% endif %}
+                    {% if contact.address is not empty or contact.zip is not empty or contact.city is not empty %}
+                      <span property="address" typeof="PostalAddress">
+                        <span property="streetAddress">{{ contact.address }}</span>
+                        <br>
+                        {% if contact.zip is not empty %}
+                          <span property="postalCode">{{ contact.zip }}</span>
+                        {% endif %}
+                        {% if contact.city is not empty %}
+                          <span property="addressLocality">{{ contact.city }}</span>
+                        {% endif %}
+                      </span>
+                      <br>
+                    {% endif %}
+                    {% if contact.telephone is not empty %}
+                      <span property="telephone">
+                        <a href="tel:{{ contact.telephone }}">{{ contact.telephone }}</a>
+                      </span>
+                      <br>
+                    {% endif %}
+                    {% if contact.email is not empty %}
+                      <span property="email">
+                        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                      </span>
+                      <br>
+                    {% endif %}
+                  </p>
+                </div>
+              </address>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>

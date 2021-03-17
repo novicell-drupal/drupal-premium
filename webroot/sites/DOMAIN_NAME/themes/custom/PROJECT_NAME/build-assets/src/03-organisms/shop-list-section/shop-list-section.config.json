@@ -1,0 +1,148 @@
+{
+  "title": "Shop List Page",
+  "status": "ready",
+  "context": {
+    "cols": [
+      {
+        "groups": [
+          {
+            "title": "a",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "b",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "c",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          }
+        ]
+        
+      },
+      {
+        "groups": [
+          {
+            "title": "a",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "b",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "c",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          }
+        ]
+        
+      },
+      {
+        "groups": [
+          {
+            "title": "a",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "b",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "c",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          }
+        ]
+        
+      },
+      {
+        "groups": [
+          {
+            "title": "a",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "b",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          },
+          {
+            "title": "c",
+            "links": [
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>",
+              "<a href='/'>Link</a>"
+            ]
+          }
+        ]
+        
+      }
+    ]
+  }
+}

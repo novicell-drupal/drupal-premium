@@ -1,0 +1,15 @@
+{{ attach_library('dds_premium/video') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass('video').addClass('js-video').setAttribute('data-autoplay', autoplay).addClass(inverted ? 'video--inverted') }} data-video='{{ video_oembed }}'>
+  <div class="video__iframe-wrapper js-video-iframe-wrapper"></div>
+  {% if image is not empty %}{{ image|responsive_image(image_style, 'lazyload') }}{% endif %}
+  <div class="video__play-icon js-video-play-icon">
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'play'
+    } %}
+  </div>
+  <div class="video__content">
+    <div class="video__title">{{ title }}</div>
+    <div class="video__subtitle">{{ subtitle }}</div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{% render '@logo' with {
+  'attributes': create_attribute()
+} %}
+
+<section class="section section--spacing-bottom-small section--mobile-logo-spacing">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        {% render '@headline' %}
+        {% render '@navigation' with {
+          'attributes': create_attribute().addClass(['navigation', 'navigation--with-border'])
+        }%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--spacing-top-none">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        {% render '@shop-list-section' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% render '@burger-menu' %}
+{% render '@search-overlay' %}
+

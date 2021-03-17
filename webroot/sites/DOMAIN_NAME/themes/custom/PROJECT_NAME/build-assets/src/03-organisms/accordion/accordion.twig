@@ -1,0 +1,25 @@
+{{ attach_library('dds_premium/accordion') }}
+
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['accordion', 'js-accordion']) }}>
+  <h2 class="accordion__headline">{{ headline }}</h2>
+  <div class="accordion__items {{ items|length >= 1 ? 'accordion__items--has-children' }}">
+    {% set counter = 0 %}
+    {% for item in items %}
+      {% set counter = counter + 1 %}
+      <accordion-item title="{{ item.headline }}" id="{{ item.id }}" {{ counter > 5 ? ':hidden="!showAllHiddenItems"' }}>
+        {{ item.text }}
+      </accordion-item>
+    {% endfor %}
+  </div>
+  {% if items|length > 5 and show_more_text %}
+    <div v-show="!showAllHiddenItems">
+      <br>
+      {% include '@molecules/cta/cta.twig' with {
+        'attributes': button_attributes,
+        'type': 'button',
+        'text': show_more_text,
+        'attributes': create_attribute().setAttribute('@click.prevent', 'displayHiddenItems').addClass('button--center')
+      } %}
+    </div>
+  {% endif %}
+</div>

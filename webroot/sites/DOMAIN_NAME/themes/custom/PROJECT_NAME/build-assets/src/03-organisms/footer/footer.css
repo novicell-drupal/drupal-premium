@@ -1,0 +1,69 @@
+/**
+ * Type: Organisms.
+ * Footer.
+ */
+
+.footer {
+  background-color: var(--color-light-gray);
+
+  &__pre-inner {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding-bottom: 40px;
+    padding-top: 40px;
+
+    a {
+      color: var(--color-white);
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 400;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__headline {
+    font-size: var(--base-font-size-medium);
+    margin-bottom: 10px;
+  }
+
+  &__inner {
+    padding-bottom: 80px;
+    padding-top: 30px;
+
+    @media (--viewport-md-min) {
+      padding-bottom: 50px;
+    }
+  }
+
+  &__text-cols-space {
+    margin-top: 5px;
+
+    @media (--viewport-md-min) {
+      margin-top: 0;
+    }
+  }
+
+  &__text-cols {
+    div[class^="col-"] {
+      margin-top: 15px;
+
+      a {
+        font-weight: 400;
+        text-decoration: none;
+        transition: color .3s ease;
+
+        &:hover {
+           color: var(--color-light-gray-2);
+        }
+      }
+
+      @media (--viewport-md-min) {
+        margin-top: 0;
+      }
+    }
+  }
+}

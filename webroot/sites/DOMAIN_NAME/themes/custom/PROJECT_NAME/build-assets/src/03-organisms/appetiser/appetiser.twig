@@ -1,0 +1,28 @@
+{{ attach_library('dds_premium/appetiser') }}
+
+<div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small') }}>
+  <div class="appetiser__content-wrapper">
+    {% if display_as_fullwidth %}
+    <div class="container">
+      {% endif %}
+      <div class="appetiser__content">
+        <h2 class="appetiser__title">{{ title }}</h2>
+        <div class="appetiser__description">{{ text }}</div>
+        {% if cta.url and cta.title %}
+          {% include '@molecules/cta/cta.twig' with {
+            'url': cta.url,
+            'text': cta.title,
+            'attributes': cta.attributes
+          } %}
+        {% endif %}
+      </div>
+      {% if display_as_fullwidth %}
+    </div>
+    {% endif %}
+  </div>
+  {% if image %}
+    <figure{{ (not image_figure_attributes ? create_attribute() : image_figure_attributes).addClass('appetiser__image') }}>
+      {{ image|responsive_image(image_style, 'lazyload') }}
+    </figure>
+  {% endif %}
+</div>

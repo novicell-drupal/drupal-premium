@@ -110,7 +110,7 @@ class ScriptHandler {
     /*if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
       $environment['PROJECT_NAME'] = $project_name;
     }
-    if (!empty($domain_name = $event->getIO()->ask('Domain name:'))) {
+    if (!empty($domain_name = $event->getIO()->ask('Domain name (without www.):'))) {
       $environment['DOMAIN_NAME'] = $domain_name;
     }
     $modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE);
@@ -136,18 +136,30 @@ class ScriptHandler {
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
     }*/
 
-    $environment['PROJECT_NAME'] = $project_name = 'test';
+    $environment['PROJECT_NAME'] = $project_name = 'premium';
     $environment['DOMAIN_NAME'] = $domain_name = 'test.dk';
     $environment['DB_HOST'] = 'localhost';
     $environment['DB_PORT'] = '3306';
     $environment['DB_NAME'] = $project_name;
     $environment['DB_USER'] = $project_name;
     $environment['DB_PASS'] = $project_name;
-    $modules = [0];
+    $modules = [0, 1];
     $deployment = 0;
 
+    $environment['hash_salt'] = $hash_salt = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55)));
     $tokens = $environment;
     $deployment_steps = array_values(self::$deployment_options)[$deployment];
+
+    // TODO: find a way to handle second level domains
+    $parts = explode('.', $domain_name);
+    $tld = end($parts);
+    unset($parts[count($parts) - 1]);
+    $tokens['DOMAIN_ONLY'] = $domain_only = implode('.', $parts);
+
+    $tokens['STAGING_SITE'] = "staging." . $domain_only . ".drupal.dk";
+    $tokens['PROD_SITE'] = "prod." . $domain_only . ".drupal.dk";
+    $tokens['LOCAL_SITE'] = $domain_only . ".localhost";
+    $tokens['TRUSTED_HOST_PATTERNS'] = "[\n  '^$domain_only\.$tld',\n  '^.+\.$domain_only\.$tld'\n]";
 
     // Add optional modules to composer.json and current running instance
     $event->getIO()->write('Adding optional modules to composer.json...');
@@ -162,7 +174,6 @@ class ScriptHandler {
         $json->require->$package = $requirement['operator'] . $requirement['version'];
       }
     }
-    var_dump($links);
     $event->getComposer()->getPackage()->setRequires($links);
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
@@ -183,10 +194,12 @@ class ScriptHandler {
 
     // Preparing site configuration
     $event->getIO()->write('Preparing site configuration...');
-    self::replaceAllTokensInFile('webroot/sites/' . $domain_name . '/settings.php', $environment);
+    self::replaceAllTokensInFile('webroot/sites/' . $domain_name . '/settings.php', $tokens);
     foreach (self::$configuration_files as $filename) {
-      self::replaceAllTokensInFile($filename, $environment);
+      self::replaceAllTokensInFile($filename, $tokens);
     }
+    self::copyAndReplaceAllTokensInFile('webroot/sites/local.php', 'webroot/sites/sites.local.php', $tokens);
+    self::copyAndReplaceAllTokensInFile('webroot/sites/' . $domain_name . '/local.php', 'webroot/sites/' . $domain_name . '/settings.local.php', $tokens);
 
     // Preparing deployment method
     $event->getIO()->write('Preparing deployment method...');
@@ -198,29 +211,48 @@ class ScriptHandler {
       file_put_contents($destination, $file);
     }
     foreach ($deployment_steps['token_replace'] ?? [] as $filename) {
-      self::replaceAllTokensInFile($filename, $environment);
+      self::replaceAllTokensInFile($filename, $tokens);
     }
 
     // Renaming files in subtheme and replacing token in subtheme files with actual project name
-    $event->getIO()->write('Preparing "%PROJECT_NAME" subtheme...', ['%PROJECT_NAME' => $project_name]);
+    $event->getIO()->write('Preparing "' . $project_name . '" subtheme...');
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
       rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
-      self::replaceAllTokensInFile($filename, $environment);
+      self::replaceAllTokensInFile($filename, $tokens);
     }
+    self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
 
+    // Install node modules and build front end assets...
+    $event->getIO()->write('Install node modules and build front end assets...');
+    exec('cd ' . $theme_dir . ' && npm ci && npm run build:prod');
+
+    // Now it's time to just let Composer install all the packages and we're done!
     $event->getIO()->write('Installing composer packages...');
   }
 
   /**
-   * @param string $filename
-   * @param array $environment
+   * @param $source
+   * @param $destination
+   * @param array $tokens
+   * @param bool $deleteSource
    */
-  protected static function replaceAllTokensInFile($filename, array $environment) {
-    $file = file_get_contents($filename);
-    $file = str_replace(array_keys($environment), array_values($environment), $file);
-    file_put_contents($filename, $file);
+  protected static function copyAndReplaceAllTokensInFile($source, $destination, array $tokens, $deleteSource = TRUE) {
+    $file = file_get_contents($source);
+    $file = str_replace(array_keys($tokens), array_values($tokens), $file);
+    file_put_contents($destination, $file);
+    if ($deleteSource) {
+      unlink($source);
+    }
+  }
+
+  /**
+   * @param string $filename
+   * @param array $tokens
+   */
+  protected static function replaceAllTokensInFile($filename, array $tokens) {
+    self::copyAndReplaceAllTokensInFile($filename, $filename, $tokens, FALSE);
   }
 
   /**
@@ -240,7 +272,7 @@ class ScriptHandler {
       $nextVersion = (intval($parts[0]) + 1) . '.0.0.0-dev';
       $upperConstraint = new Constraint('<', $nextVersion);
       $lowerConstraint = new Constraint('>=', $version);
-      return new Link($event->getComposer()->getPackage()->getName(), $package, new MultiConstraint([$upperConstraint, $lowerConstraint]), $description, $prettyConstraint);
+      return new Link($event->getComposer()->getPackage()->getName(), $package, new MultiConstraint([$lowerConstraint, $upperConstraint]), $description, $prettyConstraint);
     } else {
       return new Link($event->getComposer()->getPackage()->getName(), $package, new Constraint($operator, $version), $description, $prettyConstraint);
     }

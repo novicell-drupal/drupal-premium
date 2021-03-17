@@ -1,0 +1,29 @@
+{{ attach_library('dds_premium/article-carousel') }}
+
+<div class="articles-carousel-wrapper">
+  <div class="container">
+    <div class="row">
+      <div{{ (not attributes ? create_attribute() : attributes).addClass('js-articles-carousel') }}>
+        {% block items %}
+          {% for item in items %}
+            {% include '@molecules/article-overview-item/article-overview-item.twig' with {
+              'filters': item.filters,
+              'url': item.url,
+              'image': item.image,
+              'date': item.date,
+              'title': item.title,
+              'desc': item.desc
+            } %}
+          {% endfor %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-right more-link-wrapper">
+        <a href="{{ see_all_link }}" class="btn btn-black">Se alle</a>
+      </div>
+    </div>
+  </div>
+</div>

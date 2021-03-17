@@ -1,0 +1,16 @@
+<div {{ (not attributes ? create_attribute() : attributes).addClass('contact-info')}}>
+  <div class="contact-info__title">
+    {{ title }}
+  </div>
+  <div class="contact-info__text">
+    {% if phone %}
+      <div class="contact-info__phone">{{ phone }}</div>
+    {% endif %}
+    {% if website %}
+      <div class="contact-info__website">
+        <span>{{ 'visit'|t({}, {'context': 'contact-info'}) }}</span>
+        <span>{{ website }}</span>
+      </div>
+    {% endif %}
+  </div>
+</div>

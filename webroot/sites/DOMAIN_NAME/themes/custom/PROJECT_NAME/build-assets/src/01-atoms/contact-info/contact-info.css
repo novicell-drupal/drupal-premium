@@ -1,0 +1,31 @@
+.contact-info {
+  font-size: var(--base-font-size-xxxlarge);
+  padding: 24px 0 20px;
+  margin: 30px 0;
+  text-align: center;
+  border-top: 1px solid var(--color-gray);
+  border-bottom: 1px solid var(--color-gray);
+
+  &__website,
+  &__title {
+    font-style: italic;
+    font-size: var(--base-font-size-medium);
+    font-weight: 400;
+
+    a {
+      color: var(--color-light-gray-2);
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__website span {
+    display: inline-block;
+  }
+
+  &__phone {
+    font-weight: 500;
+  }
+}

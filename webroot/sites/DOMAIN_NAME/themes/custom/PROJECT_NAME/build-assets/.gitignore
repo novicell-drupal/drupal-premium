@@ -1,0 +1,11 @@
+# ignore folders
+node_modules
+build
+.cache
+dist
+
+# ignore files
+.idea
+.DS_Store
+Thumbs.db
+npm-debug.log.*

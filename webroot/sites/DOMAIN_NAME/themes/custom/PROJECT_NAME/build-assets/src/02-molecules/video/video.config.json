@@ -1,0 +1,10 @@
+{
+  "title": "Video",
+  "status": "ready",
+  "context": {
+    "title": "This is a video container which opens and plays in an overlay",
+    "subtitle": "with autoplay set to",
+    "image": "https://www.novicell.dk/media/67331/video-preview.jpg",
+    "video_oembed":"{\"url\":\"https://www.youtube.com/watch?v=zrHZpg8EoPM\",\"oEmbed\":{\"type\":\"video\",\"version\":\"1.0\",\"title\":\"Om Novicell\",\"author_name\":\"Novicell\",\"author_url\":\"https:\\/\\/www.youtube.com\\/user\\/novicelldk\",\"provider_name\":\"YouTube\",\"provider_url\":\"https:\\/\\/www.youtube.com\\/\",\"thumbnail_url\":\"https:\\/\\/i.ytimg.com\\/vi\\/zrHZpg8EoPM\\/hqdefault.jpg\",\"thumbnail_width\":480,\"thumbnail_height\":360,\"html\":\"\\u003ciframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/zrHZpg8EoPM?feature=oembed\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\\\" allowfullscreen\\u003e\\u003c\\/iframe\\u003e\",\"width\":480,\"height\":270}}"
+  }
+}

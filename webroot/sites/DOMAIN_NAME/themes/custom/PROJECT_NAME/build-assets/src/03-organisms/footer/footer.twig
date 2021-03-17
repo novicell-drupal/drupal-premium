@@ -1,0 +1,45 @@
+{{ attach_library('dds_premium/footer') }}
+
+{% set number_of_precols = 12 / precols|length %}
+{% set number_of_cols = 12 / cols|length %}
+<footer class="footer">
+  <div{{ create_attribute().addClass('footer__pre-inner') }}>
+    <div class="container">
+      <div class="row">
+        {% for col in precols %}
+          <div class="col-xs-12 col-md-{{ number_of_precols }}">
+            {% if col.headline %}
+              <div class="footer__headline"><b>{{ col.headline }}</b></div>
+            {% endif %}
+            {{ col.content }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div{{ (not attributes ? create_attribute() : attributes).addClass('footer__inner') }}>
+    <div class="container">
+      {% set button_found = false %}
+      <div class="row">
+        {% for col in cols %}
+          <div class="col-xs-12 {{ number_of_cols > 1 ? 'col-sm-6' }} col-md-{{ number_of_cols }}">
+            {% if col.button %}
+              {{ col.button }}
+              {% set button_found = true %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row footer__text-cols {{ button_found ? 'footer__text-cols-space' }}">
+        {% for col in cols %}
+          <div class="col-xs-12 {{ number_of_cols > 1 ? 'col-sm-6' }} col-md-{{ number_of_cols }}">
+            {% if col.headline %}
+              <div class="footer__headline"><b>{{ col.headline }}</b></div>
+            {% endif %}
+            {{ col.content }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</footer>

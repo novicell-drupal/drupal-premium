@@ -1,0 +1,8 @@
+{{ attach_library('dds_premium/search-toggle') }}
+
+<div class="search-toggle js-search-toggle">
+  {% include '@atoms/svg-icon/svg-icon.twig' with {
+    'svgIconName': 'search'
+  } %}
+  {{ 'Search'|t({}, {'context' : 'premium'}) }}
+</div>

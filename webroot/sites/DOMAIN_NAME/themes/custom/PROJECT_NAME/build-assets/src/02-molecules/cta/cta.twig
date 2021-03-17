@@ -1,0 +1,13 @@
+{% if type == 'button' %}
+  <button{{ (not attributes ? create_attribute() : attributes).addClass(['button', 'cta']) }}>
+    {{ text }}
+  </button>
+{% elseif type == 'plain_link' %}
+  <a{{ (not attributes ? create_attribute() : attributes).setAttribute('href', url) }}>
+    {{ text }}
+  </a>
+{% else %}
+  <a{{ (not attributes ? create_attribute() : attributes).setAttribute('href', url).addClass(['button', 'cta']) }}>
+    {{ text }}
+  </a>
+{% endif %}

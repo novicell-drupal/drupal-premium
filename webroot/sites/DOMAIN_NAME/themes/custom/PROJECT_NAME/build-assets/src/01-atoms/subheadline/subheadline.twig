@@ -1,0 +1,5 @@
+<div {{ (not attributes ? create_attribute() : attributes).addClass('subheadline')}}>
+  {% block content %}
+    {{ text }}
+  {% endblock %}
+</div>
