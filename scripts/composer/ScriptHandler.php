@@ -78,7 +78,7 @@ class ScriptHandler {
    * @var string[]
    */
   private static $theme_files = [
-    '.info',
+    '.info.yml',
     '.theme',
     '.atoms.yml',
     '.breakpoints.yml',
