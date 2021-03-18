@@ -118,7 +118,7 @@ class ScriptHandler {
     $deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE);
 
     if (!$in_ddev) {
-      if (!empty($db_host = $event->getIO()->ask('Database host:'))) {
+      if (!empty($db_host = $event->getIO()->ask('Database host:', 'localhost'))) {
         $environment['DB_HOST'] = $db_host;
       }
       if (!empty($db_port = $event->getIO()->ask('Database port:', '3306'))) {
