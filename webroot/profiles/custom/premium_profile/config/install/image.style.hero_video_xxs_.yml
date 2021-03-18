@@ -1,0 +1,16 @@
+langcode: da
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_video_xxs_
+label: 'Hero video 16:9 (XXS)'
+effects:
+  bafdd8a3-e961-47dd-a816-1862e110ea22:
+    uuid: bafdd8a3-e961-47dd-a816-1862e110ea22
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 440
+      height: 248
+      crop_type: focal_point

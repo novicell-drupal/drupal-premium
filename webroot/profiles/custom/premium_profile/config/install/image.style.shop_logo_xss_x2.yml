@@ -1,0 +1,14 @@
+langcode: da
+status: true
+dependencies: {  }
+name: shop_logo_xss_x2
+label: 'Shop logo XSS x2'
+effects:
+  ee2b5750-b2dd-4ead-8258-9ca75c811cd9:
+    uuid: ee2b5750-b2dd-4ead-8258-9ca75c811cd9
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: true
