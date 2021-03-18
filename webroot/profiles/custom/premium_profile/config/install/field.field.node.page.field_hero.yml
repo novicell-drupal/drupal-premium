@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.storage.node.field_hero
     - node.type.page
+    - paragraphs.paragraphs_type.basic_hero
   module:
     - entity_reference_revisions
 id: node.page.field_hero
@@ -20,5 +21,10 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      basic_hero: basic_hero
+    target_bundles_drag_drop:
+      basic_hero:
+        enabled: true
+        weight: 2
 field_type: entity_reference_revisions

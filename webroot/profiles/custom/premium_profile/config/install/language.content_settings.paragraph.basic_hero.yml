@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.page
+    - paragraphs.paragraphs_type.basic_hero
   module:
     - content_translation
 third_party_settings:
@@ -10,8 +10,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '1'
-id: node.page
-target_entity_type_id: node
-target_bundle: page
+id: paragraph.basic_hero
+target_entity_type_id: paragraph
+target_bundle: basic_hero
 default_langcode: site_default
 language_alterable: false

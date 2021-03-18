@@ -4,14 +4,35 @@ dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.field_hero
+    - field.field.node.page.field_hide_breadcrumb
+    - field.field.node.page.field_hide_title
     - field.field.node.page.field_meta_tags
     - field.field.node.page.layout_builder__layout
     - node.type.page
   module:
+    - field_group
     - metatag
     - paragraphs_asymmetric_translation_widgets
     - path
     - text
+third_party_settings:
+  field_group:
+    group_page_header:
+      children:
+        - field_hide_title
+        - field_hide_breadcrumb
+      parent_name: ''
+      weight: 13
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: 'Page header'
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -44,6 +65,20 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_hide_breadcrumb:
+    weight: 15
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_hide_title:
+    weight: 14
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_meta_tags:
     weight: 12

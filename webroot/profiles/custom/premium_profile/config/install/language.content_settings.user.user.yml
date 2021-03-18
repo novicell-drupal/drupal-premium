@@ -1,17 +1,16 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - node.type.page
   module:
     - content_translation
+    - user
 third_party_settings:
   content_translation:
-    enabled: true
+    enabled: false
     bundle_settings:
-      untranslatable_fields_hide: '1'
-id: node.page
-target_entity_type_id: node
-target_bundle: page
+      untranslatable_fields_hide: '0'
+id: user.user
+target_entity_type_id: user
+target_bundle: user
 default_langcode: site_default
 language_alterable: false
