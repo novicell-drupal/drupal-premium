@@ -76,6 +76,7 @@ install:
   - components
   - config_ignore
   - config_split
+  - devel
   - editor_advanced_link
   - entity_clone
   - entity_usage
