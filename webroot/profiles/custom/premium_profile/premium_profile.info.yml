@@ -72,6 +72,7 @@ install:
   - adminimal_admin_toolbar
   - allowed_formats
   - autosave_form
+  - color_field
   - components
   - config_ignore
   - config_split
@@ -80,7 +81,10 @@ install:
   - entity_usage
   - field_group
   - focal_point
+  - hreflang
+  - inline_block_title_automatic
   - layout_builder_at
+  - layout_builder_modal
   - linkit
   - metatag
   - monolog
@@ -88,6 +92,8 @@ install:
   - pathauto
   - paragraphs
   - paragraphs_asymmetric_translation_widgets
+  - redirect
+  - scheduled_transitions
   - search_api
   - search_api_page
   - search_api_exclude_entity
