@@ -1,21 +1,21 @@
-{{ attach_library('dds_premium/search-overlay') }}
+{{ attach_library('PROJECT_NAME/search-overlay') }}
 
 <div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay">
   <div @click="closeSearchOverlay()" class="search-overlay__close">
     {% include '@atoms/svg-icon/svg-icon.twig' with {
       'svgIconName': 'close'
     } %}
-    <span class="search-overlay__close-label">{{ 'Close (Esc)'|t({}, {'context' : 'premium'}) }}</span>
+    <span class="search-overlay__close-label">{{ 'Close (Esc)'|t }}</span>
   </div>
   <div class="search-overlay__content">
     <div class="container">
-      <form action="/search/content" method="get">
+      <form action="/search" method="get">
         <div class="search-overlay__input-field">
-          <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t({}, {'context' : 'premium'}) }}</label>
+          <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
           {% include '@atoms/forms/input/input.twig' with {
             'type': 'search',
             'id': 'js-search-overlay-input',
-            'placeholder': 'Search'|t({}, {'context' : 'premium'}),
+            'placeholder': 'Search'|t,
             'name': 'keys'
           } %}
           {% embed '@atoms/button/button.twig' with {

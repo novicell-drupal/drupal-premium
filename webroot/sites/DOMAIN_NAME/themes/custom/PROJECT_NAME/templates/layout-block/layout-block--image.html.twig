@@ -1,0 +1,12 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% include '@molecules/image/image.twig' with {
+  'attributes': attributes.addClass(classes),
+  'image_style': image_style,
+  'image':  fields.field_image_media.field_media_image,
+  'caption': fields.field_image_caption,
+  'link': fields.field_image_link
+} %}

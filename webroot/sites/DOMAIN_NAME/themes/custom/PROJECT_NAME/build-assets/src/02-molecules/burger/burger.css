@@ -7,23 +7,18 @@
   flex-shrink: 0;
   flex-grow: 0;
   cursor: pointer;
-  display: none;
 
   @media (--viewport-sm-max) {
+    width: 50%;
     font-size: var(--base-font-size-extra-small);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     order: 2;
-    margin-left: 50px;
   }
 
   @media (--viewport-md-min) {
     margin-left: 20px;
-  }
-
-  @media (--viewport-xs-max) {
-    margin-left: 30px;
   }
 
   &__lines {

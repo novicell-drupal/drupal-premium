@@ -1,0 +1,11 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% include '@molecules/image-slideshow/image-slideshow.twig' with {
+  'attributes': attributes.addClass(classes),
+  'items': items,
+  'autoplay': fields.field_slideshow_autoplay.checked,
+  'image_style': 'wide'
+} %}

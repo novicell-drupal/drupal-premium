@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a searchpage entity.
+ *
+ * This template is used when viewing a registered searchpage's page,
+ * e.g., /admin/content/searchpage)/123. 123 being the searchpage's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_searchpage()
+ */
+#}
+{% embed '@organisms/search-page/search-page.twig' with {
+  'title': title,
+  'no_of_results': no_of_results
+} %}
+  {% block form %}
+    {% if form %}
+      {{- form -}}
+    {% endif %}
+  {% endblock %}
+  {% block facets %}
+    {{ facets }}
+  {% endblock %}
+  {% block results %}
+    {{ results }}
+  {% endblock %}
+  {% block pager %}
+    {{ pager }}
+  {% endblock %}
+{% endembed %}

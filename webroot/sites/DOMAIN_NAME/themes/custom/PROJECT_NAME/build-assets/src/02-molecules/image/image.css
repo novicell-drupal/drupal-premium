@@ -3,21 +3,6 @@
  * Image.
  */
 
-.figure {
-  &--centered {
-    display: flex;
-    justify-content: center;
-
-    .image {
-      max-width: 400px;
-    }
-
-    figcaption {
-      display: none;
-    }
-  }
-}
-
 .image {
   position: relative;
   width: 100%;
@@ -44,76 +29,5 @@
 
   &--shadow {
     box-shadow: 0 27px 50px 0 rgba(35, 35, 35, .15);
-  }
-
-  &--centered {
-    max-width: 400px;
-  }
-}
-
-.image_link {
-  position: relative;
-  display: block;
-
-  .image_link__btn_wrapper {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translateY(-50%);
-    text-align: center;
-
-    .image_link__btn {
-      font-size: 36px;
-      font-weight: 400;
-      padding: 25px 36px;
-      letter-spacing: 0;
-      border: 4px solid var(--color-white);
-      color: var(--color-white);
-      display: inline-block;
-      transition: all .5s ease;
-
-      @media (max-width: 991px) {
-        font-size: 25px;
-        padding: 17px 19px;
-      }
-
-      @media (max-width: 575px) {
-        border: 2px solid var(--color-white);
-        font-size: 18px;
-        padding: 10px 16px;
-      }
-    }
-  }
-
-  &:hover {
-    .image_link__btn {
-      letter-spacing: 2px;
-      background: var(--color-white);
-      color: var(--color-black);
-    }
-  }
-}
-
-.col-md-6 {
-  .image_link {
-    .image_link__btn_wrapper {
-      .image_link__btn {
-        font-size: 25px;
-        padding: 17px 19px;
-
-        @media (min-width: 992px) and (max-width: 1200px) {
-          border: 2px solid var(--color-white);
-          font-size: 18px;
-          padding: 10px 16px;
-        }
-
-        @media (max-width: 575px) {
-          border: 2px solid var(--color-white);
-          font-size: 18px;
-          padding: 10px 16px;
-        }
-      }
-    }
   }
 }

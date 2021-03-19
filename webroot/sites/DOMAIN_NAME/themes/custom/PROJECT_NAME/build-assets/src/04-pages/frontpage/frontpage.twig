@@ -1,21 +1,15 @@
 {% render '@header' %}
 {% render '@logo' with {
-  'attributes': create_attribute()
+  'attributes': create_attribute().addClass(['logo--mobile', 'logo--floating'])
 } %}
 <section class="section section--no-spacing">
-  <div class="container">
-    {% render '@hero' %}
-  </div>
+  {% render '@hero' %}
 </section>
 <section class="section section--no-spacing">
-  <div class="container">
-    {% render '@appetiser' %}
-  </div>
+  {% render '@appetiser' %}
 </section>
 <section class="section section--no-spacing">
-  <div class="container">
-    {% render '@image-slideshow' %}
-  </div>
+  {% render '@image-slideshow' %}
 </section>
 <section class="section theme theme-blue">
   <div class="container">
@@ -34,21 +28,4 @@
 </section>
 {% render '@burger-menu' %}
 {% render '@search-overlay' %}
-<div class="container">
-  {% render '@footer' with {
-    "cols": [
-      {
-        "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-      },
-      {
-        "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-      },
-      {
-        "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-      }
-    ]
-  } %}
-</div>
+{% render '@footer' %}

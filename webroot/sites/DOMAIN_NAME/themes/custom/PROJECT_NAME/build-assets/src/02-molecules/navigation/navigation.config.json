@@ -4,10 +4,7 @@
   "context": {
     "items": [
       {
-        "url": "/",
-        "title": "Menu item"
-      },
-      {
+        "in_active_trail": true,
         "url": "/",
         "title": "Menu item",
         "below": [
@@ -17,25 +14,14 @@
           },
           {
             "url": "/",
-            "title": "Menu item"
-          },
-          {
-            "url": "/",
-            "title": "Menu item"
+            "title": "Menu item",
+            "in_active_trail": true
           },
           {
             "url": "/",
             "title": "Menu item"
           }
         ]
-      },
-      {
-        "url": "/",
-        "title": "Menu item"
-      },
-      {
-        "url": "/",
-        "title": "Menu item"
       }
     ]
   }

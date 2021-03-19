@@ -4,7 +4,6 @@
   "context": {
     "title": "Hero",
     "teaser": "<p>Teaser</p>",
-    "openToday": "<span>Open today 10:00 - 20:00</span>",
     "position": "left",
     "background_image": "https://www.novicell.dk/media/67333/hero.jpg",
     "cta": {

@@ -1,11 +1,11 @@
-{{ attach_library('dds_premium/language-menu') }}
+{{ attach_library('PROJECT_NAME/language-menu') }}
 
 <div class="language-menu" id="js-language-menu">
   <div class="language-menu__trigger" id="js-language-menu-trigger" @click="toggleLanguageMenu()">
     {% include '@atoms/svg-icon/svg-icon.twig' with {
       'svgIconName': 'globe'
     } %}
-    {{ 'Choose Country'|t({}, {'context' : 'premium'}) }}
+    {{ 'Choose Country'|t }}
     {% include '@atoms/svg-icon/svg-icon.twig' with {
       'svgIconName': 'arrow-down'
     } %}

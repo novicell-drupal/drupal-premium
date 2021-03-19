@@ -1,0 +1,12 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% if cta.url and cta.title %}
+  {% include '@molecules/cta/cta.twig' with {
+    'url': cta.url,
+    'text': cta.title,
+    'attributes': cta.attributes.addClass(classes)
+  } %}
+{% endif %}

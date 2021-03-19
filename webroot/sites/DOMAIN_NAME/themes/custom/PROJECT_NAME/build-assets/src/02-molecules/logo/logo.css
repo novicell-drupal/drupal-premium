@@ -4,19 +4,34 @@
  */
 
 .logo {
+  margin-right: auto;
   z-index: 3;
-  flex-basis: 50%;
-  margin: 0;
-  justify-content: flex-start;
-  display: flex;
+
+  @media (--viewport-sm-max) {
+    display: none;
+  }
+
+  &--mobile {
+    display: none;
+
+    @media (--viewport-sm-max) {
+      display: block;
+      margin: var(--grid-section-spacing--mobile) auto 0;
+      text-align: center;
+    }
+  }
+
+  &--floating {
+    @media (--viewport-sm-max) {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, calc(var(--grid-section-spacing--mobile) / 2));
+    }
+  }
 
   &__image {
-    transition: height .1s ease-in-out;
     display: block;
-    height: 60px;
-
-    @media (--viewport-md-min) {
-      height: 120px;
-    }
+    margin: 0 auto;
+    height: 35px;
   }
 }

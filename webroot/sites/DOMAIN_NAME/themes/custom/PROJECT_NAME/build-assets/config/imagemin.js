@@ -7,10 +7,9 @@ const fileMatchPath = argv.i || '';
 const destinationPath = argv.o || '';
 
 (async () => {
-  const files = await imageMin([path.resolve(fileMatchPath).replace(/\\/g, '/')], {
+  const files = await imageMin([path.resolve(fileMatchPath)], {
     destination: path.resolve(destinationPath)
   });
-
   files.forEach(element => {
     console.log(chalk.yellow(`minified: ${path.basename(element.destinationPath)}`));
   });

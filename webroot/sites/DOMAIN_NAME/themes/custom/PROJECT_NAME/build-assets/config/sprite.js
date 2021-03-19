@@ -20,6 +20,7 @@ const spriter = new SVGSpriter({
     // Exclude path from id
     id: {
       generator(name) {
+        // eslint-disable-next-line no-console
         console.log(chalk.yellow(`adding: ${name}`));
         return path.basename(name, '.svg');
       },

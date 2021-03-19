@@ -5,25 +5,15 @@
     "cols": [
       {
         "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-        "linkText": "Button",
-        "linkIcon": "play",
-        "linkUrl": "/",
-        "linkTarget": "_blank"
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
       },
       {
         "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-        "linkText": "Button",
-        "linkIcon": "play",
-        "linkUrl": "/"
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
       },
       {
         "headline": "Headline",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-        "linkText": "Button",
-        "linkIcon": "play",
-        "linkUrl": "/"
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
       }
     ]
   }

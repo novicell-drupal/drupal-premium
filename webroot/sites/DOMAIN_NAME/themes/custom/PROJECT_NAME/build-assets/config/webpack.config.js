@@ -2,7 +2,7 @@ const glob = require('glob');
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const TerserPlugin = require('terser-webpack-plugin');
-const BundleAnalyzer = require('webpack-bundle-analyzer');
+const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -11,7 +11,7 @@ const context = argv.context || '';
 
 // Find all files JS from modules directory
 /* eslint-disable */
-const filesInModulesDir = glob.sync('src/**/*.js');
+const filesInModulesDir = glob.sync(process.env.fileMatch);
 const allEntries = () => {
   const manyEntries = {};
   for (const index in filesInModulesDir) {
@@ -31,7 +31,7 @@ if (mode === 'production') {
 
 const plugins = [];
 if (mode !== 'production') {
-  plugins.push(new BundleAnalyzer.BundleAnalyzerPlugin({
+  plugins.push(new BundleAnalyzer({
     analyzerMode: 'static',
     logLevel: 'silent',
     openAnalyzer: false,
@@ -77,7 +77,17 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader
           },
-          'css-loader',
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, 'postcss.config.js'),
+              },
+            }
+          }
         ]
       },
       {

@@ -9,22 +9,14 @@ master:
       build-assets/dist/css/_base/_grid.css: {}
       build-assets/dist/css/_base/_helpers.css: {}
       build-assets/dist/css/_base/_forms.css: {}
-      build-assets/dist/css/_base/_media.css: {}
       build-assets/dist/css/01-atoms/button/button.css: {}
-      build-assets/dist/css/01-atoms/headline/headline.css: {}
-      build-assets/dist/css/01-atoms/contact-info/contact-info.css: {}
-      build-assets/dist/css/01-atoms/subheadline/subheadline.css: {}
       build-assets/dist/css/01-atoms/forms/checkbox/checkbox.css: {}
       build-assets/dist/css/01-atoms/forms/input/input.css: {}
       build-assets/dist/css/01-atoms/forms/label/label.css: {}
       build-assets/dist/css/01-atoms/forms/radio/radio.css: {}
       build-assets/dist/css/01-atoms/forms/select/select.css: {}
       build-assets/dist/css/01-atoms/forms/textarea/textarea.css: {}
-      build-assets/dist/css/03-organisms/search-page/search-page.css: {}
-      build-assets/dist/css/03-organisms/pager/pager.css: {}
       build-assets/dist/css/_base/drupal/off-canvas.button.css: {}
-  js:
-    build-assets/dist/js/app.js: { preprocess: false }
 
 # Themes.
 theme:
@@ -116,7 +108,6 @@ image-slideshow:
     build-assets/dist/js/02-molecules/image-slideshow/image-slideshow.js: { preprocess: false }
   dependencies:
     - core/drupal
-    - PROJECT_NAME/flickity
 
 inline-navigation-item:
   version: VERSION
@@ -184,11 +175,11 @@ sub-navigation:
     theme:
       build-assets/dist/css/02-molecules/sub-navigation/sub-navigation.css: {}
 
-icon-button:
+cta:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/02-molecules/icon-button/icon-button.css: {}
+      build-assets/dist/css/02-molecules/cta/cta.css: {}
 
 video:
   version: VERSION
@@ -217,12 +208,6 @@ appetiser:
     theme:
       build-assets/dist/css/03-organisms/appetiser/appetiser.css: {}
 
-shop-list-section:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/shop-list-section/shop-list-section.css: {}
-
 burger-menu:
   version: VERSION
   css:
@@ -244,8 +229,6 @@ header:
     theme:
       build-assets/dist/css/03-organisms/header/header.css: {}
       build-assets/dist/css/_base/drupal/header.css: {}
-  js:
-    build-assets/dist/js/03-organisms/header/header.js: { }
 
 hero:
   version: VERSION
@@ -311,32 +294,3 @@ maintenance-page:
   css:
     theme:
       build-assets/dist/css/03-organisms/maintenance-page/maintenance-page.css: {}
-
-openning-times:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/openning-times/openning-times.css: {}
-
-article-overview:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/article-overview/article-overview.css: {}
-  js:
-    build-assets/dist/js/03-organisms/article-overview/article-overview.js: { preprocess: false }
-
-article-overview-item:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/02-molecules/article-overview-item/article-overview-item.css: {}
-
-article-carousel:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/article-carousel/article-carousel.css: {}
-  js:
-    build-assets/dist/js/03-organisms/article-carousel/article-carousel.js: { preprocess: false }
-

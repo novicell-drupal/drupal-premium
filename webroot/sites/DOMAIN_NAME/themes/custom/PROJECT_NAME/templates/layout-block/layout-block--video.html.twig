@@ -1,0 +1,15 @@
+{% set classes = [
+  'layout-block',
+  view_mode ? 'layout-block--view-mode-' ~ view_mode|clean_class,
+] %}
+
+{% include '@molecules/video/video.twig' with {
+  'attributes': attributes.addClass(classes),
+  'video_oembed': video_oembed,
+  'image': fields.field_video_media.thumbnail,
+  'title': fields.field_video_headline,
+  'subtitle': fields.field_video_subline,
+  'image_style': image_style,
+  'inverted': entity.field_video_text_color.value != 'dark'
+  'autoplay': 'false'
+} %}

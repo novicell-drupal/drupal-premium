@@ -1,9 +1,9 @@
-{{ attach_library('dds_premium/image') }}
+{{ attach_library('PROJECT_NAME/image') }}
 
 {% macro image(image, caption, image_style, attributes) %}
   {% import _self as self_image %}
-  <figure {{ attributes }}>
-    <div{{ create_attribute().addClass('image') }}>
+  <figure>
+    <div{{ (not attributes ? create_attribute() : attributes).addClass('image') }}>
       {{ image|responsive_image(image_style, 'lazyload') }}
     </div>
     {% if caption %}
@@ -14,13 +14,8 @@
 
 {% import _self as self_image %}
 {% if link.url %}
-  <a href="{{ link.url }}" {{ link.target_blank ? 'target="_blank"' }} class="image_link">
+  <a href="{{ link.url }}" {{ link.target_blank ? 'target="_blank"' }}>
     {{ self_image.image(image, caption, image_style, attributes) }}
-    {% if link.title %}
-      <span class="image_link__btn_wrapper">
-        <span class="image_link__btn">{{ link.title }}</span>
-      </span>
-    {% endif %}
   </a>
 {% else %}
   {{ self_image.image(image, caption, image_style, attributes) }}

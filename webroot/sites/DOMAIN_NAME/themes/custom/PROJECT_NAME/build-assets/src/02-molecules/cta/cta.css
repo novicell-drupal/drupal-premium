@@ -1,0 +1,25 @@
+/**
+ * Type: Molecules.
+ * Cta.
+ */
+
+.cta {
+  .icon--arrow-right {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform .2s;
+    will-change: transform;
+  }
+
+  &:hover,
+  &:focus {
+    .icon--arrow-right {
+      transform: translate(100%, -50%);
+    }
+  }
+}

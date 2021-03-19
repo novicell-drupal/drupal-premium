@@ -9,9 +9,10 @@ module.exports = {
     inline: false,
   } : false,
   plugins: [
+    /* eslint-disable global-require */
     require('stylelint')({
       ignoreFiles: [
-        config.root_folder + '/../../node_modules/**/*.css',
+        `${config.root_folder}/../../node_modules/**/*.css`,
       ],
     }),
     require('postcss-preset-env')({
@@ -39,8 +40,9 @@ module.exports = {
       },
     }),
     require('postcss-reporter')({
-      clearMessages: true,
+      clearReportedMessages: true,
       throwError: false,
     }),
+    /* eslint-enable global-require */
   ],
 };

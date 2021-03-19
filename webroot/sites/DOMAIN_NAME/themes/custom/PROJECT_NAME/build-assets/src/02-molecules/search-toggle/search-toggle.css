@@ -7,18 +7,26 @@
   cursor: pointer;
   flex-shrink: 0;
   flex-grow: 0;
+  height: 100%;
   display: inline-flex;
   align-items: center;
   font-weight: 300;
   font-size: var(--base-font-size);
-  border: none;
-  height: auto;
-  justify-content: flex-end;
 
   @media (--viewport-sm-max) {
+    width: 50%;
     flex-shrink: 0;
     flex-grow: 0;
     font-size: var(--base-font-size-extra-small);
+    border-right: solid 1px var(--header-border-color);
+    justify-content: center;
+  }
+
+  @media (--viewport-md-min) {
+    height: 70%;
+    margin-left: 40px;
+    padding-left: 40px;
+    border-left: solid 1px #a7a7a7;
   }
 
   .icon--search {

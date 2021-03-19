@@ -1,6 +1,11 @@
+{{ attach_library('PROJECT_NAME/cta') }}
+
 {% if type == 'button' %}
   <button{{ (not attributes ? create_attribute() : attributes).addClass(['button', 'cta']) }}>
     {{ text }}
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'arrow-right'
+    } %}
   </button>
 {% elseif type == 'plain_link' %}
   <a{{ (not attributes ? create_attribute() : attributes).setAttribute('href', url) }}>
@@ -9,5 +14,8 @@
 {% else %}
   <a{{ (not attributes ? create_attribute() : attributes).setAttribute('href', url).addClass(['button', 'cta']) }}>
     {{ text }}
+    {% include '@atoms/svg-icon/svg-icon.twig' with {
+      'svgIconName': 'arrow-right'
+    } %}
   </a>
 {% endif %}

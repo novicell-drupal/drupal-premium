@@ -4,51 +4,30 @@
   'left': 'col-xs-10 col-md-8'
 } %}
 
-{% if background_image or openToday or video_oembed %}
-  {{ attach_library('dds_premium/hero') }}
+{{ attach_library('PROJECT_NAME/hero') }}
 
-  <div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(background_image ? 'hero--image-added' : 'hero--narrow-height') }} {% if video_oembed %} data-video='{{ video_oembed }}' {% endif %}>
-    {% if background_image %}
-      {% if video_oembed %}
-        {{ background_image|responsive_image('hero_video', 'lazyload') }}
-      {% else %}
-        {{ background_image|image('hero', 'lazyload') }}
-      {% endif %}
-    {% endif %}
-    <div class="hero__iframe-wrapper js-hero-iframe-wrapper"></div>
-    <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content').addClass(openToday ? 'hero__content--min-height').addClass(not background_image ? 'hero__content--no-background-image') }}>
-      {% if type != 'pageheader' %}
-        <h1 class="hero__title">{{ title }}</h1>
-      {% endif %}
-      {% if background_image %}
-        {% if teaser %}
-          <div class="hero__description">{{ teaser }}</div>
-        {% endif %}
-        {% if cta.url and cta.title %}
-          {% include '@molecules/cta/cta.twig' with {
-            'url': cta.url,
-            'text': cta.title,
-            'attributes': cta.attributes
-          } %}
-        {% endif %}
-      {% endif %}
-      {% if openToday or openToday_cta %}
-        <div class="hero__opening-time-wrapper">
-          {% if openToday %}
-            <div class="hero__opening-time{{ openToday_cta ? ' col-xs-12 col-sm-8' }}">
-              <svg class="icon icon--clock hero__opening-time-icon">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/{{ directory }}/build-assets/dist/icons/icons.svg#clock"></use>
-              </svg>
-              {{ openToday }}
-            </div>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(background_image ? 'hero--image-added' : 'hero--narrow-height') }} {% if video_oembed %} data-video='{{ video_oembed }}' {% endif %}>
+  {% if background_image %}
+    {{ background_image|responsive_image('wide', 'lazyload') }}
+  {% endif %}
+  <div class="hero__iframe-wrapper js-hero-iframe-wrapper"></div>
+  <div class="container">
+    <div class="row">
+      <div class="{{ hero_position[position] }}">
+        <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
+          <h1 class="hero__title">{{ title }}</h1>
+          {% if teaser %}
+            <div class="hero__description">{{ teaser }}</div>
           {% endif %}
-          {% if openToday_cta %}
-            <a class="hero__opening-time-cta{{ openToday ? ' col-xs-12 col-sm-4' }}" href="{{ openToday_cta.uri|replace({'internal:':''}) }}"{{ openToday_cta.target_blank == 1 ? ' target="_blank"' }}>
-              {{ openToday_cta.title }}
-            </a>
+          {% if cta.url and cta.title %}
+            {% include '@molecules/cta/cta.twig' with {
+              'url': cta.url,
+              'text': cta.title,
+              'attributes': cta.attributes
+            } %}
           {% endif %}
         </div>
-      {% endif %}
+      </div>
     </div>
   </div>
-{% endif %}
+</div>

@@ -1,4 +1,4 @@
-{{ attach_library('dds_premium/inline-navigation-item') }}
+{{ attach_library('PROJECT_NAME/inline-navigation-item') }}
 
 <li class="inline-navigation-item">
   <a href="{{ url }}" class="inline-navigation-item__link">
@@ -15,6 +15,6 @@
     {% if inline_navigation_teaser %}
       <p class="inline-navigation-item__text">{{ inline_navigation_teaser }}</p>
     {% endif %}
-    <span class="text-link">{{ 'Read more'|t({}, {'context' : 'premium inline-navigation'}) }}</span>
+    <span class="text-link">{{ 'Read more'|t }}</span>
   </a>
 </li>

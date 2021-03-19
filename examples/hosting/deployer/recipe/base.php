@@ -18,7 +18,7 @@ set('drupal_core_version', 8);
 set('docroot', 'webroot');
 set('drush_exec_path', '/current/{{docroot}}/sites/{{drupal_site}}');
 set('drush_exec_path_absolute', '{{deploy_path}}{{drush_exec_path}}');
-set('theme_exec_path', 'sites/{{drupal_site}}/themes/custom/dds_premium/build-assets');
+set('theme_exec_path', 'sites/{{drupal_site}}/themes/custom/PROJECT_NAME/build-assets');
 set('theme_exec_path_absolute', '{{release_path}}/{{docroot}}/{{theme_exec_path}}');
 
 // Database should only be rolled back on fail, if backup was performed successfully and changes were

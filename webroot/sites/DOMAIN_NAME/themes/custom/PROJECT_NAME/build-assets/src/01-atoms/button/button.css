@@ -21,11 +21,6 @@ a.button {
   font-size: var(--button-font-size);
   border: solid var(--button-border-width) var(--button-border-color);
   overflow: hidden;
-  transition: background-color .3s ease;
-
-  &:hover {
-    background-color: var(--color-light-gray-2);
-  }
 
   &[disabled],
   [disabled] & {

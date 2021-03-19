@@ -1,26 +1,28 @@
-{{ attach_library('dds_premium/header') }}
+{{ attach_library('PROJECT_NAME/header') }}
 
-<header class="header" id="js-header">
+<header class="header">
+  {% block topbar %}
+    {% include '@molecules/meta-menu/meta-menu.twig' with {
+      'links': meta_menu.links,
+      'items': meta_menu.items,
+    } %}
+  {% endblock %}
   <div class="container">
     <div class="header__inner">
-      <div class="header__left">
-        {% block site_branding %}
-          {% include '@molecules/logo/logo.twig' with logo %}
-        {% endblock %}
-      </div>
-      <div class="header__right">
-        {% if display_burger_toggle %}
-          {% include '@molecules/burger/burger.twig' %}
-        {% endif %}
-        {% if display_search_toggle %}
-          {% include '@molecules/search-toggle/search-toggle.twig' %}
-        {% endif %}
-        {% block navigation %}
-          {% include '@molecules/navigation/navigation.twig' with {
-            'items': navigation.items
-          } %}
-        {% endblock %}
-      </div>
+      {% block site_branding %}
+        {% include '@molecules/logo/logo.twig' with logo %}
+      {% endblock %}
+      {% block navigation %}
+        {% include '@molecules/navigation/navigation.twig' with {
+          'items': navigation.items
+        } %}
+      {% endblock %}
+      {% if display_burger_toggle %}
+        {% include '@molecules/burger/burger.twig' %}
+      {% endif %}
+      {% if display_search_toggle %}
+        {% include '@molecules/search-toggle/search-toggle.twig' %}
+      {% endif %}
     </div>
   </div>
 </header>

@@ -1,4 +1,4 @@
-{{ attach_library('dds_premium/search-page') }}
+{{ attach_library('PROJECT_NAME/search-page') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass('container') }}>
   <div class="search-page">
@@ -18,7 +18,7 @@
           <div class="form-item">
             {% include '@atoms/forms/input/input.twig' with {
               'type': 'search',
-              'placeholder': 'Search'|t({}, {'context' : 'premium'}),
+              'placeholder': 'Search'|t,
               'name': 'keys'
             } %}
           </div>
@@ -26,7 +26,7 @@
             'type': 'submit'
           } %}
             {% block content %}
-              {{ 'Search'|t({}, {'context' : 'premium'}) }}
+              {{ 'Search'|t }}
             {% endblock %}
           {% endembed %}
         </form>

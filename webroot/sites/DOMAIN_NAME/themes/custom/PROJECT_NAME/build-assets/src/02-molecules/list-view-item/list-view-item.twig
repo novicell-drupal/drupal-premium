@@ -1,4 +1,4 @@
-{{ attach_library('dds_premium/list-view-item') }}
+{{ attach_library('PROJECT_NAME/list-view-item') }}
 
 <a href="{{ url }}" class="list-view-item">
   <figure{{ create_attribute().addClass('list-view-item__image').addClass(not image ? 'list-view-item__image--fallback') }}>
@@ -13,6 +13,6 @@
   <div class="list-view-item__content">
     <h3 class="list-view-item__title">{{- title -}}</h3>
     <p class="list-view-item__text">{{- excerpt -}}</p>
-    <span class="text-link">{{ 'Read more'|t({}, {'context' : 'premium search-item'}) }}</span>
+    <span class="text-link">{{ 'Read more'|t }}</span>
   </div>
 </a>

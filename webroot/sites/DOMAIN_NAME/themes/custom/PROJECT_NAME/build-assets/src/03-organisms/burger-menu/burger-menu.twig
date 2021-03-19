@@ -1,8 +1,8 @@
-{{ attach_library('dds_premium/burger-menu') }}
+{{ attach_library('PROJECT_NAME/burger-menu') }}
 
 <nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu">
   <div @click="closeBurgerMenu()" class="burger-menu__close">
-    <div class="burger-menu__close-label">{{ 'Close (Esc)'|t({}, {'context' : 'premium'}) }}</div>
+    <div class="burger-menu__close-label">{{ 'Close (Esc)'|t }}</div>
     {% include '@atoms/svg-icon/svg-icon.twig' with {
       'svgIconName': 'close'
     } %}

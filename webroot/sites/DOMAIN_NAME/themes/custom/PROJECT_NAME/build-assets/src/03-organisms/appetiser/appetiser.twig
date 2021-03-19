@@ -1,4 +1,4 @@
-{{ attach_library('dds_premium/appetiser') }}
+{{ attach_library('PROJECT_NAME/appetiser') }}
 
 <div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small') }}>
   <div class="appetiser__content-wrapper">

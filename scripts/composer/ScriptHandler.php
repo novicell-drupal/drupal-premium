@@ -7,7 +7,13 @@ use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\Constraint\MultiConstraint;
 
+/**
+ * Setup of premium site.
+ *
+ * @package Premium\composer
+ */
 class ScriptHandler {
+
   /**
    * List of optional installations with list of composer packages and versions
    *

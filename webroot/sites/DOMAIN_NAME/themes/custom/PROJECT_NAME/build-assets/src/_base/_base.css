@@ -4,7 +4,6 @@
  */
 
 /* Box sizing */
-
 * {
   box-sizing: border-box;
 
@@ -15,7 +14,6 @@
 }
 
 /* Body */
-
 body {
   background-color: var(--site-background-color);
   font-family: var(--base-font-family);
@@ -28,11 +26,11 @@ body {
   overflow-x: hidden;
   position: relative;
   width: 100%;
-  margin: 0 auto;
-  padding-top: var(--header-height-mobile);
+  margin: 0;
+  padding: 0 0 var(--header-height-mobile);
 
   @media (--viewport-md-min) {
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + var(--meta-menu-height));
   }
 
   &.no-scroll {
@@ -53,20 +51,8 @@ h6 {
 }
 
 h1 {
-  font-size: var(--base-font-size-xxxxlarge);
-  line-height: 1.2;
-}
-
-.layout__region h1,
-.search-result__page h2 {
   font-size: var(--base-font-size-xxxlarge);
-  padding: 23px 0;
-  text-transform: uppercase;
-  text-align: center;
-  border-top: 1px solid var(--color-gray);
-  border-bottom: 1px solid var(--color-gray);
-  font-weight: 300;
-  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 h2 {
@@ -97,7 +83,6 @@ p {
 }
 
 /* Links */
-
 a {
   color: var(--theme-link-color);
   text-decoration: underline;
@@ -116,7 +101,6 @@ button {
 }
 
 /* Horizontal ruler */
-
 hr {
   border: none;
   border-bottom: 1px solid var(--theme-divider-background-color);
@@ -124,7 +108,6 @@ hr {
 }
 
 /* Image handling */
-
 figure {
   margin: 0;
   background-size: auto 100%;
@@ -141,16 +124,7 @@ figure {
   }
 
   figcaption {
-    margin-top: 0;
-    background: var(--color-black);
-    width: 100%;
-    color: var(--color-text-gray);
-    padding: 15px;
-    text-align: center;
-    z-index: 2;
-    font-size: 18px;
-    font-weight: normal;
-    text-transform: uppercase;
+    margin-top: 8px;
   }
 
   &.contain-width img {
@@ -160,9 +134,4 @@ figure {
 
 address {
   font-style: normal;
-}
-
-.layout-container {
-  max-width: var(--layout-container-width);
-  margin: 0 auto;
 }

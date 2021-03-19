@@ -1,16 +1,14 @@
-{{ attach_library('dds_premium/quote') }}
+{{ attach_library('PROJECT_NAME/quote') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass('quote-wrapper') }}>
-  <div class="quote">
-    {% include '@atoms/svg-icon/svg-icon.twig' with {
-      'svgIconName': 'quote'
-    } %}
-    <p>{{ quote_text }}</p>
-    {% include '@atoms/svg-icon/svg-icon.twig' with {
-      'svgIconName': 'quote'
-    } %}
-    {% if quote_source %}
-      <div class="quote__author">{{ quote_source }}</div>
-    {% endif %}
-  </div>
+<div{{ (not attributes ? create_attribute() : attributes).addClass('quote') }}>
+  {% include '@atoms/svg-icon/svg-icon.twig' with {
+    'svgIconName': 'quote'
+  } %}
+  <p>{{ quote_text }}</p>
+  {% include '@atoms/svg-icon/svg-icon.twig' with {
+    'svgIconName': 'quote'
+  } %}
+  {% if quote_source %}
+    <div class="quote__author">{{ quote_source }}</div>
+  {% endif %}
 </div>

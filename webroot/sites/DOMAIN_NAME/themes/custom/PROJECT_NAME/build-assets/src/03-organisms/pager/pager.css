@@ -14,27 +14,21 @@
   }
 
   &__item {
+    background-color: var(--color-gray);
     display: inline-block;
+    padding: 11px 9px 11px;
+    min-width: 35px;
     text-align: center;
-    font-size: var(--base-font-size);
-    margin: 2px 0;
+    font-size: var(--base-font-size-small);
+    box-shadow: 0 2px 0 0 var(--color-gray);
 
     &.is-active {
-      font-weight: 700;
+      font-weight: bold;
     }
   }
 
   a {
-    display: block;
     text-decoration: none;
-    color: var(--color-white);
-    background-color: var(--color-black);
-    padding: 10px 15px;
-    min-width: 35px;
-    transition: background-color .3s ease;
-
-    &:hover {
-      background-color: var(--color-light-gray-2);
-    }
+    color: var(--theme-link-color);
   }
 }
