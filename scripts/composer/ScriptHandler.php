@@ -240,7 +240,7 @@ class ScriptHandler {
     self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
 
     // Install node modules and build front end assets...
-    $event->getIO()->write('Install node modules and build front end assets...');
+    $event->getIO()->write('Install node modules and build frontend assets...');
     exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
