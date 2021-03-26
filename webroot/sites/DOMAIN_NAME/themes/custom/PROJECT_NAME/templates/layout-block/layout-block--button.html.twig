@@ -4,7 +4,7 @@
 ] %}
 
 {% if cta.url and cta.title %}
-  {% include '@molecules/cta/cta.twig' with {
+  {% include '@particles/button/button--link.twig' with {
     'url': cta.url,
     'text': cta.title,
     'attributes': cta.attributes.addClass(classes)

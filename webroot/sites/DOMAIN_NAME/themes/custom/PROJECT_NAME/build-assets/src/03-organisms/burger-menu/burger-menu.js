@@ -5,7 +5,7 @@ require('../../../config/vue.config')(Vue);
 Drupal.behaviors.burgerMenu = {
   attach(context) {
     const burgerMenu = document.getElementById('js-burger-menu');
-    const showSubNavigationClass = 'burger-menu-list-item--show-sub-navigation';
+    const showSubNavigationClass = 'open-sub-navigation';
     if (!burgerMenu || burgerMenu.classList.contains('loaded')) {
       return;
     }

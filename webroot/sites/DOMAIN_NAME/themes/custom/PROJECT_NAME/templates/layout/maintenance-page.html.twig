@@ -14,11 +14,10 @@
 {% block page_top %}
   {% embed '@organisms/header/header.twig' %}
     {% block site_branding %}
-      {{ sitebranding }}
+      {{ site_branding }}
     {% endblock %}
     {% block navigation %}{% endblock %}
   {% endembed %}
-  {{ sitebranding_mobile }}
 {% endblock %}
 
 {% block page_main %}

@@ -3,7 +3,7 @@
 <nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu">
   <div @click="closeBurgerMenu()" class="burger-menu__close">
     <div class="burger-menu__close-label">{{ 'Close (Esc)'|t }}</div>
-    {% include '@atoms/svg-icon/svg-icon.twig' with {
+    {% include '@particles/svg-icon/svg-icon.twig' with {
       'svgIconName': 'close'
     } %}
   </div>
@@ -20,7 +20,7 @@
                     <a href="{{ item.url }}" class="burger-menu-list-item__link">
                       {{ item.title }}
                       {% if item.below %}
-                        {% include '@atoms/svg-icon/svg-icon.twig' with {
+                        {% include '@particles/svg-icon/svg-icon.twig' with {
                           'attributes': create_attribute().setAttribute('@click', 'triggerSubNavigation($event)'),
                           'svgIconName': 'arrow-line-down'
                         } %}
@@ -59,50 +59,6 @@
           {% endblock %}
         </div>
       </div>
-      {% if contacts|length > 0 %}
-        <div class="row">
-          {% for contact in contacts %}
-            <div class="col-xs-12 col-md-4">
-              <address vocab="http://schema.org/" typeof="Organization">
-                <div class="burger-menu-contact-info">
-                  <h3 class="burger-menu-contact-info__title" property="name">{{ contact.title }}</h3>
-                  <p class="burger-menu-contact-info__text">
-                    {% if contact.cvr is not empty %}
-                      <span property="identifier">{{ contact.cvr }}</span>
-                      <br>
-                    {% endif %}
-                    {% if contact.address is not empty or contact.zip is not empty or contact.city is not empty %}
-                      <span property="address" typeof="PostalAddress">
-                        <span property="streetAddress">{{ contact.address }}</span>
-                        <br>
-                        {% if contact.zip is not empty %}
-                          <span property="postalCode">{{ contact.zip }}</span>
-                        {% endif %}
-                        {% if contact.city is not empty %}
-                          <span property="addressLocality">{{ contact.city }}</span>
-                        {% endif %}
-                      </span>
-                      <br>
-                    {% endif %}
-                    {% if contact.telephone is not empty %}
-                      <span property="telephone">
-                        <a href="tel:{{ contact.telephone }}">{{ contact.telephone }}</a>
-                      </span>
-                      <br>
-                    {% endif %}
-                    {% if contact.email is not empty %}
-                      <span property="email">
-                        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-                      </span>
-                      <br>
-                    {% endif %}
-                  </p>
-                </div>
-              </address>
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
     </div>
   </div>
 </nav>

@@ -26,23 +26,10 @@
     background-color: var(--theme-divider-background-color);
   }
 
-  .accordion {
-    &__items--has-children {
-      border-color: var(--theme-accordion-border-color);
-    }
-  }
-
   .accordion-item {
-    &__content--active,
-    &__headline {
-      border-color: var(--theme-accordion-border-color);
-    }
-
-    &__content,
-    &__headline {
-      background-color: var(--theme-accordion-background-color);
-      color: var(--theme-accordion-text-color);
-    }
+    border-color: var(--theme-accordion-border-color);
+    background-color: var(--theme-accordion-background-color);
+    color: var(--theme-accordion-text-color);
   }
 
   .checkbox,
@@ -83,19 +70,6 @@
 
     &__icon {
       fill: var(--theme-color);
-    }
-  }
-
-  .text-link {
-    color: var(--theme-color);
-
-    &::after {
-      background-color: var(--theme-button-background-color);
-    }
-
-    &:hover,
-    &:focus {
-      color: var(--theme-button-color);
     }
   }
 

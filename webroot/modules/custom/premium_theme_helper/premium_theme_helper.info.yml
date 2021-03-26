@@ -1,0 +1,5 @@
+name: Premium theme helper
+description: Premium theme helper
+package: Drupal Premium
+type: module
+core_version_requirement: ^8 || ^9

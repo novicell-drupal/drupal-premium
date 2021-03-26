@@ -16,13 +16,13 @@
       {% block form %}
         <form action="/search" method="get" class="search-page__keys-submit">
           <div class="form-item">
-            {% include '@atoms/forms/input/input.twig' with {
+            {% include '@particles/forms/input/input.twig' with {
               'type': 'search',
               'placeholder': 'Search'|t,
               'name': 'keys'
             } %}
           </div>
-          {% embed '@atoms/button/button.twig' with {
+          {% embed '@particles/button/button.twig' with {
             'type': 'submit'
           } %}
             {% block content %}

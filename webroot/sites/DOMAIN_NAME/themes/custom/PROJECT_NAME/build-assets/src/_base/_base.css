@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 0 0 var(--header-height-mobile);
+  padding-top: var(--header-height-mobile);
 
   @media (--viewport-md-min) {
     padding-top: calc(var(--header-height) + var(--meta-menu-height));
@@ -87,11 +87,6 @@ a {
   color: var(--theme-link-color);
   text-decoration: underline;
   text-decoration-skip-ink: auto;
-
-  &:hover,
-  &:focus {
-    /* filter: brightness(0.9); */
-  }
 }
 
 button {
@@ -110,9 +105,6 @@ hr {
 /* Image handling */
 figure {
   margin: 0;
-  background-size: auto 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
   width: 100%;
 
   img {
@@ -126,12 +118,4 @@ figure {
   figcaption {
     margin-top: 8px;
   }
-
-  &.contain-width img {
-    width: auto;
-  }
-}
-
-address {
-  font-style: normal;
 }

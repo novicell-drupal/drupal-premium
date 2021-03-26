@@ -11,10 +11,11 @@
   display: flex;
   width: 100%;
   flex-grow: 1;
+  height: auto;
+  max-height: 700px;
 
-  @media (--viewport-ms-max) {
-    height: auto;
-    max-height: 700px;
+  @media (--viewport-md-min) {
+    max-height: initial;
   }
 
   &--inverted {

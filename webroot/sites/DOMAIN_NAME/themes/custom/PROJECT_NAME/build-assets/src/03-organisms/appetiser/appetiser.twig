@@ -9,7 +9,7 @@
         <h2 class="appetiser__title">{{ title }}</h2>
         <div class="appetiser__description">{{ text }}</div>
         {% if cta.url and cta.title %}
-          {% include '@molecules/cta/cta.twig' with {
+          {% include '@particles/button/button--link.twig' with {
             'url': cta.url,
             'text': cta.title,
             'attributes': cta.attributes
@@ -21,7 +21,7 @@
     {% endif %}
   </div>
   {% if image %}
-    <figure{{ (not image_figure_attributes ? create_attribute() : image_figure_attributes).addClass('appetiser__image') }}>
+    <figure{{ create_attribute().addClass('appetiser__image') }}>
       {{ image|responsive_image(image_style, 'lazyload') }}
     </figure>
   {% endif %}

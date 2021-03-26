@@ -5,14 +5,14 @@
 
 .navigation {
   height: 100%;
-  display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
+  display: none;
 
-  @media (--viewport-md-max) {
-    display: none;
+  @media (--viewport-lg-min) {
+    display: flex;
   }
 }
 
@@ -36,7 +36,7 @@
     display: none;
   }
 
-  &--active {
+  &.active {
     .navigation-item__link {
       color: var(--header-selected-text-color);
 
@@ -52,7 +52,7 @@
     }
   }
 
-  &--show-sub-navigation {
+  &.open-sub-navigation {
     .sub-navigation {
       transform: scaleY(1);
       opacity: 1;

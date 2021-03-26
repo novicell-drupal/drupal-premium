@@ -2,7 +2,7 @@
 
 <div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay">
   <div @click="closeSearchOverlay()" class="search-overlay__close">
-    {% include '@atoms/svg-icon/svg-icon.twig' with {
+    {% include '@particles/svg-icon/svg-icon.twig' with {
       'svgIconName': 'close'
     } %}
     <span class="search-overlay__close-label">{{ 'Close (Esc)'|t }}</span>
@@ -12,18 +12,18 @@
       <form action="/search" method="get">
         <div class="search-overlay__input-field">
           <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
-          {% include '@atoms/forms/input/input.twig' with {
+          {% include '@particles/forms/input/input.twig' with {
             'type': 'search',
             'id': 'js-search-overlay-input',
             'placeholder': 'Search'|t,
             'name': 'keys'
           } %}
-          {% embed '@atoms/button/button.twig' with {
+          {% embed '@particles/button/button.twig' with {
             'attributes': create_attribute().addClass('search-overlay__submit'),
             'type': 'submit'
           } %}
             {% block content %}
-              {% include '@atoms/svg-icon/svg-icon.twig' with {
+              {% include '@particles/svg-icon/svg-icon.twig' with {
                 'svgIconName': 'search'
               } %}
             {% endblock %}

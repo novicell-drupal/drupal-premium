@@ -9,13 +9,13 @@ master:
       build-assets/dist/css/_base/_grid.css: {}
       build-assets/dist/css/_base/_helpers.css: {}
       build-assets/dist/css/_base/_forms.css: {}
-      build-assets/dist/css/01-atoms/button/button.css: {}
-      build-assets/dist/css/01-atoms/forms/checkbox/checkbox.css: {}
-      build-assets/dist/css/01-atoms/forms/input/input.css: {}
-      build-assets/dist/css/01-atoms/forms/label/label.css: {}
-      build-assets/dist/css/01-atoms/forms/radio/radio.css: {}
-      build-assets/dist/css/01-atoms/forms/select/select.css: {}
-      build-assets/dist/css/01-atoms/forms/textarea/textarea.css: {}
+      build-assets/dist/css/01-particles/button/button.css: {}
+      build-assets/dist/css/01-particles/forms/checkbox/checkbox.css: {}
+      build-assets/dist/css/01-particles/forms/input/input.css: {}
+      build-assets/dist/css/01-particles/forms/label/label.css: {}
+      build-assets/dist/css/01-particles/forms/radio/radio.css: {}
+      build-assets/dist/css/01-particles/forms/select/select.css: {}
+      build-assets/dist/css/01-particles/forms/textarea/textarea.css: {}
       build-assets/dist/css/_base/drupal/off-canvas.button.css: {}
 
 # Themes.
@@ -175,12 +175,6 @@ sub-navigation:
     theme:
       build-assets/dist/css/02-molecules/sub-navigation/sub-navigation.css: {}
 
-cta:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/02-molecules/cta/cta.css: {}
-
 video:
   version: VERSION
   css:
@@ -222,6 +216,8 @@ footer:
   css:
     theme:
       build-assets/dist/css/03-organisms/footer/footer.css: {}
+  dependencies:
+    - PROJECT_NAME/theme-primary
 
 header:
   version: VERSION
@@ -256,12 +252,6 @@ local-tasks:
   css:
     theme:
       build-assets/dist/css/03-organisms/local-tasks/local-tasks.css: {}
-
-newsletter-signup:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/03-organisms/newsletter-signup/newsletter-signup.css: {}
 
 pager:
   version: VERSION

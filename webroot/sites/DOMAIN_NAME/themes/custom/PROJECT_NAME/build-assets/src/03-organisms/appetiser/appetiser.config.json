@@ -13,5 +13,21 @@
       "url": "/",
       "title": "CTA - I Have different colors"
     }
-  }
+  },
+  "variants": [
+    {
+      "name": "image-left",
+      "context": {
+        "orientation": "left"
+      }
+    },
+    {
+      "name": "small",
+      "context": {
+        "is_small_version": true,
+        "orientation": "",
+        "display_as_fullwidth": false
+      }
+    }
+  ]
 }

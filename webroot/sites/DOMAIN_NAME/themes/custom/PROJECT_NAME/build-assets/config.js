@@ -13,7 +13,7 @@ module.exports = {
   },
   componentsDir: {
     main: root_folder + '/src',
-    atoms: '01-atoms',
+    particles: '01-particles',
     molecules: '02-molecules',
     organisms: '03-organisms',
     pages: '04-pages',

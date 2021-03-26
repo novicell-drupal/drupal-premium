@@ -5,7 +5,7 @@ dependencies:
     - system
   theme:
     - PROJECT_NAME
-id: sitebranding
+id: site_branding
 theme: PROJECT_NAME
 region: header
 weight: 0

@@ -1,9 +1,0 @@
-{
-  "title": "Link",
-  "status": "ready",
-  "context": {
-    "text": "This is a text-link",
-    "url": "https://google.dk",
-    "target": "_blank"
-  }
-}

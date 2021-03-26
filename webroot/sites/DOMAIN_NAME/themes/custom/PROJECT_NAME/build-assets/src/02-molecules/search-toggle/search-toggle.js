@@ -4,12 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  searchOverlayTriggers.forEach((current) => {
-    current.addEventListener('click', () => {
-      // Create a new event
+  for (let i = 0; i < searchOverlayTriggers.length; i += 1) {
+    searchOverlayTriggers[i].addEventListener('click', () => {
       const event = new CustomEvent('searchToggle');
-      // Dispatch the event
       document.dispatchEvent(event);
     });
-  });
+  }
 });

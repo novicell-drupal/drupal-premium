@@ -10,25 +10,21 @@
   align-items: center;
   position: relative;
 
-  @media (--viewport-sm-max) {
-    padding-bottom: 100px;
-  }
-
   &__list {
     width: 100%;
     outline: none;
     list-style: none;
-    padding: 0;
+    overflow-x: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
 
     @media (--viewport-sm-min) {
       display: flex;
       flex-wrap: wrap;
     }
 
-    @media (--viewport-sm-max) {
-      overflow-x: hidden;
-      padding-left: 20px;
-      padding-right: 20px;
+    @media (--viewport-md-min) {
+      padding: 0;
     }
 
     @media (--viewport-lg-min) {

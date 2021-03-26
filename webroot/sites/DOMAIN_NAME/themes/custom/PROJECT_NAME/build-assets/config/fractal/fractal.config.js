@@ -5,7 +5,7 @@ const Attribute = require('./attribute/attribute');
 const fractal = module.exports = require('@frctl/fractal').create();
 const twigAdapter = require('@frctl/twig')({
   namespaces: {
-    atoms: '/01-atoms',
+    particles: '/01-particles',
     molecules: '/02-molecules',
     organisms: '/03-organisms',
   },

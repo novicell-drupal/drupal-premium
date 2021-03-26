@@ -21,8 +21,8 @@ distribution:
   #
   # To set your theme as the theme for the distribution installation uncomment the following:
   #
-  install:
-    theme: PROJECT_NAME
+  # install:
+    # theme: PROJECT_NAME
   # langcode: da
 
 install:

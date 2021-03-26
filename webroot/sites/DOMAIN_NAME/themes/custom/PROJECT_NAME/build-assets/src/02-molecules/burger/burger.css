@@ -4,18 +4,13 @@
  */
 
 .burger {
+  font-size: var(--base-font-size-extra-small);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   flex-grow: 0;
   cursor: pointer;
-
-  @media (--viewport-sm-max) {
-    width: 50%;
-    font-size: var(--base-font-size-extra-small);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    order: 2;
-  }
 
   @media (--viewport-md-min) {
     margin-left: 20px;
@@ -42,12 +37,6 @@
 
     @media (--viewport-md-min) {
       display: none;
-    }
-  }
-
-  &--light {
-    > span {
-      background-color: white;
     }
   }
 }

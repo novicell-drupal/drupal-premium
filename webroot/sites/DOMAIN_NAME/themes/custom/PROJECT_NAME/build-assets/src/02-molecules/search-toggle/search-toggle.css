@@ -11,22 +11,15 @@
   display: inline-flex;
   align-items: center;
   font-weight: 300;
-  font-size: var(--base-font-size);
-
-  @media (--viewport-sm-max) {
-    width: 50%;
-    flex-shrink: 0;
-    flex-grow: 0;
-    font-size: var(--base-font-size-extra-small);
-    border-right: solid 1px var(--header-border-color);
-    justify-content: center;
-  }
+  font-size: var(--base-font-size-extra-small);
+  justify-content: center;
 
   @media (--viewport-md-min) {
     height: 70%;
     margin-left: 40px;
     padding-left: 40px;
-    border-left: solid 1px #a7a7a7;
+    border-left: solid 1px var(--color-gray);
+    font-size: var(--base-font-size);
   }
 
   .icon--search {

@@ -1,38 +1,27 @@
-import Vue from 'vue';
 import HoverIntent from 'hoverintent';
-
-require('../../../config/vue.config')(Vue);
 
 Drupal.behaviors.navigation = {
   attach(context) {
-    const navigation = document.getElementById('js-navigation');
-    if (!navigation || navigation.classList.contains('loaded')) {
+    const navigation = document.querySelectorAll('.js-navigation:not(.loaded)');
+    if (navigation.length === 0) {
       return;
     }
-    navigation.classList.add('loaded');
 
-    const vm = new Vue({
-      delimiters: ['${', '}'],
-      el: navigation,
-      mounted() {
-        this.setupHoverIntent();
-      },
-      methods: {
-        setupHoverIntent() {
-          const navigationItems = this.$el.querySelectorAll('.js-navigation-item');
-          for (let i = 0; i < navigationItems.length; i += 1) {
-            const currentItem = navigationItems[i];
-            HoverIntent(currentItem, () => {
-              currentItem.classList.add('navigation-item--show-sub-navigation');
-            }, () => {
-              currentItem.classList.remove('navigation-item--show-sub-navigation');
-            }).options({
-              timeout: 400,
-              interval: 55,
-            });
-          }
-        },
-      },
-    });
+    for (let i = 0; i < navigation.length; i += 1) {
+      const navigationItems = navigation[i].querySelectorAll('.js-navigation-item');
+      navigation[i].classList.add('loaded');
+
+      for (let x = 0; x < navigationItems.length; x += 1) {
+        const currentItem = navigationItems[x];
+        HoverIntent(currentItem, () => {
+          currentItem.classList.add('open-sub-navigation');
+        }, () => {
+          currentItem.classList.remove('open-sub-navigation');
+        }).options({
+          timeout: 400,
+          interval: 55,
+        });
+      }
+    }
   },
 };

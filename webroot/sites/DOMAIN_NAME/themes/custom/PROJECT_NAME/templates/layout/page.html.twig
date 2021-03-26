@@ -46,10 +46,12 @@
 {% block page_preheader %}
   {{ page.preheader }}
 {% endblock %}
+
 <div class="layout-container">
   {% block page_top %}
     {{ page.header }}
   {% endblock %}
+
   {% block hero %}
     {% if hero %}
       <section{{ hero.section_attributes }}>
@@ -66,9 +68,11 @@
       </section>
     {% endif %}
   {% endblock %}
+
   {% block page_breadcrumb %}
     {{ page.breadcrumb }}
   {% endblock %}
+
   {% block page_main %}
     <main role="main" vocab="http://schema.org" typeof="WebPageElement" property="mainContentOfPage">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -77,8 +81,24 @@
       </div>{# /.layout-content #}
     </main>
   {% endblock %}
+
   {% block page_footer %}
-    {% include '@organisms/footer/footer.twig' with footer %}
+    {% include '@organisms/footer/footer.twig' with {
+      'cols': [
+        {
+          'headline': atom('footer-col1-header'),
+          'content': atom('footer-col1-text'),
+        },
+        {
+          'headline': atom('footer-col2-header'),
+          'content': atom('footer-col2-text'),
+        },
+        {
+          'headline': atom('footer-col3-header'),
+          'content': atom('footer-col3-text'),
+        }
+      ]
+    } %}
   {% endblock %}
 </div>{# /.layout-container #}
 

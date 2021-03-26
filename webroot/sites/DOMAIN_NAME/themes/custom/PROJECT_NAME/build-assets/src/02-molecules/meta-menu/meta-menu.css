@@ -5,9 +5,10 @@
 
 .meta-menu {
   background-color: var(--meta-menu-background-color);
+  display: none;
 
-  @media (--viewport-sm-max) {
-    display: none;
+  @media (--viewport-md-min) {
+    display: block;
   }
 
   &__inner {

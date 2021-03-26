@@ -72,13 +72,6 @@
       border-top: 0;
     }
 
-    &:hover,
-    &:focus {
-      .icon--arrow-right {
-        transform: translateX(5px);
-      }
-    }
-
     .icon--arrow-right {
       fill: var(--header-selected-text-color);
       border: solid 1px var(--header-selected-text-color);
@@ -89,6 +82,13 @@
       padding: 5px;
       transition: transform .3s;
       will-change: transform;
+    }
+
+    &:hover,
+    &:focus {
+      .icon--arrow-right {
+        transform: translateX(5px);
+      }
     }
   }
 

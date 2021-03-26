@@ -13,9 +13,9 @@
   height: 100%;
 
   &__trigger {
-    cursor: pointer;
     position: relative;
     display: inline-flex;
+    cursor: pointer;
     align-items: center;
     justify-content: flex-start;
     z-index: 3;
@@ -52,7 +52,7 @@
   opacity: 0;
   transform: translateY(-10px);
 
-  &--open {
+  &.active {
     transform: translateY(0);
     opacity: 1;
     z-index: 4;

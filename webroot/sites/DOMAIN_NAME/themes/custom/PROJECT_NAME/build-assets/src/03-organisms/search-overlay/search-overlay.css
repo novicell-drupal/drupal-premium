@@ -39,8 +39,10 @@
   }
 
   &__close-label {
-    @media (--viewport-sm-max) {
-      display: none;
+    display: none;
+
+    @media (--viewport-md-min) {
+      display: block;
     }
   }
 

@@ -53,6 +53,7 @@
     width: 100%;
     box-shadow: 0 27px 50px 0 rgba(35, 35, 35, .15);
     margin-bottom: 20px;
+    display: flex;
 
     &--fallback {
       display: flex;
@@ -95,5 +96,9 @@
       font-size: var(--base-font-size-medium);
       font-weight: 300;
     }
+  }
+
+  &__read-more {
+    text-decoration: underline;
   }
 }

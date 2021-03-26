@@ -5,7 +5,7 @@
     {% if image %}
       {{ image|responsive_image('list_view', 'lazyload') }}
     {% else %}
-      {% include '@atoms/svg-icon/svg-icon.twig' with {
+      {% include '@particles/svg-icon/svg-icon.twig' with {
         'svgIconName': 'no-image'
       } %}
     {% endif %}
@@ -13,6 +13,6 @@
   <div class="list-view-item__content">
     <h3 class="list-view-item__title">{{- title -}}</h3>
     <p class="list-view-item__text">{{- excerpt -}}</p>
-    <span class="text-link">{{ 'Read more'|t }}</span>
+    <div class="list-view-item__read-more">{{ 'Read more'|t }}</div>
   </div>
 </a>

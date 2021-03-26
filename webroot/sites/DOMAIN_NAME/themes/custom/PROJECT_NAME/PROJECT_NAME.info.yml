@@ -1,4 +1,4 @@
-name: PROJECT_NAME subtheme
+name: PROJECT_NAME
 type: theme
 description: 'Premium subtheme'
 package: Drupal Premium
@@ -16,9 +16,9 @@ regions:
   burgermenu: Burgermenu
 
 component-libraries:
-  atoms:
+  particles:
     paths:
-      - build-assets/src/01-atoms
+      - build-assets/src/01-particles
   molecules:
     paths:
       - build-assets/src/02-molecules
