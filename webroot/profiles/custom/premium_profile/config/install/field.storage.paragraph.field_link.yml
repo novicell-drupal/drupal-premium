@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - link
     - paragraphs
-    - premium_tools
-id: paragraph.field_cta
-field_name: field_cta
+id: paragraph.field_link
+field_name: field_link
 entity_type: paragraph
-type: link_with_target
+type: link
 settings: {  }
-module: premium_tools
+module: link
 locked: false
 cardinality: 1
 translatable: true

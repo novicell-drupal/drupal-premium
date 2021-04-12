@@ -36,7 +36,7 @@ class ScriptHandler {
     ],
     'Content Hierachy' => [
       [
-        'package' => 'novicell/content_heirachy',
+        'package' => 'novicell/content_hierachy',
         'operator' => '^',
         'version' => '0.1'
       ]
@@ -99,6 +99,7 @@ class ScriptHandler {
    */
   private static $configuration_files = [
     'webroot/profiles/custom/premium_profile/premium_profile.info.yml',
+    'webroot/profiles/custom/premium_profile/premium_profile.install',
     'webroot/sites/sites.php',
     'drush/drush.yml',
     'drush/drushrc.php',
@@ -238,7 +239,6 @@ class ScriptHandler {
       self::replaceAllTokensInFile($filename, $tokens);
     }
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
-    //self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
 
     // Install node modules and build front end assets...
     $event->getIO()->write('Install node modules and build frontend assets...');
@@ -246,22 +246,6 @@ class ScriptHandler {
 
     // Now it's time to just let Composer install all the packages and we're done!
     $event->getIO()->write('Installing composer packages...');
-  }
-
-  protected static function getDirContents($dir, &$results = array()) {
-    $files = scandir($dir);
-
-    foreach ($files as $key => $value) {
-      $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
-      if (!is_dir($path)) {
-        $results[] = $path;
-      } else if ($value != "." && $value != "..") {
-        self::getDirContents($path, $results);
-        $results[] = $path;
-      }
-    }
-
-    return $results;
   }
 
   /**
