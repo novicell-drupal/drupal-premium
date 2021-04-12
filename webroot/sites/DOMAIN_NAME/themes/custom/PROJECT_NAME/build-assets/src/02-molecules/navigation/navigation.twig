@@ -8,6 +8,7 @@
         {{ link(item.title, item.url, {'class': 'navigation-item__link'}) }}
         {% if item.below %}
           {% include '@particles/svg-icon/svg-icon.twig' with {
+            'attributes': '',
             'svgIconName': 'arrow-line-down'
           } %}
           {% include '@molecules/sub-navigation/sub-navigation.twig' with {

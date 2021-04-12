@@ -5,7 +5,7 @@
     "title": "Hero",
     "teaser": "<p>Teaser</p>",
     "position": "left",
-    "background_image": "https://www.novicell.dk/media/67333/hero.jpg",
+    "media": "<img src=\"https://www.novicell.dk/media/67333/hero.jpg\">",
     "cta": {
       "url": "/",
       "title": "CTA text"

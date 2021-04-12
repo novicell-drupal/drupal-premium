@@ -3,6 +3,11 @@
  * Header.
  */
 
+/* When user is logged in, we remove fixed from header */
+body.adminimal-admin-toolbar header.header {
+  position: relative;
+}
+
 .header {
   position: fixed;
   background-color: var(--header-background-color);

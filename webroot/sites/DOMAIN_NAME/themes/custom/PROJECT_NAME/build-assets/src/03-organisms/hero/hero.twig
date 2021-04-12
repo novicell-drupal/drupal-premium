@@ -6,9 +6,9 @@
 
 {{ attach_library('PROJECT_NAME/hero') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(background_image ? 'hero--image-added' : 'hero--narrow-height') }} {% if video_oembed %} data-video='{{ video_oembed }}' {% endif %}>
-  {% if background_image %}
-    {{ background_image|responsive_image('wide', 'lazyload') }}
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media ? 'hero--image-added' : 'hero--narrow-height') }} {% if video_oembed %} data-video='{{ video_oembed }}' {% endif %}>
+  {% if media %}
+    {{ media }}
   {% endif %}
   <div class="hero__iframe-wrapper js-hero-iframe-wrapper"></div>
   <div class="container">

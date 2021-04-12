@@ -3,10 +3,12 @@
 <div class="language-menu" id="js-language-menu">
   <div class="language-menu__trigger" id="js-language-menu-trigger" @click="toggleLanguageMenu()">
     {% include '@particles/svg-icon/svg-icon.twig' with {
+      'attributes': '',
       'svgIconName': 'globe'
     } %}
     {{ 'Choose Country'|t }}
     {% include '@particles/svg-icon/svg-icon.twig' with {
+      'attributes': '',
       'svgIconName': 'arrow-down'
     } %}
   </div>

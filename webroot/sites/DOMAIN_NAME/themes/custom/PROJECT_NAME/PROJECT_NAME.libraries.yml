@@ -16,7 +16,6 @@ master:
       build-assets/dist/css/01-particles/forms/radio/radio.css: {}
       build-assets/dist/css/01-particles/forms/select/select.css: {}
       build-assets/dist/css/01-particles/forms/textarea/textarea.css: {}
-      build-assets/dist/css/_base/drupal/off-canvas.button.css: {}
 
 # Themes.
 theme:
@@ -207,7 +206,6 @@ burger-menu:
   css:
     theme:
       build-assets/dist/css/03-organisms/burger-menu/burger-menu.css: {}
-      build-assets/dist/css/_base/drupal/burger-menu.css: {}
   js:
     build-assets/dist/js/03-organisms/burger-menu/burger-menu.js: { preprocess: false }
 
@@ -224,7 +222,6 @@ header:
   css:
     theme:
       build-assets/dist/css/03-organisms/header/header.css: {}
-      build-assets/dist/css/_base/drupal/header.css: {}
 
 hero:
   version: VERSION

@@ -17,6 +17,7 @@
         <form action="/search" method="get" class="search-page__keys-submit">
           <div class="form-item">
             {% include '@particles/forms/input/input.twig' with {
+              'attributes': '',
               'type': 'search',
               'placeholder': 'Search'|t,
               'name': 'keys'

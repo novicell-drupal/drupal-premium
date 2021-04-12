@@ -3,6 +3,7 @@
 <div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay">
   <div @click="closeSearchOverlay()" class="search-overlay__close">
     {% include '@particles/svg-icon/svg-icon.twig' with {
+      'attributes': '',
       'svgIconName': 'close'
     } %}
     <span class="search-overlay__close-label">{{ 'Close (Esc)'|t }}</span>
@@ -13,6 +14,7 @@
         <div class="search-overlay__input-field">
           <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
           {% include '@particles/forms/input/input.twig' with {
+            'attributes': '',
             'type': 'search',
             'id': 'js-search-overlay-input',
             'placeholder': 'Search'|t,
@@ -24,6 +26,7 @@
           } %}
             {% block content %}
               {% include '@particles/svg-icon/svg-icon.twig' with {
+                'attributes': '',
                 'svgIconName': 'search'
               } %}
             {% endblock %}
