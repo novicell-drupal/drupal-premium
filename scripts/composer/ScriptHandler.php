@@ -34,9 +34,9 @@ class ScriptHandler {
         'version' => '1.6'
       ]
     ],
-    'Content Hierachy' => [
+    'Content Hierarchy' => [
       [
-        'package' => 'novicell/content_hierachy',
+        'package' => 'novicell/content_hierarchy',
         'operator' => '^',
         'version' => '0.1'
       ]
