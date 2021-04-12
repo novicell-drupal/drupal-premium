@@ -265,11 +265,18 @@ class ScriptHandler {
   }
 
   /**
-   * @param string $filename
+   * @param string $directory_name
    * @param array $tokens
    */
-  protected static function replaceAllTokensInDirectory($directory, array $tokens) {
-    $files = self::getDirContents($directory);
+  protected static function replaceAllTokensInDirectory($directory_name, array $tokens) {
+    $directory = new \RecursiveDirectoryIterator($directory_name);
+    $iterator = new \RecursiveIteratorIterator($directory);
+    $files = array();
+    foreach ($iterator as $info) {
+      if ($info->isFile()) {
+        $files[] = $info->getPathname();
+      }
+    }
     foreach ($files as $filename) {
       self::copyAndReplaceAllTokensInFile($filename, $filename, $tokens, FALSE);
     }
