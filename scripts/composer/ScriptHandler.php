@@ -34,11 +34,11 @@ class ScriptHandler {
         'version' => '1.6'
       ]
     ],
-    'Media bulk upload' => [
+    'Content Hierachy' => [
       [
-        'package' => 'drupal/cookiebot',
+        'package' => 'novicell/content_heirachy',
         'operator' => '^',
-        'version' => '1.0.0-alpha8'
+        'version' => '0.1'
       ]
     ]
   ];
@@ -237,7 +237,8 @@ class ScriptHandler {
       rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
       self::replaceAllTokensInFile($filename, $tokens);
     }
-    self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
+    self::replaceAllTokensInDirectory($theme_dir, $tokens);
+    //self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
 
     // Install node modules and build front end assets...
     $event->getIO()->write('Install node modules and build frontend assets...');
@@ -247,6 +248,32 @@ class ScriptHandler {
     $event->getIO()->write('Installing composer packages...');
   }
 
+  protected static function getDirContents($dir, &$results = array()) {
+    $files = scandir($dir);
+
+    foreach ($files as $key => $value) {
+      $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+      if (!is_dir($path)) {
+        $results[] = $path;
+      } else if ($value != "." && $value != "..") {
+        self::getDirContents($path, $results);
+        $results[] = $path;
+      }
+    }
+
+    return $results;
+  }
+
+  /**
+   * @param string $filename
+   * @param array $tokens
+   */
+  protected static function replaceAllTokensInDirectory($directory, array $tokens) {
+    $files = self::getDirContents($directory);
+    foreach ($files as $filename) {
+      self::copyAndReplaceAllTokensInFile($filename, $filename, $tokens, FALSE);
+    }
+  }
   /**
    * @param $source
    * @param $destination
