@@ -34,11 +34,11 @@ class ScriptHandler {
         'version' => '1.6'
       ]
     ],
-    'Media bulk upload' => [
+    'Content Hierarchy' => [
       [
-        'package' => 'drupal/cookiebot',
+        'package' => 'novicell/content_hierarchy',
         'operator' => '^',
-        'version' => '1.0.0-alpha8'
+        'version' => '0.1'
       ]
     ]
   ];
@@ -99,6 +99,7 @@ class ScriptHandler {
    */
   private static $configuration_files = [
     'webroot/profiles/custom/premium_profile/premium_profile.info.yml',
+    'webroot/profiles/custom/premium_profile/premium_profile.install',
     'webroot/sites/sites.php',
     'drush/drush.yml',
     'drush/drushrc.php',
@@ -237,7 +238,7 @@ class ScriptHandler {
       rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
       self::replaceAllTokensInFile($filename, $tokens);
     }
-    self::replaceAllTokensInFile($theme_dir . '/build-assets/config.js', $tokens);
+    self::replaceAllTokensInDirectory($theme_dir, $tokens);
 
     // Install node modules and build front end assets...
     $event->getIO()->write('Install node modules and build frontend assets...');
@@ -247,6 +248,23 @@ class ScriptHandler {
     $event->getIO()->write('Installing composer packages...');
   }
 
+  /**
+   * @param string $directory_name
+   * @param array $tokens
+   */
+  protected static function replaceAllTokensInDirectory($directory_name, array $tokens) {
+    $directory = new \RecursiveDirectoryIterator($directory_name);
+    $iterator = new \RecursiveIteratorIterator($directory);
+    $files = array();
+    foreach ($iterator as $info) {
+      if ($info->isFile()) {
+        $files[] = $info->getPathname();
+      }
+    }
+    foreach ($files as $filename) {
+      self::copyAndReplaceAllTokensInFile($filename, $filename, $tokens, FALSE);
+    }
+  }
   /**
    * @param $source
    * @param $destination

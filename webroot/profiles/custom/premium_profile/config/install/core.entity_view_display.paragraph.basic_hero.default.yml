@@ -4,7 +4,9 @@ dependencies:
   config:
     - field.field.paragraph.basic_hero.field_background
     - field.field.paragraph.basic_hero.field_collapsed
+    - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
+    - field.field.paragraph.basic_hero.field_link
     - field.field.paragraph.basic_hero.field_narrow
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
@@ -14,6 +16,7 @@ dependencies:
   module:
     - link
     - options
+    - premium_tools
     - text
 id: paragraph.basic_hero.default
 targetEntityType: paragraph
@@ -25,13 +28,20 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: hero
       link: false
     third_party_settings: {  }
     region: content
   field_cta:
-    weight: 1
+    weight: 5
     label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: link_with_target
+    region: content
+  field_link:
+    weight: 6
+    label: above
     settings:
       trim_length: 80
       url_only: false
@@ -64,6 +74,7 @@ content:
     region: content
 hidden:
   field_collapsed: true
+  field_color_theme: true
   field_narrow: true
   field_overlay: true
   search_api_excerpt: true

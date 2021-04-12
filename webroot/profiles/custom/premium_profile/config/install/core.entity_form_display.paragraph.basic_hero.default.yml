@@ -4,7 +4,9 @@ dependencies:
   config:
     - field.field.paragraph.basic_hero.field_background
     - field.field.paragraph.basic_hero.field_collapsed
+    - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
+    - field.field.paragraph.basic_hero.field_link
     - field.field.paragraph.basic_hero.field_narrow
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
@@ -12,8 +14,10 @@ dependencies:
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
+    - dynamic_key_value
     - link
     - media_library
+    - premium_tools
     - text
 id: paragraph.basic_hero.default
 targetEntityType: paragraph
@@ -34,8 +38,23 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_color_theme:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: dynamic_key_value_widget
+    region: content
   field_cta:
-    weight: 1
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      target_blank: 0
+    third_party_settings: {  }
+    type: link_with_target
+    region: content
+  field_link:
+    weight: 11
     settings:
       placeholder_url: ''
       placeholder_title: ''

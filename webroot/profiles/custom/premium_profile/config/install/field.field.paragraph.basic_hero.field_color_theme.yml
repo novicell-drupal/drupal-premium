@@ -2,21 +2,19 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_cta
+    - field.storage.paragraph.field_color_theme
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - premium_tools
-id: paragraph.basic_hero.field_cta
-field_name: field_cta
+    - dynamic_key_value
+id: paragraph.basic_hero.field_color_theme
+field_name: field_color_theme
 entity_type: paragraph
 bundle: basic_hero
-label: 'Call to action'
+label: 'Color theme'
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  link_type: '17'
-  title: '2'
-field_type: link_with_target
+settings: {  }
+field_type: dynamic_key_value

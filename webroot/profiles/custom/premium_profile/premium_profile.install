@@ -17,4 +17,12 @@ function premium_profile_install() {
   standard_install();
 
   // Can add code in here to make nodes, terms, etc.
+  $theme = 'PROJECT_NAME';
+
+  \Drupal::service('theme_installer')->install([$theme]);
+
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', $theme)
+    ->save();
 }

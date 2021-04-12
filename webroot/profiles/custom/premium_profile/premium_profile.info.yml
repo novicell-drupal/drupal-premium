@@ -86,6 +86,7 @@ install:
   - inline_block_title_automatic
   - layout_builder_at
   - layout_builder_modal
+  - layout_builder_restrictions
   - linkit
   - metatag
   - monolog
@@ -102,7 +103,7 @@ install:
   - webform
   - webp
   - atoms
-  - dynamic_key_value
+  - dynamic_color
   - media_icons
   - premium_tools
   - premium_theme_helper
