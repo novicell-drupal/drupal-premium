@@ -1,4 +1,4 @@
-<button {{ (not attributes ? create_attribute() : attributes).addClass('button').setAttribute('type', type) }}>
+<button {{ (not attributes ? create_attribute() : attributes).addClass('p-button').setAttribute('type', type) }}>
   {% block content %}
     {{ text }}
   {% endblock %}

@@ -11,7 +11,7 @@
     color: var(--theme-link-color);
   }
 
-  .button {
+  .p-button {
     background-color: var(--theme-button-background-color);
     color: var(--theme-button-color);
 

@@ -16,7 +16,7 @@
 .form-actions {
   margin-top: 15px;
 
-  .button + .button {
+  .button + .p-button {
     margin-left: 5px;
   }
 }

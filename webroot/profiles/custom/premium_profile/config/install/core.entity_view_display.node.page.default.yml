@@ -11,97 +11,20 @@ dependencies:
     - node.type.page
   module:
     - layout_builder
-    - layout_discovery
+    - layout_builder_restrictions
     - metatag
     - text
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: true
-    enabled: true
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          40c19807-31de-4118-bed7-b93825d57655:
-            uuid: 40c19807-31de-4118-bed7-b93825d57655
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:page:body'
-              formatter:
-                label: hidden
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
-            additional: {  }
-            weight: 0
-          78f4e4ad-3095-4af3-bf02-a40db709f86f:
-            uuid: 78f4e4ad-3095-4af3-bf02-a40db709f86f
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:page:links'
-            additional: {  }
-            weight: 1
-          e44200c0-793c-4273-9e13-d670253315af:
-            uuid: e44200c0-793c-4273-9e13-d670253315af
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:page:field_meta_tags'
-              formatter:
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-                type: metatag_empty_formatter
-            additional: {  }
-            weight: 2
-          bdad05f9-aaf1-4a67-bdc1-a691e6be36e8:
-            uuid: bdad05f9-aaf1-4a67-bdc1-a691e6be36e8
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:page:field_hide_title'
-              formatter:
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-                type: boolean
-            additional: {  }
-            weight: 3
-          410a0abe-460e-44ee-bbc8-5e054ff170dd:
-            uuid: 410a0abe-460e-44ee-bbc8-5e054ff170dd
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:page:field_hide_breadcrumb'
-              formatter:
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-                type: boolean
-            additional: {  }
-            weight: 4
-        third_party_settings: {  }
+    allow_custom: false
+    enabled: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks: { }
+      blacklisted_blocks: { }
+      allowed_layouts: { }
 id: node.page.default
 targetEntityType: node
 bundle: page
