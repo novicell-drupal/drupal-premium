@@ -105,6 +105,7 @@ install:
   - dynamic_key_value
   - media_icons
   - premium_tools
+  - premium_theme_helper
 themes:
   - adminimal_theme
   - PROJECT_NAME
