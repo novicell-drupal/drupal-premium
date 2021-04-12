@@ -101,6 +101,10 @@ install:
   - simple_sitemap
   - webform
   - webp
+  - atoms
+  - dynamic_key_value
+  - media_icons
+  - premium_tools
 themes:
   - adminimal_theme
   - PROJECT_NAME
