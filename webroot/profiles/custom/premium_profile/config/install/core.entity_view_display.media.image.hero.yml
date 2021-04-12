@@ -7,12 +7,7 @@ dependencies:
     - media.type.image
     - responsive_image.styles.wide
   module:
-    - layout_builder
     - responsive_image
-third_party_settings:
-  layout_builder:
-    allow_custom: false
-    enabled: false
 id: media.image.hero
 targetEntityType: media
 bundle: image
