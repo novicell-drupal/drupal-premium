@@ -1,3 +1,5 @@
 {{ attach_library('PROJECT_NAME/divider') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass('divider') }}></div>
+<div{{ (not attributes ? create_attribute() : attributes).addClass('divider') }}>
+  {% block block_content %}{% endblock %}
+</div>

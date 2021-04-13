@@ -166,7 +166,7 @@ spacer:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/02-molecules/spxacer/spacer.css: {}
+      build-assets/dist/css/02-molecules/spacer/spacer.css: {}
 
 sub-navigation:
   version: VERSION
