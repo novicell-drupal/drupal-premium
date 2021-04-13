@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\premium_theme_helper\Element\LayoutBuilder;
 use Drupal\premium_theme_helper\Plugin\Layout\ThreeColumnLayout;
 use Drupal\premium_theme_helper\Plugin\Layout\TwoColumnLayout;
@@ -51,5 +52,14 @@ function premium_theme_helper_element_plugin_alter(array &$definitions) {
 function premium_theme_helper_preprocess_layout(array &$variables) {
   if (!empty($variables['content']['#header'])) {
     $variables['header'] = $variables['content']['#header'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function premium_theme_helper_preprocess_block__inline_block(&$variables) {
+  if (isset($variables['content']['#attributes'], $variables['attributes']) && \Drupal::currentUser()->hasPermission('access in-place editing')) {
+    $variables['attributes'] = NestedArray::mergeDeep($variables['content']['#attributes'], $variables['attributes']);
   }
 }
