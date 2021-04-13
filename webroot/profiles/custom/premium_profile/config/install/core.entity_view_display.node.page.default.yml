@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.body
     - field.field.node.page.field_hero
     - field.field.node.page.field_hide_breadcrumb
     - field.field.node.page.field_hide_title
@@ -13,7 +12,6 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - metatag
-    - text
     - user
 third_party_settings:
   layout_builder:
@@ -22,21 +20,14 @@ third_party_settings:
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: { }
-      blacklisted_blocks: { }
-      allowed_layouts: { }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts: {  }
 id: node.page.default
 targetEntityType: node
 bundle: page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_hide_breadcrumb:
     weight: 4
     label: above

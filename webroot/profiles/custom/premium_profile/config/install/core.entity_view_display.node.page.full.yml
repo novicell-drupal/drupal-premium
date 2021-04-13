@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
-    - field.field.node.page.body
     - field.field.node.page.field_hero
     - field.field.node.page.field_hide_breadcrumb
     - field.field.node.page.field_hide_title
@@ -37,10 +36,10 @@ third_party_settings:
       whitelisted_blocks:
         'Chaos Tools': {  }
         'Content fields': {  }
+        'Custom block types': {  }
         Devel: {  }
         Forms: {  }
-        Help: {  }
-        'Lists (Views)': {  }
+        'Inline blocks': {  }
         Menus: {  }
         System: {  }
         User: {  }
@@ -57,7 +56,6 @@ bundle: page
 mode: full
 content: {  }
 hidden:
-  body: true
   field_hero: true
   field_hide_breadcrumb: true
   field_hide_title: true

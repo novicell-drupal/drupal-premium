@@ -9,7 +9,7 @@ field_name: field_color_theme
 entity_type: paragraph
 type: dynamic_key_value
 settings:
-  collection: ''
+  collection: color_themes
   allowed_values: {  }
   allowed_values_function: ''
 module: dynamic_key_value
