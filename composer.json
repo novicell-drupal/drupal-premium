@@ -152,6 +152,10 @@
       "bower-asset"
     ],
     "patches": {
+      "drupal/core": {
+        "(#2999491) Allow creation of reuseable inline blocks": "https://www.drupal.org/files/issues/2020-05-21/2999491--reusable-title-display--49.patch",
+        "(#3080606) Reorder Layout Builder sections": "https://www.drupal.org/files/issues/2020-06-18/3080606-reorder-layout-sections-43.patch"
+      }
     }
   }
 }
