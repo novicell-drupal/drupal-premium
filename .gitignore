@@ -71,7 +71,7 @@ webroot/sites/README.txt
 webroot/sites/default*
 webroot/themes/README.txt
 
-
+.env
 */node_modules
 .idea/
 logs/*
