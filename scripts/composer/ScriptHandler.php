@@ -233,14 +233,14 @@ class ScriptHandler {
     if (!empty($deployment_steps['require-dev'])) {
       $json_file = Factory::getComposerFile();
       $json = json_decode(file_get_contents($json_file));
-      $links = $event->getComposer()->getPackage()->getRequires();
+      $links = $event->getComposer()->getPackage()->getDevRequires();
       $packages = $deployment_steps['require-dev'];
       foreach ($packages as $requirement) {
         $links[] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $package = $requirement['package'];
         $json->{'require-dev'}->$package = $requirement['operator'] . $requirement['version'];
       }
-      $event->getComposer()->getPackage()->setRequires($links);
+      $event->getComposer()->getPackage()->setDevRequires($links);
       file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
     }
 
