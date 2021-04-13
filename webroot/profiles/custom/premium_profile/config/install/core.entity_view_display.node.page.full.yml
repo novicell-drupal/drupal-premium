@@ -22,6 +22,7 @@ third_party_settings:
       - 'Chaos Tools'
       - 'Content fields'
       - 'Custom block types'
+      - 'Custom blocks'
       - Devel
       - Forms
       - Help
@@ -36,10 +37,11 @@ third_party_settings:
       whitelisted_blocks:
         'Chaos Tools': {  }
         'Content fields': {  }
-        'Custom block types': {  }
+        'Custom blocks': {  }
         Devel: {  }
         Forms: {  }
-        'Inline blocks': {  }
+        Help: {  }
+        'Lists (Views)': {  }
         Menus: {  }
         System: {  }
         User: {  }
