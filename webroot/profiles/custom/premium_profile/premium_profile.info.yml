@@ -53,7 +53,6 @@ install:
   - dynamic_page_cache
   - taxonomy
   - rdf
-  - search
   - shortcut
   - toolbar
   - field_ui
@@ -76,7 +75,6 @@ install:
   - components
   - config_ignore
   - config_split
-  - devel
   - editor_advanced_link
   - entity_clone
   - entity_usage

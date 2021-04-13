@@ -69,6 +69,27 @@ task('deploy', [
   'success'
 ]);
 
+//----- First deployment -----//
+task('deploy:first', [
+  'slack:check',
+  'deploy:info',
+  'slack:notify:start',
+  'deploy:prepare',
+  'deploy:lock',
+  'deploy:release',
+  'deploy:update_code',
+  'deploy:composer:install',
+  'deploy:npm:install',
+  'deploy:shared',
+  'deploy:writable',
+  'deploy:symlink',
+  'deploy:unlock',
+  'deploy:file_permissions',
+  'cleanup',
+  'slack:notify:success',
+  'success'
+]);
+
 // Perform rollback tasks on failed deploys
 task('deploy:failed', [
   'deploy:db:rollback',
@@ -77,4 +98,3 @@ task('deploy:failed', [
   'deploy:unlock',
   'slack:notify:failed'
 ]);
-

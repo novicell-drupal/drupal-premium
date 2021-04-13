@@ -62,6 +62,7 @@ class ScriptHandler {
         'deployer/recipe'
       ],
       'copy' => [
+        'examples/hosting/deployer/deploy.php'                  => 'deploy.php',
         'examples/hosting/deployer/config.yml'                  => 'deployer/config.yml',
         'examples/hosting/deployer/recipe/base.php'             => 'deployer/recipe/base.php',
         'examples/hosting/deployer/recipe/composer.php'         => 'deployer/recipe/composer.php',
@@ -228,6 +229,19 @@ class ScriptHandler {
     }
     foreach ($deployment_steps['token_replace'] ?? [] as $filename) {
       self::replaceAllTokensInFile($filename, $tokens);
+    }
+    if (!empty($deployment_steps['require-dev'])) {
+      $json_file = Factory::getComposerFile();
+      $json = json_decode(file_get_contents($json_file));
+      $links = $event->getComposer()->getPackage()->getDevRequires();
+      $packages = $deployment_steps['require-dev'];
+      foreach ($packages as $requirement) {
+        $links[] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
+        $package = $requirement['package'];
+        $json->{'require-dev'}->$package = $requirement['operator'] . $requirement['version'];
+      }
+      $event->getComposer()->getPackage()->setDevRequires($links);
+      file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
     }
 
     // Renaming files in subtheme and replacing token in subtheme files with actual project name
