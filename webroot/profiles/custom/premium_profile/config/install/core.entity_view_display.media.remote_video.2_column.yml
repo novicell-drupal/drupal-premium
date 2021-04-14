@@ -13,8 +13,6 @@ third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: false
-_core:
-  default_config_hash: WNE7ZhyHdpd8jGMxu2LTtzSRD_63nnINvKGwdQxAsec
 id: media.remote_video.2_column
 targetEntityType: media
 bundle: remote_video
