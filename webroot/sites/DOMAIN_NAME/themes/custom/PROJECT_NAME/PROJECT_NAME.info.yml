@@ -11,6 +11,7 @@ libraries:
 regions:
   preheader: Pre header
   header: Header
+  pageheader: Pageheader
   breadcrumb: Breadcrumb
   content: Content
   burgermenu: Burgermenu

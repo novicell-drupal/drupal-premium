@@ -52,21 +52,8 @@
     {{ page.header }}
   {% endblock %}
 
-  {% block hero %}
-    {% if hero %}
-      <section{{ hero.section_attributes }}>
-        {% include '@organisms/hero/hero.twig' with {
-          'attributes': hero.attributes,
-          'content_attributes': hero.content_attributes,
-          'media': hero.media,
-          'position': hero.position,
-          'title': hero.title,
-          'teaser': hero.teaser,
-          'cta': hero.cta,
-          'video_oembed': hero.video_oembed
-        } %}
-      </section>
-    {% endif %}
+  {% block pageheader %}
+    {{ page.pageheader }}
   {% endblock %}
 
   {% block page_breadcrumb %}

@@ -3,19 +3,15 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.basic_hero.field_background
-    - field.field.paragraph.basic_hero.field_collapsed
     - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
-    - field.field.paragraph.basic_hero.field_link
-    - field.field.paragraph.basic_hero.field_narrow
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
     - field.field.paragraph.basic_hero.field_text_color
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - dynamic_key_value
-    - link
+    - dynamic_color
     - media_library
     - premium_tools
     - text
@@ -26,26 +22,19 @@ mode: default
 content:
   field_background:
     type: media_library_widget
-    weight: 2
+    weight: 1
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  field_collapsed:
-    weight: 6
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_color_theme:
-    weight: 10
+    weight: 7
     settings: {  }
     third_party_settings: {  }
-    type: dynamic_key_value_widget
+    type: dynamic_key_value_color_widget
     region: content
   field_cta:
-    weight: 9
+    weight: 4
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -53,23 +42,8 @@ content:
     third_party_settings: {  }
     type: link_with_target
     region: content
-  field_link:
-    weight: 11
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  field_narrow:
-    weight: 7
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_overlay:
-    weight: 5
+    weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
@@ -84,19 +58,19 @@ content:
     type: text_textarea
     region: content
   field_text_color:
-    weight: 4
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_text_position:
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   translation:
-    weight: 8
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }

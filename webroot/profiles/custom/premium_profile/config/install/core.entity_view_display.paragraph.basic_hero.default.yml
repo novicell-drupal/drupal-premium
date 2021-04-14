@@ -3,18 +3,15 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.basic_hero.field_background
-    - field.field.paragraph.basic_hero.field_collapsed
     - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
-    - field.field.paragraph.basic_hero.field_link
-    - field.field.paragraph.basic_hero.field_narrow
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
     - field.field.paragraph.basic_hero.field_text_color
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - link
+    - dynamic_key_value
     - options
     - premium_tools
     - text
@@ -32,49 +29,44 @@ content:
       link: false
     third_party_settings: {  }
     region: content
-  field_cta:
+  field_color_theme:
+    type: dynamic_key_value_table_formatter
     weight: 5
+    region: content
+    label: hidden
+    settings:
+      key_label: Key
+      value_label: Value
+      display_labels: true
+    third_party_settings: {  }
+  field_cta:
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: link_with_target
     region: content
-  field_link:
-    weight: 6
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-    region: content
   field_text:
-    weight: 3
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_text_color:
-    weight: 4
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_text_position:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
 hidden:
-  field_collapsed: true
-  field_color_theme: true
-  field_narrow: true
   field_overlay: true
   search_api_excerpt: true

@@ -6,7 +6,7 @@
 
 {{ attach_library('PROJECT_NAME/hero') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media ? 'hero--image-added' : 'hero--narrow-height') }} {% if video_oembed %} data-video='{{ video_oembed }}' {% endif %}>
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media ? 'hero--image-added' : 'hero--narrow-height') }}>
   {% if media %}
     {{ media }}
   {% endif %}
@@ -23,7 +23,7 @@
             {% include '@particles/button/button--link.twig' with {
               'url': cta.url,
               'text': cta.title,
-              'attributes': cta.attributes
+              'attributes': create_attribute().setAttribute('target', cta.target)
             } %}
           {% endif %}
         </div>
