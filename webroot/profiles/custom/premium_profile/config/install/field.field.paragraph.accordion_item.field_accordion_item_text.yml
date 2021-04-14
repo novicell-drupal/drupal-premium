@@ -5,8 +5,8 @@ dependencies:
     - field.storage.paragraph.field_accordion_item_text
     - paragraphs.paragraphs_type.accordion_item
   module:
-    - text
     - allowed_formats
+    - text
 third_party_settings:
   allowed_formats:
     basic_html: basic_html

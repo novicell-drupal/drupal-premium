@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.body
     - field.field.node.page.field_hero
     - field.field.node.page.field_hide_breadcrumb
     - field.field.node.page.field_hide_title
@@ -41,6 +42,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   field_hero: true
   field_hide_breadcrumb: true
   field_hide_title: true

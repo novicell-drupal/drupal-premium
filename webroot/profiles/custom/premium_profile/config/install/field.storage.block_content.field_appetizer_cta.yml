@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - block_content
+    - premium_tools
 id: block_content.field_appetizer_cta
 field_name: field_appetizer_cta
 entity_type: block_content

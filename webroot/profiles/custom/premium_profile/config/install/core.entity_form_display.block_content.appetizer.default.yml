@@ -11,6 +11,7 @@ dependencies:
     - field.field.block_content.appetizer.field_appetizer_text_alignment
   module:
     - media_library
+    - premium_tools
     - text
 id: block_content.appetizer.default
 targetEntityType: block_content

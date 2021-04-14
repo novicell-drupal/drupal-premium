@@ -6,7 +6,6 @@ dependencies:
     - field.field.paragraph.basic_hero.field_collapsed
     - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
-    - field.field.paragraph.basic_hero.field_link
     - field.field.paragraph.basic_hero.field_narrow
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
@@ -14,7 +13,6 @@ dependencies:
     - field.field.paragraph.basic_hero.field_text_position
     - paragraphs.paragraphs_type.basic_hero
   module:
-    - link
     - options
     - premium_tools
     - text
@@ -38,18 +36,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: link_with_target
-    region: content
-  field_link:
-    weight: 6
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
     region: content
   field_text:
     weight: 3
