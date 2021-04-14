@@ -53,6 +53,31 @@ function premium_theme_helper_preprocess_layout(array &$variables) {
   if (!empty($variables['content']['#header'])) {
     $variables['header'] = $variables['content']['#header'];
   }
+
+  // Add section settings to blocks.
+  $settings = $variables['content']['#settings'] ?? [];
+  $element_to_skip = [
+    'layout_builder_add_block',
+    '#attributes',
+    'region_label',
+  ];
+  foreach ($variables['content'] as $col_id => $content) {
+    if (isset($col_id[0]) && $col_id[0] === '#') {
+      continue;
+    }
+
+    foreach ($variables['content'][$col_id] as $key => $layout_block) {
+      if (in_array($key, $element_to_skip, FALSE)) {
+        continue;
+      }
+
+      $variables['content'][$col_id][$key]['content']['#layout'] = [
+        'layout_id' => $variables['layout']->id(),
+        'settings' => $settings,
+        'column_id' => $col_id,
+      ];
+    }
+  }
 }
 
 /**
@@ -61,5 +86,29 @@ function premium_theme_helper_preprocess_layout(array &$variables) {
 function premium_theme_helper_preprocess_block__inline_block(&$variables) {
   if (isset($variables['content']['#attributes'], $variables['attributes']) && \Drupal::currentUser()->hasPermission('access in-place editing')) {
     $variables['attributes'] = NestedArray::mergeDeep($variables['content']['#attributes'], $variables['attributes']);
+  }
+}
+
+/**
+ * Theme suggestion for block contents.
+ *
+ * Change reuseable blocks to have a theme suggestion to inline block,
+ * so we dont get different templates.
+ *
+ * @param array $suggestions
+ *   An array of theme suggestions.
+ * @param array $variables
+ *   An array of variables passed to the theme hook. Note that this hook is
+ *   invoked before any preprocessing.
+ */
+function premium_theme_helper_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $block = $variables['elements'];
+  $block_type = $block['#configuration']['provider'];
+  if ($block_type === 'block_content') {
+    $bundle = $block['#configuration']['type'];
+    $block_content_entity = $block['content']['#block_content'];
+    if ($block_content_entity->hasField('reusable') && (int) $block_content_entity->get('reusable')->value === 1) {
+      $suggestions[] = 'block__inline_block__' . $bundle;
+    }
   }
 }

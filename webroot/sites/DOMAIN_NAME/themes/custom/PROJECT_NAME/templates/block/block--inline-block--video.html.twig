@@ -1,0 +1,13 @@
+{% embed '@molecules/video/video.twig' with {
+  'attributes': attributes,
+  'media': content.field_video_media,
+  'media_image': media_image,
+  'title': content.field_video_headline,
+  'subtitle': content.field_video_subline,
+  'inverted': content['#block_content'].field_video_text_color.value != 'dark'
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}
