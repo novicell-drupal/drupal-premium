@@ -4,6 +4,8 @@ dependencies:
   config:
     - block_content.type.image
     - field.storage.block_content.field_image_link
+  module:
+    - premium_tools
 id: block_content.image.field_image_link
 field_name: field_image_link
 entity_type: block_content

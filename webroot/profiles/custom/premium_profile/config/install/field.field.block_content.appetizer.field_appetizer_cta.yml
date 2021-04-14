@@ -4,6 +4,8 @@ dependencies:
   config:
     - block_content.type.appetizer
     - field.storage.block_content.field_appetizer_cta
+  module:
+    - premium_tools
 id: block_content.appetizer.field_appetizer_cta
 field_name: field_appetizer_cta
 entity_type: block_content

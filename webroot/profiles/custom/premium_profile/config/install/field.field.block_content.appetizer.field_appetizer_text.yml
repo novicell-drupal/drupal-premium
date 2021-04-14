@@ -5,8 +5,8 @@ dependencies:
     - block_content.type.appetizer
     - field.storage.block_content.field_appetizer_text
   module:
-    - text
     - allowed_formats
+    - text
 third_party_settings:
   allowed_formats:
     basic_html: basic_html
