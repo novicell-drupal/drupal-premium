@@ -1,0 +1,11 @@
+{% embed '@molecules/image/image.twig' with {
+  'attributes': attributes,
+  'media': media,
+  'caption': content.field_image_caption,
+  'link': link
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}
