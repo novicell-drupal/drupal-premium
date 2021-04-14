@@ -1,6 +1,7 @@
 {{ attach_library('PROJECT_NAME/appetiser') }}
 
 <div {{ (not attributes ? create_attribute() : attributes).addClass('appetiser').addClass(text_alignment ? 'appetiser--content-' ~ text_alignment).addClass(orientation and not is_small_version ? 'appetiser--image-' ~ orientation).addClass(is_small_version ? 'appetiser--small') }}>
+  {% block block_content %}{% endblock %}
   <div class="appetiser__content-wrapper">
     {% if display_as_fullwidth %}
     <div class="container">
@@ -12,7 +13,7 @@
           {% include '@particles/button/button--link.twig' with {
             'url': cta.url,
             'text': cta.title,
-            'attributes': cta.attributes
+            'attributes': create_attribute().setAttribute('target', cta.target)
           } %}
         {% endif %}
       </div>
@@ -20,9 +21,9 @@
     </div>
     {% endif %}
   </div>
-  {% if image %}
+  {% if media %}
     <figure{{ create_attribute().addClass('appetiser__image') }}>
-      {{ image|responsive_image(image_style, 'lazyload') }}
+      {{ media }}
     </figure>
   {% endif %}
 </div>
