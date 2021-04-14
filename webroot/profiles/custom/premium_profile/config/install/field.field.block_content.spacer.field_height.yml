@@ -13,7 +13,7 @@ bundle: spacer
 label: Height
 description: 'Choose the height of the spacer.'
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: small

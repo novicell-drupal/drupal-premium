@@ -1,17 +1,17 @@
-langcode: en
+langcode: da
 status: true
 dependencies:
   config:
-    - block_content.type.accordion
+    - media.type.icon
   module:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: true
+    enabled: false
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: block_content.accordion
-target_entity_type_id: block_content
-target_bundle: accordion
+id: media.icon
+target_entity_type_id: media
+target_bundle: icon
 default_langcode: site_default
-language_alterable: true
+language_alterable: false

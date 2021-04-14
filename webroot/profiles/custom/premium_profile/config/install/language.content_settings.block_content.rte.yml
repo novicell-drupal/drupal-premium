@@ -1,8 +1,8 @@
-langcode: en
+langcode: da
 status: true
 dependencies:
   config:
-    - block_content.type.accordion
+    - block_content.type.rte
   module:
     - content_translation
 third_party_settings:
@@ -10,8 +10,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: block_content.accordion
+id: block_content.rte
 target_entity_type_id: block_content
-target_bundle: accordion
+target_bundle: rte
 default_langcode: site_default
 language_alterable: true
