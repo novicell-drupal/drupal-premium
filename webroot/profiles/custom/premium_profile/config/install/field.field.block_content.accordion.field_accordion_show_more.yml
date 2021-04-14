@@ -11,7 +11,7 @@ bundle: accordion
 label: 'Show more label'
 description: 'If you add more than 5 elements to the accordion, only the first five elements will be shown initially and a "Read more" button for revealing the remaining elements will appear.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
