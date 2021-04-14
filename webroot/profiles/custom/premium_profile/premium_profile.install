@@ -25,4 +25,6 @@ function premium_profile_install() {
     ->getEditable('system.theme')
     ->set('default', $theme)
     ->save();
+
+  drupal_flush_all_caches();
 }
