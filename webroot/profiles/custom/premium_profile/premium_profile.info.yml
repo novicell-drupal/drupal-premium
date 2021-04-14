@@ -105,6 +105,7 @@ install:
   - media_icons
   - premium_tools
   - premium_theme_helper
+  - premium_search
 themes:
   - adminimal_theme
   - PROJECT_NAME
