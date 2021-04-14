@@ -88,6 +88,10 @@
     }
   }
 
+  &__iframe-wrapper:not(.active) {
+    display: none;
+  }
+
   &__iframe-wrapper:not(:empty) {
     position: absolute;
     top: 50%;
@@ -97,6 +101,10 @@
     transform: translate(-50%, -50%);
     padding-top: 56.25%;
     background-color: var(--color-black);
+
+    .contextual-region {
+      position: initial;
+    }
   }
 
   &--center {

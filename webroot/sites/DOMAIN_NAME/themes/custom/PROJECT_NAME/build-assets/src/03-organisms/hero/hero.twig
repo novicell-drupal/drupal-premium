@@ -6,11 +6,15 @@
 
 {{ attach_library('PROJECT_NAME/hero') }}
 
-<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media ? 'hero--image-added' : 'hero--narrow-height') }}>
-  {% if media %}
-    {{ media }}
+<div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>
+  {% if media_image %}
+    {{ media_image }}
   {% endif %}
-  <div class="hero__iframe-wrapper js-hero-iframe-wrapper"></div>
+  <div class="hero__iframe-wrapper js-hero-iframe-wrapper">
+    {% if media %}
+      {{ media }}
+    {% endif %}
+  </div>
   <div class="container">
     <div class="row">
       <div class="{{ hero_position[position] }}">

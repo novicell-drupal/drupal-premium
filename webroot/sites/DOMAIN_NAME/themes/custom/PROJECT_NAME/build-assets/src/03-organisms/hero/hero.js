@@ -1,4 +1,4 @@
-let player;
+import getVideoId from 'get-video-id';
 
 const loadYoutubeIframeSrc = () => {
   if (document.getElementById('youtube-player')) {
@@ -29,15 +29,18 @@ window.onYouTubePlayerAPIReady = function onYouTubePlayerAPIReady() {
 
   for (let i = 0; i < heros.length; i += 1) {
     const currentHero = heros[i];
-    const videoData = currentHero.dataset.video;
-    if (videoData) {
-      const { id } = JSON.parse(videoData);
-      player = new window.YT.Player(`player_${id}`, {
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange,
-        },
-      });
+    const iframe = currentHero.querySelector('iframe');
+    if (iframe) {
+      const { videoId } = currentHero.querySelector('iframe').dataset;
+      if (videoId) {
+        const player = new window.YT.Player(`oembed_video_id_${videoId}`, {
+          videoId,
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
     }
   }
 };
@@ -52,35 +55,38 @@ Drupal.behaviors.hero = {
     for (let i = 0; i < heros.length; i += 1) {
       const currentHero = heros[i];
       const iframeWrapper = currentHero.querySelector('.js-hero-iframe-wrapper');
-      const videoData = currentHero.dataset.video;
       currentHero.classList.add('loaded');
 
-      if (videoData) {
-        const { id, oEmbed } = JSON.parse(videoData);
-
-        if (oEmbed !== 'null' && oEmbed !== null) {
-          let isYoutube = false;
-          if (oEmbed.html.indexOf('iframe') > -1) {
-            const regex = /<iframe.*?src="(.*?)"/;
-            const oldSrc = regex.exec(oEmbed.html)[1];
-            let newSrc = oldSrc;
-            if (oldSrc.indexOf('youtube') > -1) {
-              isYoutube = true;
-              const { origin } = window.location;
-              newSrc = `${oldSrc}&mute=1&controls=0&showinfo=0&autohide=1&background=1&playsinline=1&origin=${origin}&enablejsapi=1`; // We need to set this ourselves, otherwise we are not sure it is gonna play.
-              oEmbed.html = oEmbed.html.replace('<iframe', `<iframe id="player_${id}"`);
-            } else {
-              newSrc = `${oldSrc}&autoplay=1&mute=1&controls=0&showinfo=0&autohide=1&background=1`; // We need to set this ourselves, otherwise we are not sure it is gonna play.
-            }
-            oEmbed.html = oEmbed.html.replace(oldSrc, newSrc);
-          } else if (oEmbed.html.indexOf('video') > -1) {
-            oEmbed.html = oEmbed.html.replace('<video', '<video autoplay loop muted');
-          }
-          iframeWrapper.innerHTML = oEmbed.html;
-          if (isYoutube) {
-            loadYoutubeIframeSrc();
-          }
+      let isYoutube = false;
+      if (iframeWrapper.querySelector('iframe')) {
+        const iframe = iframeWrapper.querySelector('iframe');
+        const oldSrc = iframe.getAttribute('src');
+        let newSrc = oldSrc;
+        if (oldSrc.indexOf('youtube') > -1) {
+          isYoutube = true;
+          // Drupal gives us eg:
+          // media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DaE2vilQu7BQ&max_width=0&...
+          // But we want the https://www.youtube.com/embed/ version so we can talk with Youtube API.
+          const youtubeUrl = decodeURIComponent(newSrc.replace('/media/oembed?url=', ''));
+          const { id } = getVideoId(youtubeUrl.replace(youtubeUrl.substr(youtubeUrl.indexOf('&'), youtubeUrl.length), ''));
+          iframe.setAttribute('id', `oembed_video_id_${id}`);
+          iframe.dataset.videoId = id;
+          const { origin } = window.location;
+          newSrc = `https://www.youtube.com/embed/${id}?mute=1&controls=0&showinfo=0&autohide=1&background=1&playsinline=1&origin=${origin}&enablejsapi=1`;
+        } else {
+          newSrc = `${oldSrc}&autoplay=1&mute=1&controls=0&showinfo=0&autohide=1&background=1`;
         }
+        iframe.setAttribute('src', newSrc);
+        iframeWrapper.classList.add('active');
+      } else if (iframeWrapper.querySelector('video')) {
+        const video = iframeWrapper.querySelector('video');
+        video.setAttribute('autoplay', 'true');
+        video.setAttribute('loop', 'true');
+        video.setAttribute('muted', 'true');
+        iframeWrapper.classList.add('active');
+      }
+      if (isYoutube) {
+        loadYoutubeIframeSrc();
       }
     }
   },
