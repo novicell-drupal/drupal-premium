@@ -21,9 +21,11 @@
     <div class="row">
       <div class="{{ hero_position[position] }}">
         <div{{ (not content_attributes ? create_attribute() : content_attributes).addClass('hero__content') }}>
-          <h1 class="hero__title">{{ title }}</h1>
-          {% if teaser %}
-            <div class="hero__description">{{ teaser }}</div>
+          {% if title %}
+            <h1>{{ title }}</h1>
+          {% endif %}
+          {% if text %}
+            {{ text }}
           {% endif %}
           {% if cta.url and cta.title %}
             {% include '@particles/button/button--link.twig' with {
