@@ -7,6 +7,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\system\Plugin\Block\SystemBreadcrumbBlock;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\Route;
 
@@ -19,8 +20,7 @@ use Symfony\Component\Routing\Route;
  *   category= @Translation("Premium")
  * )
  */
-class BreadcrumbBlock extends RouteEntityBaseBlock
-{
+class BreadcrumbBlock extends RouteEntityBaseBlock {
 
   /**
    * The breadcrumb manager.
@@ -42,9 +42,11 @@ class BreadcrumbBlock extends RouteEntityBaseBlock
    *   The breadcrumb manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   *   Logger.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, BreadcrumbBuilderInterface $breadcrumb_manager, RouteMatchInterface $routeMatch) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $routeMatch);
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, BreadcrumbBuilderInterface $breadcrumb_manager, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
     $this->breadcrumbManager = $breadcrumb_manager;
   }
 
@@ -52,13 +54,13 @@ class BreadcrumbBlock extends RouteEntityBaseBlock
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('breadcrumb'),
-      $container->get('current_route_match')
-    );
+    /** @var \Drupal\Core\Routing\RouteMatchInterface $routeMatch */
+    $routeMatch = $container->get('current_route_match');
+    /** @var \Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface\ $routeMatch */
+    $breadcrumb = $container->get('breadcrumb');
+    /** @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger */
+    $logger = $container->get('logger.factory');
+    return new static($configuration, $plugin_id, $plugin_definition, $breadcrumb, $routeMatch, $logger);
   }
 
   /**
