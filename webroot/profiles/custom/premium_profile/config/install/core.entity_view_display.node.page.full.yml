@@ -61,6 +61,7 @@ mode: full
 content: {  }
 hidden:
   body: true
+  content_moderation_control: true
   field_description: true
   field_header: true
   field_hide_breadcrumb: true
