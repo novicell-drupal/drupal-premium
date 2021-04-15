@@ -49,24 +49,15 @@
 {% block paragraph %}
   {% set position = paragraph.field_text_position.value %}
   {% set text_color = paragraph.field_text_color.value %}
-  {% set color_theme = paragraph.field_color_theme.value %}
   {% set overlay = paragraph.field_overlay.value %}
 
-  {% if color_theme != '' and color_theme != 'none' %}
-    {% set attributes = attributes.addClass('theme').addClass('theme-' ~ color_theme) %}
-    {{ attach_library('PROJECT_NAME/theme-' ~ color_theme) }}
-  {% endif %}
-
-  <section{{ attributes.addClass('section').addClass('section--no-spacing') }}>
-    {% include '@organisms/hero/hero.twig' with {
-      'attributes': create_attribute().addClass(position != 'left' ? 'hero--' ~ position).addClass(text_color != 'dark' ? 'hero--inverted').addClass(overlay == 1 ? 'hero--overlay'),
-      'media': media,
-      'media_image': media_image,
-      'position': position,
-      'title': title,
-      'teaser': content.field_text,
-      'cta': link,
-    } %}
-  </section>
+  {% include '@organisms/hero/hero.twig' with {
+    'attributes': attributes.addClass(position != 'left' ? 'hero--' ~ position).addClass(text_color != 'dark' ? 'hero--inverted').addClass(overlay == 1 ? 'hero--overlay'),
+    'media': media,
+    'media_image': media_image,
+    'position': position,
+    'title': content.field_title,
+    'teaser': content.field_text,
+    'cta': link,
+  } %}
 {% endblock paragraph %}
-

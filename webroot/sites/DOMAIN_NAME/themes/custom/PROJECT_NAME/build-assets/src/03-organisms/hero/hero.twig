@@ -8,7 +8,9 @@
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>
   {% if media_image %}
-    {{ media_image }}
+    <div class="hero__image-wrapper">
+      {{ media_image }}
+    </div>
   {% endif %}
   <div class="hero__iframe-wrapper js-hero-iframe-wrapper">
     {% if media %}

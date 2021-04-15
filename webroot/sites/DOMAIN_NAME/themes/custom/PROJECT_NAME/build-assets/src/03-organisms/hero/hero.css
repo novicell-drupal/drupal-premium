@@ -142,7 +142,9 @@
 
     picture,
     img,
-    .container {
+    .container,
+    .hero__image-wrapper,
+    .hero__image-wrapper div:not(.contextual) {
       height: inherit;
       max-height: inherit;
       display: block;

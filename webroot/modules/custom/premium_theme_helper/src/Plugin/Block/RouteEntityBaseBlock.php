@@ -6,17 +6,47 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\Route;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 
+/**
+ * Route entity base.
+ *
+ * @package Drupal\premium_theme_helper\Plugin\Block
+ */
 abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
+   * Route match.
+   *
    * @var RouteMatchInterface
    */
   protected $routeMatch;
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $routeMatch) {
+  /**
+   * Logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  protected $logger;
+
+  /**
+   * RouteEntityBaseBlock constructor.
+   *
+   * @param array $configuration
+   *   The plugin configuration.
+   * @param string $plugin_id
+   *   The plugin ID.
+   * @param mixed $plugin_definition
+   *   The plugin definition.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   Route match.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   *   Logger.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->routeMatch = $routeMatch;
+    $this->logger = $logger->get('premium_theme_helper');
   }
 
   /**
@@ -25,8 +55,9 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     /** @var RouteMatchInterface $routeMatch */
     $routeMatch = $container->get('current_route_match');
-
-    return new static($configuration, $plugin_id, $plugin_definition, $routeMatch);
+    /** @var LoggerChannelFactoryInterface $logger */
+    $logger = $container->get('logger.factory');
+    return new static($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
   }
 
   /**
@@ -38,7 +69,7 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
    * @return \Drupal\Core\Entity\EntityInterface|null
    *   The entity, or null if it's not an entity route.
    */
-  protected function getEntityFromRouteMatch(RouteMatchInterface $route_match) {
+  protected function getEntityFromRouteMatch(RouteMatchInterface $route_match): ?EntityInterface {
     $route = $route_match->getRouteObject();
     if (!$route) {
       return NULL;
@@ -61,7 +92,7 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
    * @return string|null
    *   The entity type id, null if it doesn't exist.
    */
-  protected function getEntityTypeFromRoute(Route $route) {
+  protected function getEntityTypeFromRoute(Route $route): ?string {
     if (!empty($route->getOptions()['parameters'])) {
       foreach ($route->getOptions()['parameters'] as $option) {
         if (isset($option['type']) && strpos($option['type'], 'entity:') === 0) {

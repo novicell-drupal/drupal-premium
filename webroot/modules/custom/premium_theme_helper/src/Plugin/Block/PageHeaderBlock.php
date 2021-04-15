@@ -5,7 +5,6 @@ namespace Drupal\premium_theme_helper\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
@@ -22,14 +21,12 @@ use Symfony\Component\Routing\Route;
  *   category= @Translation("Premium")
  * )
  */
-class PageHeaderBlock extends RouteEntityBaseBlock
-{
+class PageHeaderBlock extends RouteEntityBaseBlock {
 
   /**
    * @inheritDoc
    */
-  public function build()
-  {
+  public function build(): array {
     $build = [
       '#cache' => [
         'contexts' => ['url'],
@@ -39,7 +36,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if(!empty($route_entity) && $route_entity->hasField('field_hero')) {
+    if (!is_null($route_entity) && $route_entity->hasField('field_hero')) {
       $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
 
       if (!$route_entity->get('field_hero')->isEmpty()) {
@@ -63,4 +60,5 @@ class PageHeaderBlock extends RouteEntityBaseBlock
 
     return $build;
   }
+
 }

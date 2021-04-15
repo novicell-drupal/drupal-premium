@@ -7,10 +7,12 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-{% include '@molecules/breadcrumb/breadcrumb.twig' with {
-  'breadcrumb_json_data': breadcrumb_json_data,
-  'attributes': attributes,
-  'items_attributes': items_attributes,
-  'breadcrumb': breadcrumb,
-  'disable': disable
-} %}
+<div class="container">
+  {% include '@molecules/breadcrumb/breadcrumb.twig' with {
+    'breadcrumb_json_data': breadcrumb_json_data,
+    'attributes': attributes,
+    'items_attributes': items_attributes,
+    'breadcrumb': breadcrumb,
+    'disable': disable
+  } %}
+</div>
