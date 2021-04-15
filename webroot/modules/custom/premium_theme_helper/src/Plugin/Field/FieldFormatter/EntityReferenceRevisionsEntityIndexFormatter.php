@@ -8,7 +8,7 @@ use Drupal\Core\TypedData\TranslatableInterface;
 use Drupal\entity_reference_revisions\Plugin\Field\FieldFormatter\EntityReferenceRevisionsEntityFormatter;
 
 /**
- * Plugin implementation of the 'entity reference rendered entity' formatter to add delta to entity.
+ * Entity reference rendered entity formatter to add delta to entity.
  *
  * @FieldFormatter(
  *   id = "entity_reference_revisions_entity_view_add_index",

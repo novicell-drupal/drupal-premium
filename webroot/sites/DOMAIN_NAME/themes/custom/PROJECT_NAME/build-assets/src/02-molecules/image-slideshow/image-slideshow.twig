@@ -1,10 +1,11 @@
 {{ attach_library('PROJECT_NAME/image-slideshow') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass('image-slideshow-wrapper').addClass('js-image-slideshow-wrapper').setAttribute('data-autoplay', autoplay ? 'true' : 'false') }}>
+  {% block block_content %}{% endblock %}
   <ul class="image-slideshow js-image-slideshow">
     {% for item in items %}
       <li class="image-slideshow-slide">
-        {{ item.image|responsive_image('wide', 'lazyload') }}
+        {{ item.image }}
       </li>
     {% endfor %}
   </ul>

@@ -1,15 +1,12 @@
 <?php
+
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\system\Plugin\Block\SystemBreadcrumbBlock;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\TypedData\Exception\MissingDataException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Routing\Route;
 
 /**
  * Provides a 'Breadcrumb' block.
@@ -56,7 +53,7 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     /** @var \Drupal\Core\Routing\RouteMatchInterface $routeMatch */
     $routeMatch = $container->get('current_route_match');
-    /** @var \Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface\ $routeMatch */
+    /** @var \Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface $breadcrumb */
     $breadcrumb = $container->get('breadcrumb');
     /** @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger */
     $logger = $container->get('logger.factory');
@@ -64,22 +61,27 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
-  public function build()
-  {
+  public function build(): array {
     $build = $this->breadcrumbManager->build($this->routeMatch)->toRenderable();
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if(!empty($route_entity) && $route_entity->hasField('field_hide_breadcrumb')) {
-      if ($route_entity->hasField('field_hide_breadcrumb') && intval($route_entity->get('field_hide_breadcrumb')->first()->getValue()['value']) === 1) {
-        $build = [
-          '#cache' => [
-            'contexts' => ['url'],
-            'tags' => []
-          ]
-        ];
+    if (!is_null($route_entity) && $route_entity->hasField('field_hide_breadcrumb')) {
+      try {
+        $data = $route_entity->get('field_hide_breadcrumb')->first();
+        if (!is_null($data) && (int) $data->getValue()['value'] === 1) {
+          $build = [
+            '#cache' => [
+              'contexts' => ['url'],
+              'tags' => [],
+            ],
+          ];
+        }
+      }
+      catch (MissingDataException $e) {
+        $this->logger->error($e->getMessage());
       }
       $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
     }
@@ -113,4 +115,5 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
 
     return $build;
   }
+
 }

@@ -25,21 +25,13 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {% if url and title %}
-    {% set button_attributes = create_attribute() %}
-    {% if target %}
-      {% set button_attributes = button_attributes.setAttribute('target', target) %}
-    {% endif %}
-    {% if alignment %}
-      {% set button_attributes = button_attributes.addClass('p-button--' ~ alignment) %}
-    {% endif %}
-    {% include '@particles/button/button--link.twig' with {
-      'url': url,
-      'text': title,
-      'attributes': button_attributes
-    } %}
-  {% endif %}
-</div>
+{% embed '@molecules/image-slideshow/image-slideshow.twig' with {
+  'attributes': attributes,
+  'items': items,
+  'autoplay': content['#block_content'].field_slideshow_autoplay.value == 1
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

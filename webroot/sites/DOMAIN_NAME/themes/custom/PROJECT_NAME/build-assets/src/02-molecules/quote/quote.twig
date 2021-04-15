@@ -1,6 +1,7 @@
 {{ attach_library('PROJECT_NAME/quote') }}
 
 <div{{ (not attributes ? create_attribute() : attributes).addClass('quote') }}>
+  {% block block_content %}{% endblock %}
   {% include '@particles/svg-icon/svg-icon.twig' with {
     'attributes': '',
     'svgIconName': 'quote'

@@ -37,12 +37,7 @@
     <div class="search-page__results">
       {% block results %}
         {% for item in results %}
-          {% include '@molecules/list-view-item/list-view-item.twig' with {
-            'url': item.url,
-            'image': item.image,
-            'title': item.title,
-            'excerpt': item.excerpt
-          } %}
+          <div>{{ item.title }}</div>
         {% endfor %}
       {% endblock %}
     </div>

@@ -1,8 +1,8 @@
 <?php
+
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,7 +19,7 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
   /**
    * Route match.
    *
-   * @var RouteMatchInterface
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   protected $routeMatch;
 
@@ -51,12 +51,12 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    /** @var RouteMatchInterface $routeMatch */
+    /** @var \Drupal\Core\Routing\RouteMatchInterface $routeMatch */
     $routeMatch = $container->get('current_route_match');
-    /** @var LoggerChannelFactoryInterface $logger */
+    /** @var \Drupal\Core\Plugin\ContainerFactoryPluginInterface $logger */
     $logger = $container->get('logger.factory');
     return new static($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
   }

@@ -28,18 +28,11 @@
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ title_suffix }}
-  {% if url and title %}
-    {% set button_attributes = create_attribute() %}
-    {% if target %}
-      {% set button_attributes = button_attributes.setAttribute('target', target) %}
+  {% block content %}
+    {% if layout_builder_mode == true %}
+      {{ content['#block_content'].field_code_content.value }}
+    {% else %}
+      {{ content['#block_content'].field_code_content.value|raw }}
     {% endif %}
-    {% if alignment %}
-      {% set button_attributes = button_attributes.addClass('p-button--' ~ alignment) %}
-    {% endif %}
-    {% include '@particles/button/button--link.twig' with {
-      'url': url,
-      'text': title,
-      'attributes': button_attributes
-    } %}
-  {% endif %}
+  {% endblock %}
 </div>

@@ -122,12 +122,6 @@ language-menu:
   js:
     build-assets/dist/js/02-molecules/language-menu/language-menu.js: { preprocess: false }
 
-list-view-item:
-  version: VERSION
-  css:
-    theme:
-      build-assets/dist/css/02-molecules/list-view-item/list-view-item.css: {}
-
 logo:
   version: VERSION
   css:
