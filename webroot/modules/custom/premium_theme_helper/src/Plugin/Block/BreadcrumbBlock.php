@@ -84,6 +84,33 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
       $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
     }
 
+    $breadcrumb_json_data = [
+      '@context' => 'http://schema.org',
+      '@type' => 'BreadcrumbList',
+      'itemListElement' => [],
+    ];
+    $links = $this->breadcrumbManager->build($this->routeMatch)->getLinks();
+    if (!empty($links)) {
+      foreach ($links as $key => $item) {
+        $breadcrumb_json_data['itemListElement'] = [
+          '@type' => 'ListItem',
+          'position' => $key,
+          'item' => [
+            '@id' => $item->getUrl()->toString(),
+            'name' => $item->getText(),
+          ],
+        ];
+      }
+    }
+    $build['breadcrumb_json_data'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => [
+        'type' => 'application/ld+json',
+      ],
+      '#value' => json_encode($breadcrumb_json_data),
+    ];
+
     return $build;
   }
 }
