@@ -66,10 +66,10 @@ abstract class RouteEntityBaseBlock extends BlockBase implements ContainerFactor
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
+   * @return mixed|null
    *   The entity, or null if it's not an entity route.
    */
-  protected function getEntityFromRouteMatch(RouteMatchInterface $route_match): ?EntityInterface {
+  protected function getEntityFromRouteMatch(RouteMatchInterface $route_match) {
     $route = $route_match->getRouteObject();
     if (!$route) {
       return NULL;
