@@ -27,6 +27,7 @@
   position: relative;
   max-height: 500px;
 
+  div:not(.contextual),
   picture,
   img {
     height: inherit;
