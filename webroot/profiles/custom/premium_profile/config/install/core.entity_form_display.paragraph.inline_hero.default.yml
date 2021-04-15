@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.inline_hero.field_text
     - field.field.paragraph.inline_hero.field_text_color
     - field.field.paragraph.inline_hero.field_text_position
+    - field.field.paragraph.inline_hero.field_title
     - paragraphs.paragraphs_type.inline_hero
   module:
     - media_library
@@ -63,4 +64,5 @@ content:
     region: content
 hidden:
   created: true
+  field_title: true
   status: true

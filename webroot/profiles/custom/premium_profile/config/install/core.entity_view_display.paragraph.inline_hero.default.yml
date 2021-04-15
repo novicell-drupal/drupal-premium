@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.inline_hero.field_text
     - field.field.paragraph.inline_hero.field_text_color
     - field.field.paragraph.inline_hero.field_text_position
+    - field.field.paragraph.inline_hero.field_title
     - paragraphs.paragraphs_type.inline_hero
   module:
     - options
@@ -66,4 +67,5 @@ content:
     type: list_default
     region: content
 hidden:
+  field_title: true
   search_api_excerpt: true

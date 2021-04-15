@@ -5,7 +5,7 @@ dependencies:
     - core.entity_view_mode.node.full
     - field.field.node.page.body
     - field.field.node.page.field_description
-    - field.field.node.page.field_hero
+    - field.field.node.page.field_header
     - field.field.node.page.field_hide_breadcrumb
     - field.field.node.page.field_list_media
     - field.field.node.page.field_meta_tags
@@ -62,7 +62,7 @@ content: {  }
 hidden:
   body: true
   field_description: true
-  field_hero: true
+  field_header: true
   field_hide_breadcrumb: true
   field_list_media: true
   field_meta_tags: true
