@@ -99,18 +99,18 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if (!is_null($route_entity) && $route_entity->hasField('field_hero')) {
+    if (!is_null($route_entity) && $route_entity->hasField('field_header')) {
       $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
 
-      if (!$route_entity->get('field_hero')->isEmpty()) {
+      if (!$route_entity->get('field_header')->isEmpty()) {
         try {
-          $pid = $route_entity->get('field_hero')->first();
+          $pid = $route_entity->get('field_header')->first();
           if (!is_null($pid)) {
             $pid = $pid->getValue()['target_id'];
             $paragraph = Paragraph::load($pid);
             if (!is_null($paragraph)) {
-              $build['hero'] = $this->entityTypeManager->getViewBuilder('paragraph')->view($paragraph);
-              $build['hero']['#title'] = $route_entity->label();
+              $build['header'] = $this->entityTypeManager->getViewBuilder('paragraph')->view($paragraph);
+              $build['header']['#title'] = $route_entity->label();
               $build['#cache']['tags'] += $paragraph->getCacheTagsToInvalidate();
             }
           }
@@ -120,7 +120,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
         }
       }
     }
-    if (!isset($build['hero'])) {
+    if (!isset($build['header'])) {
       $request = $this->request_stack->getCurrentRequest();
       $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
       $build['title'] = [
