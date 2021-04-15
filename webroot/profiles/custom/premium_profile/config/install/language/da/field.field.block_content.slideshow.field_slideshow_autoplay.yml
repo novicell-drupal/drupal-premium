@@ -1,0 +1,4 @@
+label: 'Automatisk afspilning'
+settings:
+  on_label: Til
+  off_label: Fra
