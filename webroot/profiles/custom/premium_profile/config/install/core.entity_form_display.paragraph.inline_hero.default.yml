@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.inline_hero.field_text
     - field.field.paragraph.inline_hero.field_text_color
     - field.field.paragraph.inline_hero.field_text_position
-    - field.field.paragraph.inline_hero.field_title
     - paragraphs.paragraphs_type.inline_hero
   module:
     - media_library
@@ -61,14 +60,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  field_title:
-    weight: 0
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
 hidden:
   created: true
