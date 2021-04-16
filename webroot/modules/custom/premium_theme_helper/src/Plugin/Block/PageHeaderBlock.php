@@ -2,20 +2,16 @@
 
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\Route;
 
 /**
  * Provides a 'Hero' block.
@@ -40,7 +36,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
    *
    * @var \Drupal\Core\Controller\TitleResolverInterface
    */
-  protected $request_stack;
+  protected $requestStack;
 
   /**
    * The entity type manager.
@@ -58,15 +54,21 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The breadcrumb manager.
+   * @param \Drupal\Core\Controller\TitleResolverInterface $titleResolver
+   *   Title resolver.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
    *   Logger.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *   Request stack.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   Entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, TitleResolverInterface $titleResolver, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger, RequestStack $request_stack, EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, TitleResolverInterface $titleResolver, RouteMatchInterface $routeMatch, LoggerChannelFactoryInterface $logger, RequestStack $requestStack, EntityTypeManagerInterface $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $routeMatch, $logger);
     $this->titleResolver = $titleResolver;
-    $this->request_stack = $request_stack;
+    $this->requestStack = $requestStack;
     $this->entityTypeManager = $entityTypeManager;
   }
 
@@ -80,7 +82,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
     $titleResolver = $container->get('title_resolver');
     /** @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger */
     $logger = $container->get('logger.factory');
-    /** @var RequestStack $request_stack */
+    /** @var \Symfony\Component\HttpFoundation\RequestStack $request_stack */
     $request_stack = $container->get('request_stack');
     /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager */
     $entityTypeManager = $container->get('entity_type.manager');
@@ -88,14 +90,14 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public function build(): array {
     $build = [
       '#cache' => [
         'contexts' => ['url'],
-        'tags' => []
-      ]
+        'tags' => [],
+      ],
     ];
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
@@ -122,12 +124,14 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
       }
     }
     if (!isset($build['header'])) {
-      $request = $this->request_stack->getCurrentRequest();
-      $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
-      $build['title'] = [
-        '#theme' => 'page_title',
-        '#title' => $title,
-      ];
+      $request = $this->requestStack->getCurrentRequest();
+      if (!is_null($request)) {
+        $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
+        $build['title'] = [
+          '#theme' => 'page_title',
+          '#title' => $title,
+        ];
+      }
     }
 
     return $build;
