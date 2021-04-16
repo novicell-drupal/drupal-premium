@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the premium_profile install profile.
  */
 
+use Drupal\Core\Extension\ModuleInstaller;
+
 /**
  * Implements hook_install().
  *
@@ -25,6 +27,20 @@ function premium_profile_install() {
     ->getEditable('system.theme')
     ->set('default', $theme)
     ->save();
+
+  /** @var ModuleInstaller $installer */
+  $installer = \Drupal::service('module_installer');
+  $module_data = \Drupal::service('extension.list.module')->reset()->getList();
+  $optional_modules = ['gtm', 'cookiebot', 'content_hierarchy'];
+  $installed_modules = [];
+  foreach ($optional_modules as $module) {
+    if (!empty($module_data[$module])) {
+      $installed_modules[] = $module;
+    }
+  }
+  if (!empty($installed_modules)) {
+    $installer->install($installed_modules);
+  }
 
   drupal_flush_all_caches();
 }

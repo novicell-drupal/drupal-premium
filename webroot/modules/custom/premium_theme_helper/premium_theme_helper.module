@@ -22,4 +22,48 @@ function premium_theme_helper_theme($existing, $type, $theme, $path) {
   ];
 }
 
+/**
+ * Implements hook_field_widget_multivalue_form_alter().
+ */
+function premium_theme_helper_field_widget_multivalue_form_alter(array &$elements, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+  switch ($context['items']->getName()) {
+    case 'field_inline_navigation_pages':
+      $parents = $elements[0]['target_id']['#field_parents'];
+      $parents_input_name = array_shift($parents);
+      $parents_input_name .= '[' . implode('][', $parents) . ']';
+      $elements['#states'] = [
+        'visible' => [
+          ':input[name="'.$parents_input_name.'[field_inline_navigation_mode]"]' => ["value" => "pages"],
+        ],
+      ];
+      $elements['#type'] = 'prevent_php_error';
+      break;
+    case 'field_inline_navigation_parent':
+      $parents = $elements[0]['target_id']['#field_parents'];
+      $parents_input_name = array_shift($parents);
+      $parents_input_name .= '[' . implode('][', $parents) . ']';
+      $elements[0]['target_id']['#states'] = [
+        'visible' => [
+          ':input[name="'.$parents_input_name.'[field_inline_navigation_mode]"]' => ["value" => "parent"],
+        ],
+      ];
+      if($elements[0]['target_id']['#default_value'] == null) {
+        if($section_storage = \Drupal::request()->get('section_storage')) {
+          $elements[0]['target_id']['#default_value'] = $section_storage->getContextValue('entity');
+        }
+      }
+      break;
+  }
+}
+
+/**
+ * @param array $exceptions
+ */
+function premium_theme_helper_layout_block_field_exceptions_alter(&$exceptions) {
+  $exceptions = array_merge($exceptions, [
+    'field_inline_navigation_pages',
+    'field_inline_navigation_parent'
+  ]);
+}
+
 require_once __DIR__ . '/includes/layout-builder.inc';

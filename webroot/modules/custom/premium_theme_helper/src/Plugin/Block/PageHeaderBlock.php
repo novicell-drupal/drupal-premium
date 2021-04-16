@@ -5,6 +5,7 @@ namespace Drupal\premium_theme_helper\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -99,7 +100,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if (!is_null($route_entity) && $route_entity->hasField('field_header')) {
+    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_header')) {
       $build['#cache']['tags'] += $route_entity->getCacheTagsToInvalidate();
 
       if (!$route_entity->get('field_header')->isEmpty()) {
