@@ -26,8 +26,6 @@ third_party_settings:
       whitelisted_blocks: {  }
       blacklisted_blocks: {  }
       allowed_layouts: {  }
-_core:
-  default_config_hash: QRbk4ihUlpN1sui33lubRAL9CZeLJBv8AqOZXc3-DEg
 id: node.page.inline_navigation
 targetEntityType: node
 bundle: page
