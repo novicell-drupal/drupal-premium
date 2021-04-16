@@ -14,7 +14,6 @@ dependencies:
   module:
     - layout_builder
     - layout_builder_restrictions
-    - layout_discovery
     - user
 third_party_settings:
   layout_builder:
@@ -40,6 +39,7 @@ third_party_settings:
         'Chaos Tools': {  }
         'Content fields': {  }
         'Custom block types':
+          - inline_navigation
           - accordion
           - appetizer
           - button
@@ -62,6 +62,7 @@ third_party_settings:
           - 'inline_block:divider'
           - 'inline_block:hero'
           - 'inline_block:image'
+          - 'inline_block:inline_navigation'
           - 'inline_block:quote'
           - 'inline_block:slideshow'
           - 'inline_block:spacer'
