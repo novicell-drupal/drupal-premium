@@ -7,7 +7,7 @@
       {% for item in items %}
         {% include '@molecules/inline-navigation-item/inline-navigation-item.twig' with {
           'url': item.url,
-          'image': item.image,
+          'media': item.media,
           'label': item.label,
           'teaser': item.teaser
         } %}

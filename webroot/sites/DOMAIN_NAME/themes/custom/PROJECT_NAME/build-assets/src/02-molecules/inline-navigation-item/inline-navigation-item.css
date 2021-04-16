@@ -46,6 +46,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-shrink: 0;
+    width: 100%;
     flex-grow: 0;
   }
 

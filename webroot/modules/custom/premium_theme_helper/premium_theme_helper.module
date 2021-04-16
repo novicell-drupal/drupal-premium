@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+
 require_once __DIR__ . '/includes/layout-builder.inc';
 
 /**
@@ -32,7 +34,7 @@ require_once __DIR__ . '/includes/layout-builder.inc';
 function premium_theme_helper_locale_translation_projects_alter(array &$projects) {
   $module_handler = \Drupal::service('module_handler');
   $path = $module_handler->getModule('premium_theme_helper')->getPath();
-  $projects['premium_theme_helper']['info']['interface translation server pattern'] = $path.'/translations/%language.po';
+  $projects['premium_theme_helper']['info']['interface translation server pattern'] = $path . '/translations/%language.po';
 }
 
 /**
@@ -42,16 +44,25 @@ function premium_theme_helper_theme(): array {
   return [
     'page_title' => [
       'variables' => [
-        'title' => ''
-      ]
+        'title' => '',
+      ],
     ],
   ];
 }
 
 /**
- * Implements hook_field_widget_multivalue_form_alter().
+ * Add states for inline navigation.
+ *
+ * @param array $elements
+ *   The field widget form elements as constructed by
+ *   \Drupal\Core\Field\WidgetBase::formMultipleElements().
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ * @param array $context
+ *   An associative array. See hook_field_widget_multivalue_form_alter() for
+ *   the structure and content of the array.
  */
-function premium_theme_helper_field_widget_multivalue_form_alter(array &$elements, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+function premium_theme_helper_field_widget_multivalue_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
   switch ($context['items']->getName()) {
     case 'field_inline_navigation_pages':
       $parents = $elements[0]['target_id']['#field_parents'];
@@ -59,37 +70,35 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
       $parents_input_name .= '[' . implode('][', $parents) . ']';
       $elements['#states'] = [
         'visible' => [
-          ':input[name="'.$parents_input_name.'[field_inline_navigation_mode]"]' => ["value" => "pages"],
+          ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "pages"],
         ],
       ];
       $elements['#type'] = 'prevent_php_error';
       break;
+
+    case 'field_inline_navigation_mode':
+      if (!Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
+        $elements['#access'] = FALSE;
+      }
+      break;
+
     case 'field_inline_navigation_parent':
-      $parents = $elements[0]['target_id']['#field_parents'];
-      $parents_input_name = array_shift($parents);
-      $parents_input_name .= '[' . implode('][', $parents) . ']';
-      $elements[0]['target_id']['#states'] = [
-        'visible' => [
-          ':input[name="'.$parents_input_name.'[field_inline_navigation_mode]"]' => ["value" => "parent"],
-        ],
-      ];
-      if($elements[0]['target_id']['#default_value'] == null) {
-        if($section_storage = \Drupal::request()->get('section_storage')) {
+      if (Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
+        $parents = $elements[0]['target_id']['#field_parents'];
+        $parents_input_name = array_shift($parents);
+        $parents_input_name .= '[' . implode('][', $parents) . ']';
+        $elements[0]['target_id']['#states'] = [
+          'visible' => [
+            ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "parent"],
+          ],
+        ];
+        if (is_null($elements[0]['target_id']['#default_value']) && $section_storage = \Drupal::request()->get('section_storage')) {
           $elements[0]['target_id']['#default_value'] = $section_storage->getContextValue('entity');
         }
+      }
+      else {
+        $elements[0]['#access'] = FALSE;
       }
       break;
   }
 }
-
-/**
- * @param array $exceptions
- */
-function premium_theme_helper_layout_block_field_exceptions_alter(&$exceptions) {
-  $exceptions = array_merge($exceptions, [
-    'field_inline_navigation_pages',
-    'field_inline_navigation_parent'
-  ]);
-}
-
-require_once __DIR__ . '/includes/layout-builder.inc';

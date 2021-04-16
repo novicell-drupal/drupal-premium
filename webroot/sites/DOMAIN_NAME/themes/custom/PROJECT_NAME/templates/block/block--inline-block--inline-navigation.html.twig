@@ -26,11 +26,13 @@
  */
 #}
 {% embed '@organisms/inline-navigation/inline-navigation.twig' with {
-  'attributes': attributes,
-  'content': content
+  'attributes': attributes
 } %}
   {% block block_content %}
     {{ title_prefix }}
     {{ title_suffix }}
+  {% endblock %}
+  {% block content %}
+    {{ content }}
   {% endblock %}
 {% endembed %}
