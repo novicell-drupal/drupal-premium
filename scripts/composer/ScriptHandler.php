@@ -20,6 +20,7 @@ class ScriptHandler {
    * @var string[][][]
    */
   private static $optional_modules = [
+    'None' => [],
     'Cookiebot' => [
       [
         'package' => 'drupal/cookiebot',
