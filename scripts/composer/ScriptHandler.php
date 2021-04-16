@@ -20,6 +20,7 @@ class ScriptHandler {
    * @var string[][][]
    */
   private static $optional_modules = [
+    'None' => [],
     'Cookiebot' => [
       [
         'package' => 'drupal/cookiebot',
@@ -38,7 +39,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/content_hierarchy',
         'operator' => '^',
-        'version' => '0.1'
+        'version' => '0.2.0'
       ]
     ]
   ];
