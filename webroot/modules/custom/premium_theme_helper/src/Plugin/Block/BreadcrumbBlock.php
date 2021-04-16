@@ -3,6 +3,7 @@
 namespace Drupal\premium_theme_helper\Plugin\Block;
 
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
@@ -68,7 +69,7 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
-    if (!is_null($route_entity) && $route_entity->hasField('field_hide_breadcrumb')) {
+    if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_hide_breadcrumb')) {
       try {
         $data = $route_entity->get('field_hide_breadcrumb')->first();
         if (!is_null($data) && (int) $data->getValue()['value'] === 1) {
