@@ -6,9 +6,6 @@ dependencies:
     - field.field.block_content.inline_navigation.field_inline_navigation_mode
     - field.field.block_content.inline_navigation.field_inline_navigation_pages
     - field.field.block_content.inline_navigation.field_inline_navigation_parent
-  enforced:
-    module:
-      - dds_layout_block_inline_navigation
   module:
     - options
 id: block_content.inline_navigation.default
