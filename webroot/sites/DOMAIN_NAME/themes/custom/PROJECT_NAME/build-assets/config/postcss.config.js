@@ -15,6 +15,7 @@ module.exports = {
         `${config.root_folder}/../../node_modules/**/*.css`,
       ],
     }),
+    require('./postcss-plugins/postcss-nested-import'),
     require('postcss-preset-env')({
       importFrom: [path.join(config.paths.src, '_base/_custom-media.css')],
       stage: 3,

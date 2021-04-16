@@ -1,10 +1,10 @@
 /**
  * Type: Atom.
- * Button (p- is a prefix for premium specific).
+ * Button.
  */
 
-.p-button,
-a.p-button {
+.button,
+a.button {
   position: relative;
   display: inline-flex;
   align-items: center;

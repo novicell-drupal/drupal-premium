@@ -16,6 +16,10 @@
       input[type="search"] {
         height: 100%;
       }
+
+      .button {
+        margin-top: 0;
+      }
     }
   }
 

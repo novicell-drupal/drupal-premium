@@ -25,21 +25,12 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {% if url and title %}
-    {% set button_attributes = create_attribute() %}
-    {% if target %}
-      {% set button_attributes = button_attributes.setAttribute('target', target) %}
-    {% endif %}
-    {% if alignment %}
-      {% set button_attributes = button_attributes.addClass('button--' ~ alignment) %}
-    {% endif %}
-    {% include '@particles/button/button--link.twig' with {
-      'url': url,
-      'text': title,
-      'attributes': button_attributes
-    } %}
-  {% endif %}
-</div>
+{% embed '@organisms/inline-navigation/inline-navigation.twig' with {
+  'attributes': attributes,
+  'content': content
+} %}
+  {% block block_content %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

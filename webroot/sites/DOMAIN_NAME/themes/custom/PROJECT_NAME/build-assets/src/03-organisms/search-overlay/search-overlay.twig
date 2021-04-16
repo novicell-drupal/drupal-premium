@@ -22,7 +22,8 @@
           } %}
           {% embed '@particles/button/button.twig' with {
             'attributes': create_attribute().addClass('search-overlay__submit'),
-            'type': 'submit'
+            'type': 'submit',
+            'skip_button_class': true
           } %}
             {% block content %}
               {% include '@particles/svg-icon/svg-icon.twig' with {
