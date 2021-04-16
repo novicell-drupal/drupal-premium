@@ -8,13 +8,7 @@ master:
       build-assets/dist/css/_base/_fonts.css: {}
       build-assets/dist/css/_base/_grid.css: {}
       build-assets/dist/css/_base/_helpers.css: {}
-      build-assets/dist/css/_base/_forms.css: {}
-      build-assets/dist/css/01-particles/button/button.css: {}
-      build-assets/dist/css/01-particles/forms/checkbox/checkbox.css: {}
-      build-assets/dist/css/01-particles/forms/input/input.css: {}
-      build-assets/dist/css/01-particles/forms/label/label.css: {}
-      build-assets/dist/css/01-particles/forms/radio/radio.css: {}
-      build-assets/dist/css/01-particles/forms/select/select.css: {}
+      build-assets/dist/css/_base/_form-styling.css: {}
       build-assets/dist/css/01-particles/forms/textarea/textarea.css: {}
 
 # Themes.

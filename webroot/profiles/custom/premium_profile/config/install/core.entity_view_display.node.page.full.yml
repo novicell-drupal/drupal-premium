@@ -14,6 +14,7 @@ dependencies:
   module:
     - layout_builder
     - layout_builder_restrictions
+    - layout_discovery
     - user
 third_party_settings:
   layout_builder:
@@ -24,13 +25,12 @@ third_party_settings:
       - 'Chaos Tools'
       - 'Content fields'
       - 'Custom block types'
-      - 'Custom blocks'
-      - Devel
       - Forms
       - Help
       - 'Inline blocks'
       - 'Lists (Views)'
       - Menus
+      - Premium
       - System
       - User
       - Webform
@@ -39,12 +39,37 @@ third_party_settings:
       whitelisted_blocks:
         'Chaos Tools': {  }
         'Content fields': {  }
-        'Custom blocks': {  }
-        Devel: {  }
+        'Custom block types':
+          - accordion
+          - appetizer
+          - button
+          - code
+          - divider
+          - hero
+          - image
+          - quote
+          - rte
+          - slideshow
+          - spacer
+          - video
         Forms: {  }
         Help: {  }
+        'Inline blocks':
+          - 'inline_block:accordion'
+          - 'inline_block:appetizer'
+          - 'inline_block:button'
+          - 'inline_block:code'
+          - 'inline_block:divider'
+          - 'inline_block:hero'
+          - 'inline_block:image'
+          - 'inline_block:quote'
+          - 'inline_block:slideshow'
+          - 'inline_block:spacer'
+          - 'inline_block:rte'
+          - 'inline_block:video'
         'Lists (Views)': {  }
         Menus: {  }
+        Premium: {  }
         System: {  }
         User: {  }
         Webform: {  }

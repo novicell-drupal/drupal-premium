@@ -18,14 +18,7 @@
     <link media="all" rel="stylesheet" href="/dist/css/_base/_fonts.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_base/_grid.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/_base/_helpers.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/_base/_forms.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/button/button.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/checkbox/checkbox.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/input/input.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/label/label.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/radio/radio.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/select/select.css"/>
-    <link media="all" rel="stylesheet" href="/dist/css/01-particles/forms/textarea/textarea.css"/>
+    <link media="all" rel="stylesheet" href="/dist/css/_base/_form-styling.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/02-molecules/breadcrumb/breadcrumb.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/02-molecules/burger/burger.css"/>
     <link media="all" rel="stylesheet" href="/dist/css/02-molecules/divider/divider.css"/>
@@ -66,7 +59,7 @@
     {% endif %}
     <title>{{ _target.title }}</title>
   </head>
-  <body id="site" {{ _target.alias not in ['frontpage', 'search', 'article'] ? 'style="padding-top: 0;"' }}>
+  <body id="site" class="premium-layout-wrapper" {{ _target.alias not in ['frontpage', 'search', 'article'] ? 'style="padding-top: 0;"' }}>
     <main>
       {{ yield }}
     </main>

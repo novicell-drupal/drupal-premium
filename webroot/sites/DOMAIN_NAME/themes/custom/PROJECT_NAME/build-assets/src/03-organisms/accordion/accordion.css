@@ -11,7 +11,7 @@
     margin-bottom: 25px;
   }
 
-  &__items + .p-button {
+  &__items + .button {
     margin-top: 20px;
   }
 }

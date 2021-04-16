@@ -43,59 +43,62 @@
  * @see html.html.twig
  */
 #}
-{% block page_preheader %}
-  {{ page.preheader }}
-{% endblock %}
-
-<div class="layout-container">
-  {% block page_top %}
-    {{ page.header }}
+<div class="premium-layout-wrapper">
+  {% block page_preheader %}
+    {{ page.preheader }}
   {% endblock %}
 
-  {% block pageheader %}
-    {{ page.pageheader }}
+  <div class="layout-container">
+    {% block page_top %}
+      {{ page.header }}
+    {% endblock %}
+
+    {% block pageheader %}
+      {{ page.pageheader }}
+    {% endblock %}
+
+    {% block page_breadcrumb %}
+      {{ page.breadcrumb }}
+    {% endblock %}
+
+    {% block page_main %}
+      <main role="main" vocab="http://schema.org" typeof="WebPageElement" property="mainContentOfPage">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+        <div class="layout-content">
+          {{ page.content }}
+        </div>{# /.layout-content #}
+      </main>
+    {% endblock %}
+
+    {% block page_footer %}
+      {% include '@organisms/footer/footer.twig' with {
+        'cols': [
+          {
+            'headline': atom('footer-col1-header'),
+            'content': atom('footer-col1-text'),
+          },
+          {
+            'headline': atom('footer-col2-header'),
+            'content': atom('footer-col2-text'),
+          },
+          {
+            'headline': atom('footer-col3-header'),
+            'content': atom('footer-col3-text'),
+          },
+          {
+            'headline': atom('footer-col4-header'),
+            'content': atom('footer-col4-text'),
+          }
+        ]
+      } %}
+    {% endblock %}
+  </div>{# /.layout-container #}
+
+  {% block page_burgermenu %}
+    {{ page.burgermenu }}
   {% endblock %}
 
-  {% block page_breadcrumb %}
-    {{ page.breadcrumb }}
-  {% endblock %}
+  {# Add search overlay to all pages #}
+  {% include '@organisms/search-overlay/search-overlay.twig' %}
 
-  {% block page_main %}
-    <main role="main" vocab="http://schema.org" typeof="WebPageElement" property="mainContentOfPage">
-      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-      <div class="layout-content">
-        {{ page.content }}
-      </div>{# /.layout-content #}
-    </main>
-  {% endblock %}
-
-  {% block page_footer %}
-    {% include '@organisms/footer/footer.twig' with {
-      'cols': [
-        {
-          'headline': atom('footer-col1-header'),
-          'content': atom('footer-col1-text'),
-        },
-        {
-          'headline': atom('footer-col2-header'),
-          'content': atom('footer-col2-text'),
-        },
-        {
-          'headline': atom('footer-col3-header'),
-          'content': atom('footer-col3-text'),
-        },
-        {
-          'headline': atom('footer-col4-header'),
-          'content': atom('footer-col4-text'),
-        }
-      ]
-    } %}
-  {% endblock %}
-</div>{# /.layout-container #}
-
-{% block page_burgermenu %}
-  {{ page.burgermenu }}
-{% endblock %}
-
-{# Add search overlay to all pages #}
-{% include '@organisms/search-overlay/search-overlay.twig' %}
+</div>
