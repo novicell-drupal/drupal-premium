@@ -93,6 +93,7 @@ install:
   - paragraphs
   - paragraphs_asymmetric_translation_widgets
   - redirect
+  - role_delegation
   - scheduled_transitions
   - search_api
   - search_api_page
