@@ -31,7 +31,7 @@ function premium_profile_install() {
   /** @var ModuleInstaller $installer */
   $installer = \Drupal::service('module_installer');
   $module_data = \Drupal::service('extension.list.module')->reset()->getList();
-  $optional_modules = ['gtm', 'cookiebot', 'content_hierarchy', 'content_hierarchy_path', 'content_hierarchy_breadcrumb'];
+  $optional_modules = ['gtm', 'cookiebot', 'content_hierarchy', 'content_hierarchy_path', 'content_hierarchy_breadcrumb', 'ie_warning'];
   $installed_modules = [];
   foreach ($optional_modules as $module) {
     if (!empty($module_data[$module])) {

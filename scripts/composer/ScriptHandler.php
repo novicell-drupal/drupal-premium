@@ -41,6 +41,13 @@ class ScriptHandler {
         'operator' => '^',
         'version' => '0.2.0'
       ]
+    ],
+    'IE Warning' => [
+      [
+        'package' => 'novicell/ie_warning',
+        'operator' => '^',
+        'version' => '0.1.0'
+      ]
     ]
   ];
 
