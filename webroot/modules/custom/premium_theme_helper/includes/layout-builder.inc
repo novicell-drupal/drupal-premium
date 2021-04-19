@@ -1,11 +1,12 @@
 <?php
 
 use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Serialization\Json;
 use Drupal\premium_theme_helper\Element\LayoutBuilder;
 use Drupal\premium_theme_helper\Plugin\Layout\ThreeColumnLayout;
 use Drupal\premium_theme_helper\Plugin\Layout\TwoColumnLayout;
 use Drupal\premium_theme_helper\Plugin\Layout\OneColumnLayout;
+use Drupal\views\ViewExecutable;
 
 /**
  * Layout alter - Change and remove definitions.
@@ -110,6 +111,26 @@ function premium_theme_helper_theme_suggestions_block_alter(array &$suggestions,
     $block_content_entity = $block['content']['#block_content'];
     if ($block_content_entity->hasField('reusable') && (int) $block_content_entity->get('reusable')->value === 1) {
       $suggestions[] = 'block__inline_block__' . $bundle;
+    }
+  }
+}
+
+/**
+ * Adding libraries to a view as pre render.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   View.
+ */
+function premium_theme_helper_views_pre_render(ViewExecutable $view) {
+  $routeName = Drupal::routeMatch()->getRouteName();
+  // Check if current theme isn't a admin theme,
+  // because isAdminRoute wont work here because media_library/layout_builder
+  // can be used in backend/frontend so the route do not have a _admin_route.
+  if ($view->id() === 'media_library' && (strpos($routeName, 'layout_builder.') !== FALSE || strpos($routeName, 'media_library.') !== FALSE)) {
+    $activeTheme = Drupal::theme()->getActiveTheme()->getName();
+    $systemTheme = Drupal::config('system.theme')->get('admin');
+    if ($activeTheme !== $systemTheme) {
+      $view->element['#attached']['library'][] = 'premium_theme/layout-builder-media';
     }
   }
 }
