@@ -107,6 +107,7 @@ install:
   - premium_tools
   - premium_theme_helper
   - premium_search
+  - status_feed
 themes:
   - adminimal_theme
   - PROJECT_NAME
