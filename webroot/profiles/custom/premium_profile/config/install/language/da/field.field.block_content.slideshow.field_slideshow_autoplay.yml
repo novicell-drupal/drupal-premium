@@ -1,4 +1,4 @@
-label: 'Automatisk afspilning'
+label: Autoplay
 settings:
-  on_label: Til
-  off_label: Fra
+  on_label: Tilsluttet
+  off_label: Afbrudt

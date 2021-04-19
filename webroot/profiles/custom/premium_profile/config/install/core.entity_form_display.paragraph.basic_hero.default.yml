@@ -5,6 +5,7 @@ dependencies:
     - field.field.paragraph.basic_hero.field_background
     - field.field.paragraph.basic_hero.field_color_theme
     - field.field.paragraph.basic_hero.field_cta
+    - field.field.paragraph.basic_hero.field_link
     - field.field.paragraph.basic_hero.field_overlay
     - field.field.paragraph.basic_hero.field_text
     - field.field.paragraph.basic_hero.field_text_color
@@ -76,4 +77,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_link: true
   status: true
