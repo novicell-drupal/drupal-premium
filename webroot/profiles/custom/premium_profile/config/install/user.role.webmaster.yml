@@ -27,6 +27,8 @@ permissions:
   - 'administer users'
   - 'administer webform'
   - 'administer webform submission'
+  - 'assign editor role'
+  - 'assign webmaster role'
   - 'clone node entity'
   - 'configure all page node layout overrides'
   - 'configure any layout'
