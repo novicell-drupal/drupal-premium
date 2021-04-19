@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - system
+    - premium_theme_helper
   theme:
     - PROJECT_NAME
 id: breadcrumbs
@@ -10,10 +10,10 @@ theme: PROJECT_NAME
 region: breadcrumb
 weight: 0
 provider: null
-plugin: system_breadcrumb_block
+plugin: premium_breadcrumb_block
 settings:
-  id: system_breadcrumb_block
+  id: premium_breadcrumb_block
   label: Breadcrumbs
-  provider: system
+  provider: premium_theme_helper
   label_display: '0'
 visibility: {  }

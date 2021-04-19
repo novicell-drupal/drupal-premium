@@ -2,6 +2,7 @@ enabled_entity_types:
   - user
 punctuation:
   hyphen: 1
+  slash: 2
 verbose: false
 separator: '-'
 max_length: 100
