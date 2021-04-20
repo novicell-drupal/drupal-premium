@@ -20,3 +20,84 @@ msgstr "Beskrivelsen er brugt til meta tags, søgeresultater og inline navigatio
 
 msgid "Page settings"
 msgstr "Sideindstillinger"
+
+msgid "One column"
+msgstr "En kolonne"
+
+msgid "Two column"
+msgstr "To kolonne"
+
+msgid "Three column"
+msgstr "Tre kolonne"
+
+msgid "Section @section"
+msgstr "Sektion @section"
+
+msgid "Section (@type): @label"
+msgstr "Sektion (@type): @label"
+
+msgid "Sections"
+msgstr "Sektioner"
+
+msgid "Sections in @storage_label layout"
+msgstr "Sektioner i @storage_label layout"
+
+msgid "Layout Section"
+msgstr "Layout Sektion"
+
+msgid "Add section"
+msgstr "Tilføj sektion"
+
+msgid "Add block"
+msgstr "Tilføj blok"
+
+msgid "Configure section"
+msgstr "Konfigurér sektion"
+
+msgid "Choose a layout for this section"
+msgstr "Vælg et layout for denne sektion"
+
+msgid "Reorder sections"
+msgstr "Omarranger sektioner"
+
+msgid "Show content preview"
+msgstr "Vis forhåndsvisning af indhold"
+
+msgid "Color theme"
+msgstr "Farve tema"
+
+msgid "Choose color theme this layout."
+msgstr "Vælg farve tema for dette layout."
+
+msgid "Column spacing top"
+msgstr "Kolonneafstand i top"
+
+msgid "Column spacing bottom"
+msgstr "Kolonneafstand i bund"
+
+msgid "Choose column spacing for this layout."
+msgstr "Vælg kolonneafstand for dette layout."
+
+msgid "Change to"
+msgstr "Ændre til"
+
+msgid "Create New Draft"
+msgstr "Opret ny kladde"
+
+msgid "Create @entity_type"
+msgstr "Opret @entity_type"
+
+msgid "Saving draft..."
+msgstr "Gemmer kladde..."
+
+msgid "Save layout"
+msgstr "Gem layout"
+
+msgid "You are editing the layout for this @bundle @singular_label. <a href=":link">Edit the template for all @bundle @plural_label instead.</a>"
+msgstr "Du redigerer layoutet for denne @bundle @singular_label. <a href=":link">Rediger skabelonen til al @bundle @plural_label i stedet.</a>"
+
+msgid "You are editing the layout for this @bundle @singular_label."
+msgstr "Du redigerer layoutet for denne @bundle @singular_label."
+
+msgid "Congratulations, you installed Drupal Premium!"
+msgstr "Tillykke, du har installeret Drupal Premium!"
