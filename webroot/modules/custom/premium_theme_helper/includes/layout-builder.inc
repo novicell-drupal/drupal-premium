@@ -106,9 +106,10 @@ function premium_theme_helper_preprocess_block__inline_block(&$variables) {
 function premium_theme_helper_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   $block = $variables['elements'];
   $block_type = $block['#configuration']['provider'];
-  if ($block_type === 'block_content') {
-    $bundle = $block['#configuration']['type'];
+  if ($block_type === 'block_content' && isset($block['content']['#block_content'])) {
+    /** @var \Drupal\block_content\Entity\BlockContent $block_content_entity */
     $block_content_entity = $block['content']['#block_content'];
+    $bundle = $block_content_entity->bundle();
     if ($block_content_entity->hasField('reusable') && (int) $block_content_entity->get('reusable')->value === 1) {
       $suggestions[] = 'block__inline_block__' . $bundle;
     }
