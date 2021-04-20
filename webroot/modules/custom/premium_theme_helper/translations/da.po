@@ -48,8 +48,20 @@ msgstr "Layout Sektion"
 msgid "Add section"
 msgstr "Tilføj sektion"
 
+msgid "Add section <span class=\"visually-hidden\">at start of layout</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">ved starten af layout</span>"
+
+msgid "Add section <span class=\"visually-hidden\">at end of layout</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">ved slutningen af layout</span>"
+
+msgid "Add section <span class=\"visually-hidden\">between @first and @second</span>"
+msgstr "Tilføj sektion <span class=\"visually-hidden\">mellem @first og @second</span>"
+
 msgid "Add block"
 msgstr "Tilføj blok"
+
+msgid "Add block <span class=\"visually-hidden\">in @section, @region region</span>"
+msgstr "Tilføj blok <span class=\"visually-hidden\">i @section, @region region</span>"
 
 msgid "Configure section"
 msgstr "Konfigurér sektion"
@@ -68,6 +80,12 @@ msgstr "Farve tema"
 
 msgid "Choose color theme this layout."
 msgstr "Vælg farve tema for dette layout."
+
+msgid "Column width"
+msgstr "Kolonnebredde"
+
+msgid "Choose column width for this layout."
+msgstr "Vælg kolonnebredde for dette layout."
 
 msgid "Column spacing top"
 msgstr "Kolonneafstand i top"
@@ -101,3 +119,12 @@ msgstr "Du redigerer layoutet for denne @bundle @singular_label."
 
 msgid "Congratulations, you installed Drupal Premium!"
 msgstr "Tillykke, du har installeret Drupal Premium!"
+
+msgid "Are you sure you want to remove the %label block?"
+msgstr "Er du sikker på, at du vil fjerne %label blokken?"
+
+msgid "Are you sure you want to remove section @section?"
+msgstr "Er du sikker på, at du vil fjerne sektion @section?"
+
+msgid "Are you sure you want to discard your layout changes?"
+msgstr "Er du sikker på, at du vil kassere dine layoutændringer?"
