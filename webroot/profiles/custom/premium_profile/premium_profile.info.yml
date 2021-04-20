@@ -26,6 +26,7 @@ distribution:
   # langcode: da
 
 install:
+  - dblog
   - node
   - history
   - big_pipe
