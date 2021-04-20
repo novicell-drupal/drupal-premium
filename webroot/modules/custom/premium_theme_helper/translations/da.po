@@ -81,6 +81,12 @@ msgstr "Farve tema"
 msgid "Choose color theme this layout."
 msgstr "Vælg farve tema for dette layout."
 
+msgid "Column width"
+msgstr "Kolonnebredde"
+
+msgid "Choose column width for this layout."
+msgstr "Vælg kolonnebredde for dette layout."
+
 msgid "Column spacing top"
 msgstr "Kolonneafstand i top"
 
@@ -113,3 +119,12 @@ msgstr "Du redigerer layoutet for denne @bundle @singular_label."
 
 msgid "Congratulations, you installed Drupal Premium!"
 msgstr "Tillykke, du har installeret Drupal Premium!"
+
+msgid "Are you sure you want to remove the %label block?"
+msgstr "Er du sikker på, at du vil fjerne %label blokken?"
+
+msgid "Are you sure you want to remove section @section?"
+msgstr "Er du sikker på, at du vil fjerne sektion @section?"
+
+msgid "Are you sure you want to discard your layout changes?"
+msgstr "Er du sikker på, at du vil kassere dine layoutændringer?"

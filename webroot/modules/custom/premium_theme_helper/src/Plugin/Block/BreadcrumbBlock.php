@@ -113,6 +113,10 @@ class BreadcrumbBlock extends RouteEntityBaseBlock {
       ],
       '#value' => json_encode($breadcrumb_json_data),
     ];
+    $status = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception');
+    if ($status && $status->getStatusCode() != 200){
+      $build['#cache']['max-age'] = 0;
+    }
 
     return $build;
   }
