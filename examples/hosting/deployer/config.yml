@@ -13,6 +13,7 @@
     - 'webroot/sites/DOMAIN_NAME/settings.local.php'
     - 'webroot/sites/DOMAIN_NAME/services.local.yml'
     - 'webroot/sites/sites.local.php'
+    - '.env'
   writable_dirs:
     - 'webroot/sites/DOMAIN_NAME/files'
   allow_anonymous_stats: false
@@ -29,7 +30,6 @@ prod:
   hostname: '81.95.247.112'
   user: PROJECT_NAME
   disable_slack: true
-  keep_releases: 2
 staging:
   <<: *base
   branch: develop

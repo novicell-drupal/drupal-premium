@@ -28,6 +28,13 @@ class ScriptHandler {
         'version' => '1.0.0-alpha8'
       ]
     ],
+    'Cookie Info' => [
+      [
+        'package' => 'novicell/cookie_info',
+        'operator' => '^',
+        'version' => '0.1.0'
+      ]
+    ],
     'GTM' => [
       [
         'package' => 'drupal/gtm',
@@ -45,6 +52,13 @@ class ScriptHandler {
     'IE Warning' => [
       [
         'package' => 'novicell/ie_warning',
+        'operator' => '^',
+        'version' => '0.1.0'
+      ]
+    ],
+    'Premium Maps' => [
+      [
+        'package' => 'novicell/premium_maps',
         'operator' => '^',
         'version' => '0.1.0'
       ]
