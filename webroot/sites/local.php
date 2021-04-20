@@ -1,6 +1,4 @@
-<?php$dotenv = Dotenv\Dotenv::createMutable('../');
-$dotenv->load();
-
+<?php
 if (!isset($_ENV['PROJECT_NAME']) || empty($_ENV['PROJECT_NAME'])) {
   $dotenv = Dotenv\Dotenv::createMutable($app_root . '/../');
   $dotenv->load();

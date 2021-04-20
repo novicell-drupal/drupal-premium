@@ -88,7 +88,6 @@ install:
   - layout_builder_restrictions
   - linkit
   - metatag
-  - monolog
   - noreferrer
   - pathauto
   - paragraphs
