@@ -26,6 +26,7 @@ distribution:
   # langcode: da
 
 install:
+  - dblog
   - node
   - history
   - big_pipe
@@ -87,7 +88,6 @@ install:
   - layout_builder_restrictions
   - linkit
   - metatag
-  - monolog
   - noreferrer
   - pathauto
   - paragraphs
