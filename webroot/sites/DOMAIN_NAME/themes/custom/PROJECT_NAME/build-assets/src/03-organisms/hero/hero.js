@@ -62,21 +62,26 @@ Drupal.behaviors.hero = {
         const iframe = iframeWrapper.querySelector('iframe');
         const oldSrc = iframe.getAttribute('src');
         let newSrc = oldSrc;
+
+        // Drupal gives us eg:
+        // media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DaE2vilQu7BQ&max_width=0&...
+        // But we want the https://www.youtube.com/embed/ version so we can talk with Youtube API.
+        const cleanUrl = decodeURIComponent(newSrc.replace('/media/oembed?url=', ''));
         if (oldSrc.indexOf('youtube') > -1) {
           isYoutube = true;
-          // Drupal gives us eg:
-          // media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DaE2vilQu7BQ&max_width=0&...
-          // But we want the https://www.youtube.com/embed/ version so we can talk with Youtube API.
-          const youtubeUrl = decodeURIComponent(newSrc.replace('/media/oembed?url=', ''));
-          const { id } = getVideoId(youtubeUrl.replace(youtubeUrl.substr(youtubeUrl.indexOf('&'), youtubeUrl.length), ''));
+          const { id } = getVideoId(cleanUrl.replace(cleanUrl.substr(cleanUrl.indexOf('&'), cleanUrl.length), ''));
           iframe.setAttribute('id', `oembed_video_id_${id}`);
           iframe.dataset.videoId = id;
           const { origin } = window.location;
           newSrc = `https://www.youtube.com/embed/${id}?mute=1&controls=0&showinfo=0&autohide=1&background=1&playsinline=1&origin=${origin}&enablejsapi=1`;
+        } else if (oldSrc.indexOf('vimeo') > -1) {
+          const { id } = getVideoId(cleanUrl.replace(cleanUrl.substr(cleanUrl.indexOf('&'), cleanUrl.length), ''));
+          newSrc = `https://player.vimeo.com/video/${id}?api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
         } else {
-          newSrc = `${oldSrc}&autoplay=1&mute=1&controls=0&showinfo=0&autohide=1&background=1`;
+          newSrc = `${oldSrc}&api=true&autoplay=1&mute=1&loop=1&autopause=0&controls=0&showinfo=0&autohide=1&background=1`;
         }
         iframe.setAttribute('src', newSrc);
+        iframe.setAttribute('allow', 'autoplay; fullscreen');
         iframeWrapper.classList.add('active');
       } else if (iframeWrapper.querySelector('video')) {
         const video = iframeWrapper.querySelector('video');
