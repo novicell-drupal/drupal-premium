@@ -98,6 +98,9 @@
   "scripts": {
     "post-root-package-install": [
       "Premium\\composer\\ScriptHandler::postRootPackageInstall"
+    ],
+    "post-create-project-cmd": [
+      "Premium\\composer\\ScriptHandler::postCreateProjectCmd"
     ]
   },
   "extra": {

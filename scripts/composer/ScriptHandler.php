@@ -286,6 +286,25 @@ class ScriptHandler {
   }
 
   /**
+   * Steps done after recipe has been installed and composer packages have been installed.
+   *
+   * @param \Composer\Script\Event $event
+   *   Composer event.
+   */
+  public static function postCreateProjectCmd(Event $event) {
+    echo "                                   .''.
+       .''.      .        *''*    :_\/_:     .
+      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.
+  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-
+ :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'
+ : /\ : :::::     *_\/_*     -= o =-  /)\    '  *
+  '..'  ':::'     * /\ *     .'/.\'.   '
+      *            *..*         :
+        *
+        *";
+  }
+
+  /**
    * @param string $directory_name
    * @param array $tokens
    */
