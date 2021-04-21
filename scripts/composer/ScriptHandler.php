@@ -154,8 +154,8 @@ class ScriptHandler {
 
     $event->getIO()->write([
       "<fg=blue>                                                     ",
-"                          ____",
-"                         .'* *.'",
+"                            ____",
+"                          .'* *.'",
 "                       __/_*_*(_",
 "                      / _______ \\",
 "                     _\\_)/___\\(_/_",
@@ -396,7 +396,7 @@ class ScriptHandler {
       "<options=bold>Now all that is left is for you to open your local development site and finish the installation of Drupal...</>",
       ""
     ]);
-    $event->getIO()->write("<href=http://" . $tokens['LOCAL_SITE'] . ">Your local site</>");
+    $event->getIO()->write("http://" . $tokens['LOCAL_SITE']);
 
   }
 
