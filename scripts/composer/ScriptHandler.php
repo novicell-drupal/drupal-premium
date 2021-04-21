@@ -138,15 +138,18 @@ class ScriptHandler {
    */
   public static function postRootPackageInstall(Event $event) {
     $event->getIO()->write([
-"<bg=blue;fg=white>      ____  ____  _____ __  __ ___ _   _ __  __",
-"<bg=blue;fg=white>    |  _ \|  _ \| ____|  \/  |_ _| | | |  \/  |",
-"<bg=blue;fg=white>     | |_) | |_) |  _| | |\/| || || | | | |\/| |",
-"<bg=blue;fg=white>     |  __/|  _ <| |___| |  | || || |_| | |  | |",
-"<bg=blue;fg=white>     |_|   |_| \_\_____|_|_ |_|___|\___/|_|__|_|",
-'<bg=blue;fg=white>    \ \      / /_ _|__  /  / \  |  _ \|  _ \\',
-"<bg=blue;fg=white>       \ \ /\ / / | |  / /  / _ \ | |_) | | | |",
-"<bg=blue;fg=white>        \ V  V /  | | / /_ / ___ \|  _ <| |_| |",
-"<bg=blue;fg=white>         \_/\_/  |___/____/_/   \_\_| \_\____/"
+"<bg=blue;fg=white>                                                     ",
+"<bg=blue;fg=white>      ____  ____  _____ __  __ ___ _   _ __  __      ",
+"<bg=blue;fg=white>     |  _ \|  _ \| ____|  \/  |_ _| | | |  \/  |     ",
+"<bg=blue;fg=white>     | |_) | |_) |  _| | |\/| || || | | | |\/| |     ",
+"<bg=blue;fg=white>     |  __/|  _ <| |___| |  | || || |_| | |  | |     ",
+"<bg=blue;fg=white>     |_|   |_| \_\_____|_|_ |_|___|\___/|_|__|_|     ",
+"<bg=blue;fg=white>      \ \      / /_ _|__  /  / \  |  _ \|  _ \\       ",
+"<bg=blue;fg=white>       \ \ /\ / / | |  / /  / _ \ | |_) | | | |      ",
+"<bg=blue;fg=white>        \ V  V /  | | / /_ / ___ \|  _ <| |_| |      ",
+"<bg=blue;fg=white>         \_/\_/  |___/____/_/   \_\_| \_\____/       ",
+"<bg=blue;fg=white>                                                     ",
+"",
     ]);
 
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
