@@ -153,6 +153,38 @@ class ScriptHandler {
       "</>",
     ]);
 
+    $event->getIO()->write([
+      "<fg=blue>                                                     ",
+"                          ____",
+"                        .'* *.'",
+"                       __/_*_*(_",
+"                      / _______ \\",
+"                     _\\_)/___\\(_/_",
+"                    / _((\\- -/))_ \\",
+"                    \\ \\())(-)(()/ /",
+"                     ' \\(((()))/ '",
+"                    / ' \\)).))/ ' \\",
+"                   / _ \\ - | - /_  \\",
+"                  (   ( .;''';. .'  )",
+"                  _\\\"__ /    )\\ __\"/_",
+"                    \\/  \\   ' /  \\/",
+"                     .'  '...' ' )",
+"                      / /  |  \\ \\",
+"                     / .   .   . \\",
+"                    /   .     .   \\",
+"                   /   /   |   \\   \\",
+"                 .'   /    b    '.  '.",
+"             _.-'    /     Bb     '-. '-._",
+"         _.-'       /      BBb       '-.  '-.",
+"        (__________(_____.dBBBb.________)____)",
+      "</>",
+    ]);
+
+    $event->getIO()->write("Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!");
+    $event->getIO()->write("I'm looking forward to helping you. This is going to be so much fun! YAY");
+    $event->getIO()->write("");
+    $event->getIO()->write("Answer these few questions and we will get you setup in no time...");
+
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
     $environment = [];
     if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
@@ -299,7 +331,7 @@ class ScriptHandler {
     exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
-    $event->getIO()->write('Installing composer packages...');
+    $event->getIO()->write('<options=bold>Installing composer packages...</>');
   }
 
   /**
@@ -309,7 +341,14 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postCreateProjectCmd(Event $event) {
+    exec('vendor/drush/drush/drush si -y');
+    exec('vendor/drush/drush/drush cex -y');
+
+    $event->getIO()->write('<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>');
+    $event->getIO()->write('');
+
     $event->getIO()->write([
+      "<fg=yellow>",
 "                                   .''.",
 "       .''.      .        *''*    :_\/_:     .",
 "      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.",
@@ -319,8 +358,9 @@ class ScriptHandler {
 "  '..'  ':::'     * /\ *     .'/.\'.   '",
 "      *            *..*         :",
 "        *",
-"        *"
-    ], true, IOInterface::VERBOSE);
+      "        *",
+"</>"
+    ]);
   }
 
   /**
