@@ -180,10 +180,10 @@ class ScriptHandler {
     ]);
 
     $event->getIO()->write([
-      "Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!",
+      "<options=bold>Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!",
       "I'm looking forward to helping you. This is going to be so much fun! YAY",
       "",
-      "Answer these few questions and we will get you setup in no time...",
+      "Answer these few questions and we will get you setup in no time...</>",
       ""
     ]);
 
@@ -253,7 +253,7 @@ class ScriptHandler {
 
     // Add optional modules to composer.json and current running instance
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Adding optional modules to composer.json...");
+    $event->getIO()->write("<options=bold>Adding optional modules to composer.json...</>");
     $event->getIO()->write("");
     $json_file = Factory::getComposerFile();
     $json = json_decode(file_get_contents($json_file));
@@ -271,7 +271,7 @@ class ScriptHandler {
 
     // Writing environment file
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Writing environment file...");
+    $event->getIO()->write("<options=bold>Writing environment file...</>");
     $event->getIO()->write("");
     $file = '';
     foreach ($environment as $key => $value) {
@@ -283,7 +283,7 @@ class ScriptHandler {
 
     // Renaming directories
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Renaming directories...");
+    $event->getIO()->write("<options=bold>Renaming directories...</>");
     $event->getIO()->write("");
     $site_dir = 'webroot/sites/' . $domain_name;
     rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
@@ -291,7 +291,7 @@ class ScriptHandler {
 
     // Preparing site configuration
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Preparing site configuration...");
+    $event->getIO()->write("<options=bold>Preparing site configuration...</>");
     $event->getIO()->write("");
     self::replaceAllTokensInFile('webroot/sites/' . $domain_name . '/settings.php', $tokens);
     foreach (self::$configuration_files as $filename) {
@@ -303,7 +303,7 @@ class ScriptHandler {
 
     // Preparing deployment method
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Preparing deployment method...");
+    $event->getIO()->write("<options=bold>Preparing deployment method...</>");
     $event->getIO()->write("");
     foreach ($deployment_steps['dirs'] ?? [] as $directory) {
       mkdir($directory);
@@ -331,7 +331,7 @@ class ScriptHandler {
 
     // Renaming files in subtheme and replacing token in subtheme files with actual project name
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Preparing \"' . $project_name . '\" subtheme...");
+    $event->getIO()->write("<options=bold>Preparing \"" . $project_name . "\" subtheme...</>");
     $event->getIO()->write("");
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
@@ -343,7 +343,7 @@ class ScriptHandler {
 
     // Install node modules and build front end assets...
     $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Install node modules and build frontend assets...");
+    $event->getIO()->write("<options=bold>Install node modules and build frontend assets...</>");
     $event->getIO()->write("");
     exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
@@ -360,7 +360,7 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postCreateProjectCmd(Event $event) {
-    $tokens = json_decode(file_get_contents('tokens.json'));
+    $tokens = json_decode(file_get_contents('tokens.json'), TRUE);
 
     /*$event->getIO()->write("");
     $event->getIO()->write("<options=bold>Installing Drupal site...</>");
@@ -374,7 +374,7 @@ class ScriptHandler {
 
     $event->getIO()->write([
       "",
-      "<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>",
+      "<options=bold>YAY!! We set it all up. Lets have some Fireworks!</>",
       "",
       "<fg=yellow>",
       "                                   .''.",
@@ -393,10 +393,10 @@ class ScriptHandler {
 
     $event->getIO()->write([
       "",
-      "<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>",
+      "<options=bold>Now all that is left is for you to open your local development site and finish the installation of Drupal...</>",
       ""
     ]);
-    $event->getIO()->write("<href=http://" . $tokens['LOCAL_SITE'] . ">Open local site and finish install</>");
+    $event->getIO()->write("<href=http://" . $tokens['LOCAL_SITE'] . ">Your local site</>");
 
   }
 
