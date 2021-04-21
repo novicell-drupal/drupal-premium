@@ -2,6 +2,7 @@
 namespace Premium\composer;
 
 use Composer\Factory;
+use Composer\IO\IOInterface;
 use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
@@ -136,6 +137,54 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postRootPackageInstall(Event $event) {
+    $event->getIO()->write([
+      "<bg=blue;fg=white>                                                     ",
+      "      ____  ____  _____ __  __ ___ _   _ __  __      ",
+      "     |  _ \|  _ \| ____|  \/  |_ _| | | |  \/  |     ",
+      "     | |_) | |_) |  _| | |\/| || || | | | |\/| |     ",
+      "     |  __/|  _ <| |___| |  | || || |_| | |  | |     ",
+      "     |_|   |_| \_\_____|_|_ |_|___|\___/|_|__|_|     ",
+      "      \ \      / /_ _|__  /  / \  |  _ \|  _ \\       ",
+      "       \ \ /\ / / | |  / /  / _ \ | |_) | | | |      ",
+      "        \ V  V /  | | / /_ / ___ \|  _ <| |_| |      ",
+      "         \_/\_/  |___/____/_/   \_\_| \_\____/       ",
+      "                                                     ",
+      "                                                     ",
+      "</>",
+    ]);
+
+    $event->getIO()->write([
+      "<fg=blue>                                                     ",
+"                          ____",
+"                        .'* *.'",
+"                       __/_*_*(_",
+"                      / _______ \\",
+"                     _\\_)/___\\(_/_",
+"                    / _((\\- -/))_ \\",
+"                    \\ \\())(-)(()/ /",
+"                     ' \\(((()))/ '",
+"                    / ' \\)).))/ ' \\",
+"                   / _ \\ - | - /_  \\",
+"                  (   ( .;''';. .'  )",
+"                  _\\\"__ /    )\\ __\"/_",
+"                    \\/  \\   ' /  \\/",
+"                     .'  '...' ' )",
+"                      / /  |  \\ \\",
+"                     / .   .   . \\",
+"                    /   .     .   \\",
+"                   /   /   |   \\   \\",
+"                 .'   /    b    '.  '.",
+"             _.-'    /     Bb     '-. '-._",
+"         _.-'       /      BBb       '-.  '-.",
+"        (__________(_____.dBBBb.________)____)",
+      "</>",
+    ]);
+
+    $event->getIO()->write("Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!");
+    $event->getIO()->write("I'm looking forward to helping you. This is going to be so much fun! YAY");
+    $event->getIO()->write("");
+    $event->getIO()->write("Answer these few questions and we will get you setup in no time...");
+
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
     $environment = [];
     if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
@@ -282,7 +331,36 @@ class ScriptHandler {
     exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
-    $event->getIO()->write('Installing composer packages...');
+    $event->getIO()->write('<options=bold>Installing composer packages...</>');
+  }
+
+  /**
+   * Steps done after recipe has been installed and composer packages have been installed.
+   *
+   * @param \Composer\Script\Event $event
+   *   Composer event.
+   */
+  public static function postCreateProjectCmd(Event $event) {
+    exec('vendor/drush/drush/drush si -y');
+    exec('vendor/drush/drush/drush cex -y');
+
+    $event->getIO()->write('<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>');
+    $event->getIO()->write('');
+
+    $event->getIO()->write([
+      "<fg=yellow>",
+"                                   .''.",
+"       .''.      .        *''*    :_\/_:     .",
+"      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.",
+"  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-",
+" :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'",
+" : /\ : :::::     *_\/_*     -= o =-  /)\    '  *",
+"  '..'  ':::'     * /\ *     .'/.\'.   '",
+"      *            *..*         :",
+"        *",
+      "        *",
+"</>"
+    ]);
   }
 
   /**
