@@ -138,25 +138,24 @@ class ScriptHandler {
    */
   public static function postRootPackageInstall(Event $event) {
     $event->getIO()->write([
-      "<bg=blue;fg=white>                                                     ",
-      "      ____  ____  _____ __  __ ___ _   _ __  __      ",
-      "     |  _ \|  _ \| ____|  \/  |_ _| | | |  \/  |     ",
-      "     | |_) | |_) |  _| | |\/| || || | | | |\/| |     ",
-      "     |  __/|  _ <| |___| |  | || || |_| | |  | |     ",
-      "     |_|   |_| \_\_____|_|_ |_|___|\___/|_|__|_|     ",
-      "      \ \      / /_ _|__  /  / \  |  _ \|  _ \\       ",
-      "       \ \ /\ / / | |  / /  / _ \ | |_) | | | |      ",
-      "        \ V  V /  | | / /_ / ___ \|  _ <| |_| |      ",
-      "         \_/\_/  |___/____/_/   \_\_| \_\____/       ",
-      "                                                     ",
-      "                                                     ",
+      "<bg=blue;fg=white>                                                                                                                ",
+      "     _____                                   _     _____                              _                         ",
+      "    |  __ \                                 | |   |  __ \                            (_)                        ",
+      "    | |  | |  _ __   _   _   _ __     __ _  | |   | |__) |  _ __    ___   _ __ ___    _   _   _   _ __ ___      ",
+      "    | |  | | | '__| | | | | | '_ \   / _` | | |   |  ___/  | '__|  / _ \ | '_ ` _ \  | | | | | | | '_ ` _ \     ",
+      "    | |__| | | |    | |_| | | |_) | | (_| | | |   | |      | |    |  __/ | | | | | | | | | |_| | | | | | | |    ",
+      "    |_____/  |_|     \__,_| | .__/   \__,_| |_|   |_|      |_|     \___| |_| |_| |_| |_|  \__,_| |_| |_| |_|    ",
+      "                         | |                                                                                    ",
+      "                         |_|                                                                                    ",
+      "                                                                                                                ",
+      "                                                                                                                ",
       "</>",
     ]);
 
     $event->getIO()->write([
       "<fg=blue>                                                     ",
 "                          ____",
-"                        .'* *.'",
+"                         .'* *.'",
 "                       __/_*_*(_",
 "                      / _______ \\",
 "                     _\\_)/___\\(_/_",
@@ -180,10 +179,13 @@ class ScriptHandler {
       "</>",
     ]);
 
-    $event->getIO()->write("Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!");
-    $event->getIO()->write("I'm looking forward to helping you. This is going to be so much fun! YAY");
-    $event->getIO()->write("");
-    $event->getIO()->write("Answer these few questions and we will get you setup in no time...");
+    $event->getIO()->write([
+      "Greetings! I am the amazing spin-up-a-new-premium-website-in-no-time WIZARD!",
+      "I'm looking forward to helping you. This is going to be so much fun! YAY",
+      "",
+      "Answer these few questions and we will get you setup in no time...",
+      ""
+    ]);
 
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
     $environment = [];
@@ -250,7 +252,9 @@ class ScriptHandler {
     $tokens['TRUSTED_HOST_PATTERNS'] = "[\n  '^$domain_only\.$tld',\n  '^.+\.$domain_only\.$tld'\n]";
 
     // Add optional modules to composer.json and current running instance
-    $event->getIO()->write('Adding optional modules to composer.json...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Adding optional modules to composer.json...");
+    $event->getIO()->write("");
     $json_file = Factory::getComposerFile();
     $json = json_decode(file_get_contents($json_file));
     $links = $event->getComposer()->getPackage()->getRequires();
@@ -266,22 +270,29 @@ class ScriptHandler {
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
     // Writing environment file
-    $event->getIO()->write('Writing environment file...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Writing environment file...");
+    $event->getIO()->write("");
     $file = '';
     foreach ($environment as $key => $value) {
       $file .= $key . '=' . $value . "\n";
       putenv($key . '=' . $value);
     }
     file_put_contents('.env', $file);
+    file_put_contents('tokens.json', json_encode($tokens, JSON_PRETTY_PRINT));
 
     // Renaming directories
-    $event->getIO()->write('Renaming directories...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Renaming directories...");
+    $event->getIO()->write("");
     $site_dir = 'webroot/sites/' . $domain_name;
     rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
     rename('webroot/sites/DOMAIN_NAME', $site_dir);
 
     // Preparing site configuration
-    $event->getIO()->write('Preparing site configuration...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Preparing site configuration...");
+    $event->getIO()->write("");
     self::replaceAllTokensInFile('webroot/sites/' . $domain_name . '/settings.php', $tokens);
     foreach (self::$configuration_files as $filename) {
       self::replaceAllTokensInFile($filename, $tokens);
@@ -291,7 +302,9 @@ class ScriptHandler {
     self::replaceAllTokensInDirectory('webroot/profiles/custom/premium_profile', $tokens);
 
     // Preparing deployment method
-    $event->getIO()->write('Preparing deployment method...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Preparing deployment method...");
+    $event->getIO()->write("");
     foreach ($deployment_steps['dirs'] ?? [] as $directory) {
       mkdir($directory);
     }
@@ -317,7 +330,9 @@ class ScriptHandler {
     }
 
     // Renaming files in subtheme and replacing token in subtheme files with actual project name
-    $event->getIO()->write('Preparing "' . $project_name . '" subtheme...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Preparing \"' . $project_name . '\" subtheme...");
+    $event->getIO()->write("");
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
@@ -327,11 +342,15 @@ class ScriptHandler {
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
 
     // Install node modules and build front end assets...
-    $event->getIO()->write('Install node modules and build frontend assets...');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Install node modules and build frontend assets...");
+    $event->getIO()->write("");
     exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
-    $event->getIO()->write('<options=bold>Installing composer packages...</>');
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Installing composer packages...</>");
+    $event->getIO()->write("");
   }
 
   /**
@@ -341,26 +360,44 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postCreateProjectCmd(Event $event) {
-    exec('vendor/drush/drush/drush si -y');
-    exec('vendor/drush/drush/drush cex -y');
+    $tokens = json_decode(file_get_contents('tokens.json'));
 
-    $event->getIO()->write('<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>');
-    $event->getIO()->write('');
+    /*$event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Installing Drupal site...</>");
+    $event->getIO()->write("");
+    exec('vendor/drush/drush/drush si --account-name=novicell --site-name=' . $tokens['PROJECT_NAME'] . ' -y');
+
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Exporting Drupal configuration...</>");
+    $event->getIO()->write("");
+    exec('vendor/drush/drush/drush cex -y');*/
 
     $event->getIO()->write([
+      "",
+      "<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>",
+      "",
       "<fg=yellow>",
-"                                   .''.",
-"       .''.      .        *''*    :_\/_:     .",
-"      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.",
-"  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-",
-" :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'",
-" : /\ : :::::     *_\/_*     -= o =-  /)\    '  *",
-"  '..'  ':::'     * /\ *     .'/.\'.   '",
-"      *            *..*         :",
-"        *",
+      "                                   .''.",
+      "       .''.      .        *''*    :_\/_:     .",
+      "      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.",
+      "  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-",
+      " :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'",
+      " : /\ : :::::     *_\/_*     -= o =-  /)\    '  *",
+      "  '..'  ':::'     * /\ *     .'/.\'.   '",
+      "      *            *..*         :",
       "        *",
-"</>"
+            "        *",
+      "</>",
+      ""
     ]);
+
+    $event->getIO()->write([
+      "",
+      "<options=bold,underscore>YAY!! We set it all up. Lets have some Fireworks!</>",
+      ""
+    ]);
+    $event->getIO()->write("<href=http://" . $tokens['LOCAL_SITE'] . ">Open local site and finish install</>");
+
   }
 
   /**
