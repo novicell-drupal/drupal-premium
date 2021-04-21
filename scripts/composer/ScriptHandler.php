@@ -2,6 +2,7 @@
 namespace Premium\composer;
 
 use Composer\Factory;
+use Composer\IO\IOInterface;
 use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
@@ -136,6 +137,18 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postRootPackageInstall(Event $event) {
+    $event->getIO()->write([
+'      ____  ____  _____ __  __ ___ _   _ __  __',
+"    |  _ \|  _ \| ____|  \/  |_ _| | | |  \/  |",
+"     | |_) | |_) |  _| | |\/| || || | | | |\/| |",
+"     |  __/|  _ <| |___| |  | || || |_| | |  | |",
+"     |_|   |_| \_\_____|_|_ |_|___|\___/|_|__|_|",
+'    \ \      / /_ _|__  /  / \  |  _ \|  _ \\',
+"       \ \ /\ / / | |  / /  / _ \ | |_) | | | |",
+"        \ V  V /  | | / /_ / ___ \|  _ <| |_| |",
+"         \_/\_/  |___/____/_/   \_\_| \_\____/"
+    ], true, IOInterface::VERBOSE);
+
     $in_ddev = (getenv('IS_DDEV_PROJECT') == 'true');
     $environment = [];
     if (!empty($project_name = $event->getIO()->ask('Project name:'))) {
@@ -292,16 +305,18 @@ class ScriptHandler {
    *   Composer event.
    */
   public static function postCreateProjectCmd(Event $event) {
-    echo "                                   .''.
-       .''.      .        *''*    :_\/_:     .
-      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.
-  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-
- :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'
- : /\ : :::::     *_\/_*     -= o =-  /)\    '  *
-  '..'  ':::'     * /\ *     .'/.\'.   '
-      *            *..*         :
-        *
-        *";
+    $event->getIO()->write([
+"                                   .''.",
+"       .''.      .        *''*    :_\/_:     .",
+"      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .'.:.'.",
+"  .''.: /\ :   ./)\   ':'* /\ * :  '..'.  -=:o:=-",
+" :_\/_:'.:::.    ' *''*    * '.\'/.' _\(/_'.':'.'",
+" : /\ : :::::     *_\/_*     -= o =-  /)\    '  *",
+"  '..'  ':::'     * /\ *     .'/.\'.   '",
+"      *            *..*         :",
+"        *",
+"        *"
+    ], true, IOInterface::VERBOSE);
   }
 
   /**

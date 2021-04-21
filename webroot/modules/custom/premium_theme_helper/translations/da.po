@@ -117,8 +117,8 @@ msgstr "Kladde"
 msgid "Save layout"
 msgstr "Gem layout"
 
-msgid "You are editing the layout for this @bundle @singular_label. <a href=":link">Edit the template for all @bundle @plural_label instead.</a>"
-msgstr "Du redigerer layoutet for denne @bundle @singular_label. <a href=":link">Rediger skabelonen til al @bundle @plural_label i stedet.</a>"
+msgid "You are editing the layout for this @bundle @singular_label. <a href=\":link\">Edit the template for all @bundle @plural_label instead.</a>"
+msgstr "Du redigerer layoutet for denne @bundle @singular_label. <a href=\":link\">Rediger skabelonen til al @bundle @plural_label i stedet.</a>"
 
 msgid "You are editing the layout for this @bundle @singular_label."
 msgstr "Du redigerer layoutet for denne @bundle @singular_label."
