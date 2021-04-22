@@ -33,7 +33,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/cookie_info',
         'operator' => '^',
-        'version' => '0.1.0'
+        'version' => '0.1'
       ]
     ],
     'GTM' => [
@@ -47,21 +47,21 @@ class ScriptHandler {
       [
         'package' => 'novicell/content_hierarchy',
         'operator' => '^',
-        'version' => '0.2.0'
+        'version' => '0.3'
       ]
     ],
     'IE Warning' => [
       [
         'package' => 'novicell/ie_warning',
         'operator' => '^',
-        'version' => '0.1.0'
+        'version' => '0.1'
       ]
     ],
     'Premium Maps' => [
       [
         'package' => 'novicell/premium_maps',
         'operator' => '^',
-        'version' => '0.1.0'
+        'version' => '0.1'
       ]
     ]
   ];

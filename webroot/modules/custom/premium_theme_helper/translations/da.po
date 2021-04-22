@@ -169,3 +169,24 @@ msgstr "Arkiver"
 msgctxt "Workflow transition label"
 msgid "Restore"
 msgstr "Gendan"
+
+msgid "Full width"
+msgstr "Fuld bredde"
+
+msgid "Add a new custom block"
+msgstr "Tilføj en ny brugerdefineret blok"
+
+msgid "Code"
+msgstr "Kode"
+
+msgid "Quote"
+msgstr "Citat"
+
+msgid "Apply to selected items"
+msgstr "Anvend på valgte elementer"
+
+msgid "If selected and this menu link has children, the menu will always appear expanded. This option may be overridden for the entire menu tree when placing a menu block."
+msgstr "Hvis dette er valgt og dette menulink har underpunkter, vil menuen altid være udvidet. Dette valg kan være overskrevet for hele menu træet via en menu blok."
+
+msgid "The layout override has been saved."
+msgstr "Layoutoverskrivelsen er blevet gemt."
