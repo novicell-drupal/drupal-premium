@@ -1,0 +1,23 @@
+/**
+ * Type: Base.
+ * Belongs: Header.
+ * Drupal styling.
+ */
+
+/* When user is logged in, we remove fixed from header */
+@media (--viewport-md-min) {
+    body.adminimal-admin-toolbar header.header {
+        position: relative;
+    }
+}
+.ui-dialog:not(.ui-dialog-position-side) {
+    top: 50%!important;
+    height: 80%!important;
+    left: 50%!important;
+    transform: translate(-50%, -50%);
+
+    .ui-dialog-content {
+        max-height: calc(100% - 46px)!important;
+        min-height: calc(100% - 46px)!important;
+    }
+}

@@ -210,6 +210,7 @@ header:
   css:
     theme:
       build-assets/dist/css/03-organisms/header/header.css: {}
+      build-assets/dist/css/_base/drupal/header.css: {}
 
 hero:
   version: VERSION
