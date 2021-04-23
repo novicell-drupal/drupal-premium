@@ -72,6 +72,11 @@
     visibility: hidden;
     opacity: 0;
     height: 0;
+    word-break: break-word;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   &__content.active {
