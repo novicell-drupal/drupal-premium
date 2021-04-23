@@ -11,3 +11,8 @@ msgstr ""
 "Language: da\n"
 "X-Generator: Poedit 2.0.5\n"
 
+msgid "Choose the height of the spacer."
+msgstr "Vælg højden på din \"spacer\"."
+
+msgid "Would you like to be able to reuse this block? This option can not be changed after saving."
+msgstr "Vil du gerne være i stand til at genbruge denne blok? Dette valg kan ikke ændres når det er gemt."
