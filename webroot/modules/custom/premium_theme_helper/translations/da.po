@@ -176,11 +176,74 @@ msgstr "Fuld bredde"
 msgid "Add a new custom block"
 msgstr "Tilføj en ny brugerdefineret blok"
 
+msgid "Accordion"
+msgstr "Accordion"
+
+msgid "A block that contains an accordion."
+msgstr "En blok der indeholder en accordion."
+
+msgid "Appetizer"
+msgstr "Appetizer"
+
+msgid "A block that contains image, text and a CTA-button."
+msgstr "En blok der indeholder et billede, tekst og en CTA knap."
+
 msgid "Code"
 msgstr "Kode"
 
+msgid "A block where editors can add scripts."
+msgstr "En blok hvor redaktører kan tilføje scripts."
+
+msgid "A block that contains image."
+msgstr "En blok der indeholder et billede."
+
 msgid "Quote"
 msgstr "Citat"
+
+msgid "A block contains a quote."
+msgstr "En blok der indeholder et citat."
+
+msgid "Divider"
+msgstr "Divider"
+
+msgid "A block that contains an divider"
+msgstr "En blok der indeholder et divider."
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "A block contains a hero."
+msgstr "En blok der indeholder en hero."
+
+msgid "Inline Navigation"
+msgstr "Inline Navigation"
+
+msgid "A block containing a inline navigation."
+msgstr "En blok der indeholder en inline navigation."
+
+msgid "	A block that contains a button."
+msgstr "En blok der indeholder en knap."
+
+msgid "Slideshow"
+msgstr "Slideshow"
+
+msgid "A block containing a slideshow of images."
+msgstr "En blok der indeholder et slideshow af billeder."
+
+msgid "Spacer"
+msgstr "Spacer"
+
+msgid "A block that contains a spacer."
+msgstr "En blok der indeholder en spacer."
+
+msgid "A block containing an rich text editor."
+msgstr "En blok der indeholder en rich tekst editor."
+
+msgid "Video"
+msgstr "Video"
+
+msgid "A block contains a video."
+msgstr "En blok der indeholder en video."
 
 msgid "Apply to selected items"
 msgstr "Anvend på valgte elementer"
