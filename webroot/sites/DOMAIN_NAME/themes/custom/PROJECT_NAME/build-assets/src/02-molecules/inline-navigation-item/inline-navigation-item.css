@@ -57,8 +57,12 @@
     box-shadow: 0 27px 50px 0 rgba(35, 35, 35, .15);
     margin-bottom: 20px;
     display: flex;
+    position: relative;
 
     &--fallback {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       align-items: center;
       justify-content: center;
