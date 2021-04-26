@@ -51,6 +51,7 @@
     height: 100%;
     top: 0;
     left: 0;
+    background: var(--color-black);
   }
 
   &__iframe-wrapper {
