@@ -75,6 +75,10 @@
     padding-top: 56.25%;
     background-color: var(--color-black);
 
+    @media (max-width: 900px) {
+      width: 900px;
+    }
+
     .contextual-region {
       position: initial;
     }
