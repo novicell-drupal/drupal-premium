@@ -10,24 +10,3 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: da\n"
 "X-Generator: Poedit 2.0.5\n"
-
-msgid "Choose the height of the spacer."
-msgstr "Vælg højden på din \"spacer\"."
-
-msgid "Would you like to be able to reuse this block? This option can not be changed after saving."
-msgstr "Vil du gerne være i stand til at genbruge denne blok? Dette valg kan ikke ændres når det er gemt."
-
-msgid "Start typing to find content."
-msgstr "Begynd at skrive for at finde indhold."
-
-msgid "Open in new window/tab."
-msgstr "Åben i et nyt vindue/faneblad."
-
-msgid "Linkit could not find any suggestions. This URL will be used as is."
-msgstr "Linkit kunne ikke finde nogle foreslag. Denne URL vil blive brugt som den er."
-
-msgid "This block is reusable! Any changes made will be applied globally."
-msgstr "Denne block er genanvendelig! Rettelser til denne vil gælde alle steder hvor den bliver brugt."
-
-msgid "The maximum number of media items have been selected."
-msgstr "Det maksimale antal medie emner er valgt."
