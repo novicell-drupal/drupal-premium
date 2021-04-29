@@ -292,3 +292,6 @@ msgstr "Se WCAG-vejledning om <a href=\"https://www.w3.org/WAI/WCAG21/Techniques
 
 msgid "Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to display link text only. Enter %button to display keyboard-accessible link text only."
 msgstr "Begynd at skrive titlen på et stykke indhold for at vælge det. Du kan også indtaste en intern sti såsom %add-node eller en ekstern URL såsom %url. Indtast %front for at linke til forsiden. Indtast %nolink for kun at vise linktekst. Indtast %button for kun at vise tastaturtilgængelig linktekst."
+
+msgid "Close (Esc)"
+msgstr "Luk (Esc)"
