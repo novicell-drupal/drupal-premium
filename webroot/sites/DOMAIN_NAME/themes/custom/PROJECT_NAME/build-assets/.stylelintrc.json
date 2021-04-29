@@ -13,7 +13,7 @@
     "declaration-no-important": true,
     "unit-no-unknown": true,
     "at-rule-no-unknown": null,
-    "selector-nested-pattern": "^([.]|&|img|figcaption|a|picture|li|ul|>|svg|form|input|iframe|div)",
+    "selector-nested-pattern": "^([.]|&|img|figcaption|a|picture|li|ul|>|svg|form|input|iframe|div|label)",
     "selector-class-pattern": "^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
     "property-no-unknown": [
       true,
