@@ -19,21 +19,15 @@
     "results": [
       {
         "url": "/",
-        "image": "https://www.novicell.dk/media/67333/hero.jpg",
-        "title": "Title",
-        "excerpt": "<p>Text</p>"
+        "title": "Title"
       },
       {
         "url": "/",
-        "image": "https://www.novicell.dk/media/67333/hero.jpg",
-        "title": "Title",
-        "excerpt": "<p>Text</p>"
+        "title": "Title"
       },
       {
         "url": "/",
-        "image": "https://www.novicell.dk/media/67333/hero.jpg",
-        "title": "Title",
-        "excerpt": "<p>Text</p>"
+        "title": "Title"
       }
     ]
   }
