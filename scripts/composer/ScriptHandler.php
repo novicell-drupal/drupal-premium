@@ -47,7 +47,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/content_hierarchy',
         'operator' => '^',
-        'version' => '0.3'
+        'version' => '1.0'
       ]
     ],
     'IE Warning' => [
@@ -203,7 +203,7 @@ class ScriptHandler {
         $environment['DB_PORT'] = $db_port;
       }
       if (!empty($db_name = $event->getIO()->ask('Database name:', $project_name))) {
-        $environment['DB_NAME'] = $db_name;
+        $environment['DB_SCHEMA'] = $db_name;
       }
       if (!empty($db_user = $event->getIO()->ask('Database user:', $project_name))) {
         $environment['DB_USER'] = $db_user;
@@ -214,7 +214,7 @@ class ScriptHandler {
     } else {
       $environment['DB_HOST'] = 'db';
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
-      $environment['DB_NAME'] = 'db';
+      $environment['DB_SCHEMA'] = 'db';
       $environment['DB_USER'] = 'db';
       $environment['DB_PASS'] = 'db';
     }
@@ -224,7 +224,7 @@ class ScriptHandler {
     $environment['DOMAIN_NAME'] = $domain_name = 'test.dk';
     $environment['DB_HOST'] = 'localhost';
     $environment['DB_PORT'] = '3306';
-    $environment['DB_NAME'] = $project_name;
+    $environment['DB_SCHEMA'] = $project_name;
     $environment['DB_USER'] = $project_name;
     $environment['DB_PASS'] = $project_name;
     $modules = [0, 1];

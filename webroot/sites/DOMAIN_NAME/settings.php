@@ -89,16 +89,16 @@
  * @endcode
  */
 $databases = [];
-$databases['default']['default'] = [
-  'database' => $_ENV['DB_NAME'],
-  'username' => $_ENV['DB_USER'],
-  'password' => $_ENV['DB_PASS'],
-  'host' => $_ENV['DB_HOST'],
-  'port' => $_ENV['DB_PORT'],
-  'driver' => 'mysql',
+$databases['default']['default'] = array (
+  'database' => getenv('DB_SCHEMA'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASS'),
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
-];
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'namespace' => 'Drupal\Core\Database\Driver\mysql',
+  'driver' => 'mysql',
+);
 
 /**
  * Customizing database settings.
@@ -300,7 +300,7 @@ $databases['default']['default'] = [
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = $_ENV['HASH_SALT'];
+$settings['hash_salt'] = getenv('HASH_SALT');
 
 /**
  * Deployment identifier.
@@ -779,6 +779,16 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  */
 
 $settings['config_sync_directory'] = '../config/sync';
+
+$config['config_split.config_split.develop']['status'] = strtolower(getenv('CONFIG_SPLIT_DEVELOPMENT')) === 'true';
+
+if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
+  $settings['redis.connection']['interface'] = 'PhpRedis';
+  $settings['redis.connection']['host'] = getenv('REDIS_HOST');
+  $settings['redis.connection']['port'] = '6379';
+  $settings['cache']['default'] = 'cache.backend.redis';
+  $settings['cache_prefix'] = 'PROJECT_NAME_';
+}
 
 if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
   include $app_root . '/sites/default/settings.ddev.php';
