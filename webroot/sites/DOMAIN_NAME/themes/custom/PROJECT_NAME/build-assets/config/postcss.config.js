@@ -2,6 +2,22 @@ const path = require('path');
 const config = require('../config');
 
 const env = process.env.NODE_ENV || 'development';
+const importFrom = [
+  path.join(config.paths.src, '_base/_custom-media.css'),
+];
+
+const cssnanoOptions = {
+  autoprefixer: false,
+  discardComments: {
+    removeAll: true,
+  },
+  mergeLonghand: true,
+  colormin: false,
+  zindex: false,
+  discardUnused: {
+    fontFace: false,
+  },
+};
 
 module.exports = {
   env,
@@ -15,9 +31,13 @@ module.exports = {
         `${config.root_folder}/../../node_modules/**/*.css`,
       ],
     }),
-    require('./postcss-plugins/postcss-nested-import'),
+    require('./postcss-plugins/postcss-nested-import')({
+      importFrom,
+      preserve: false,
+      cssnanoOptions,
+    }),
     require('postcss-preset-env')({
-      importFrom: [path.join(config.paths.src, '_base/_custom-media.css')],
+      importFrom,
       stage: 3,
       preserve: false,
       autoprefixer: {
@@ -28,18 +48,7 @@ module.exports = {
       },
     }),
     require('postcss-nested'),
-    require('cssnano')({
-      autoprefixer: false,
-      discardComments: {
-        removeAll: true,
-      },
-      mergeLonghand: true,
-      colormin: false,
-      zindex: false,
-      discardUnused: {
-        fontFace: false,
-      },
-    }),
+    require('cssnano')(cssnanoOptions),
     require('postcss-reporter')({
       clearReportedMessages: true,
       throwError: false,
