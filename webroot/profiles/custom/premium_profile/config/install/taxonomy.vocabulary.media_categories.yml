@@ -1,9 +1,6 @@
 langcode: en
 status: true
-dependencies:
-  enforced:
-    module:
-      - premium_cdn_video
+dependencies: {  }
 name: 'Media categories'
 vid: media_categories
 description: 'Used to organize media'
