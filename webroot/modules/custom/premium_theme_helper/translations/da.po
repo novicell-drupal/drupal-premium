@@ -295,3 +295,12 @@ msgstr "Begynd at skrive titlen på et stykke indhold for at vælge det. Du kan 
 
 msgid "Close (Esc)"
 msgstr "Luk (Esc)"
+
+msgid "Choose multiple options"
+msgstr "Vælg flere muligheder"
+
+msgid "Choose an option"
+msgstr "Vælg en mulighed"
+
+msgid "Media category"
+msgstr "Medie kategori"

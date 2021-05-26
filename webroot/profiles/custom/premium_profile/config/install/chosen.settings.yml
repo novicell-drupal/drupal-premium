@@ -9,7 +9,7 @@ disable_search: false
 allow_single_deselect: false
 placeholder_text_multiple: 'Choose multiple options'
 placeholder_text_single: 'Choose an option'
-no_results_text: 'No results match'
+no_results_text: 'No results'
 max_shown_results: null
 disabled_themes:
   seven: '0'
