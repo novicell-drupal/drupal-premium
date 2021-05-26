@@ -47,6 +47,9 @@ display:
         operations:
           label: Handlinger
       filters:
+        name:
+          expose:
+            label: Navn
         bundle:
           expose:
             label: Type
@@ -54,7 +57,7 @@ display:
           expose:
             label: Sandt
           group_info:
-            label: Publiceringsstatus
+            label: Udgivet
             group_items:
               1:
                 title: Udgivet
