@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_category
     - image.style.thumbnail
     - media.type.audio
   module:
@@ -25,6 +26,7 @@ content:
 hidden:
   created: true
   field_media_audio_file: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

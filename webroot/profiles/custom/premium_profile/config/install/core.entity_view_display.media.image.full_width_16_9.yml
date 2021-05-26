@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.full_width_16_9
+    - field.field.media.image.field_media_category
     - field.field.media.image.field_media_image
     - media.type.image
     - responsive_image.styles.full_width_16_9
@@ -29,6 +30,7 @@ content:
     region: content
 hidden:
   created: true
+  field_media_category: true
   langcode: true
   name: true
   search_api_excerpt: true

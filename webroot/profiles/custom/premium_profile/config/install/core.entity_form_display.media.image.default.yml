@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_media_category
     - field.field.media.image.field_media_image
     - image.style.thumbnail
     - media.type.image
@@ -19,6 +20,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_media_category:
+    weight: 101
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
   field_media_image:
     settings:
       progress_indicator: throbber

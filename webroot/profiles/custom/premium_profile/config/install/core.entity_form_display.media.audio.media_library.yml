@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_category
     - media.type.audio
 id: media.audio.media_library
 targetEntityType: media
@@ -20,6 +21,7 @@ content:
 hidden:
   created: true
   field_media_audio_file: true
+  field_media_category: true
   name: true
   path: true
   status: true
