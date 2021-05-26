@@ -4,9 +4,6 @@ dependencies:
   module:
     - media
     - taxonomy
-  enforced:
-    module:
-      - premium_cdn_video
 id: media.field_media_category
 field_name: field_media_category
 entity_type: media
