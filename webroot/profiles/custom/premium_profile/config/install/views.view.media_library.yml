@@ -1,4 +1,4 @@
-langcode: da
+langcode: en
 status: true
 dependencies:
   config:
@@ -49,7 +49,7 @@ display:
           submit_button: 'Apply filters'
           reset_button: false
           reset_button_label: Gendan
-          exposed_sorts_label: 'Sortér efter'
+          exposed_sorts_label: 'Sort by'
           expose_sort_order: false
           sort_asc_label: Stigende
           sort_desc_label: Faldende
@@ -62,10 +62,10 @@ display:
           total_pages: null
           expose:
             items_per_page: false
-            items_per_page_label: 'Antal elementer'
+            items_per_page_label: 'Items per page'
             items_per_page_options: '6, 12, 24, 48'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- Alle -'
+            items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Forskydning
           tags:
@@ -245,7 +245,7 @@ display:
           exposed: true
           expose:
             operator_id: bundle_op
-            label: 'Medie type'
+            label: 'Type'
             description: ''
             use_operator: false
             operator: bundle_op
@@ -262,7 +262,7 @@ display:
             operator_list: {  }
           is_grouped: false
           group_info:
-            label: 'Medie type'
+            label: 'Type'
             description: null
             identifier: bundle
             optional: true
@@ -305,7 +305,7 @@ display:
             operator_list: {  }
           is_grouped: true
           group_info:
-            label: Udgivet
+            label: Published
             description: ''
             identifier: status
             optional: true
@@ -316,11 +316,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Udgivet
+                title: Published
                 operator: '='
                 value: '1'
               2:
-                title: 'Ikke udgivet'
+                title: Unpublished
                 operator: '='
                 value: '0'
           plugin_id: boolean
@@ -452,10 +452,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: textfield
+          type: select
           limit: true
           vid: media_categories
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:
@@ -469,7 +469,7 @@ display:
           order: DESC
           exposed: true
           expose:
-            label: 'Nyeste først'
+            label: ''
           granularity: second
           entity_type: media
           entity_field: created
@@ -515,7 +515,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'Ingen tilgængelige media'
+          content: 'No media available.'
           plugin_id: text_custom
       relationships: {  }
       display_extenders: {  }
@@ -1172,10 +1172,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: textfield
+          type: select
           limit: true
           vid: media_categories
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       filter_groups:
@@ -1536,10 +1536,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: textfield
+          type: select
           limit: true
           vid: media_categories
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       filter_groups:

@@ -61,6 +61,7 @@ install:
   - views
   - views_ui
   - automated_cron
+  - chosen
   - responsive_image
   - content_moderation
   - workflows

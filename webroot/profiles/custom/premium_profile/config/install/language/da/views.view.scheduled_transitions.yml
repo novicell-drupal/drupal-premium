@@ -1,3 +1,4 @@
+label: 'Planlagte Overgange'
 display:
   default:
     display_title: Master
@@ -24,13 +25,23 @@ display:
           separator: ', '
         entity_revision_link:
           label: Version
+          text: 'Vis revidering'
         state_from:
           label: 'Fra tilstand'
+        moderation_state:
+          label: 'Til tilstand'
         transition_on:
+          label: 'På dato'
           separator: ', '
         author:
+          label: 'Planlagt af'
           separator: ', '
         operations:
           label: Handlinger
+      title: 'Planlagte Overgange'
+      empty:
+        area:
+          content:
+            value: 'Der er ingen planlagte overgange endnu.'
   page_1:
     display_title: Side

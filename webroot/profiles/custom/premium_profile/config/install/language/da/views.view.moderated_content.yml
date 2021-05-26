@@ -33,6 +33,7 @@ display:
           label: Forfatter
           separator: ', '
         moderation_state:
+          label: Modereringstilstand
           separator: ', '
         changed:
           label: Opdateret
@@ -46,6 +47,9 @@ display:
         type:
           expose:
             label: Indholdstype
+        moderation_state:
+          expose:
+            label: Modereringstilstand
         langcode:
           expose:
             label: Sprog

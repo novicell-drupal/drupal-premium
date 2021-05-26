@@ -630,7 +630,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: 'Media name'
+            label: 'Name'
             description: ''
             use_operator: false
             operator: name_op
@@ -729,7 +729,7 @@ display:
             operator_list: {  }
           is_grouped: true
           group_info:
-            label: 'Published status'
+            label: Published
             description: ''
             identifier: status
             optional: true

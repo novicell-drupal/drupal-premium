@@ -24,6 +24,7 @@ display:
         sid:
           separator: ', '
         in_draft:
+          label: Kladde
           separator: ', '
         created:
           label: Oprettet
@@ -49,6 +50,7 @@ display:
         sid:
           separator: ', '
         in_draft:
+          label: Kladde
           separator: ', '
         sticky:
           label: Klæbrig
@@ -81,6 +83,7 @@ display:
         sid:
           separator: ', '
         in_draft:
+          label: Kladde
           separator: ', '
         sticky:
           label: Klæbrig
@@ -115,6 +118,7 @@ display:
         sid:
           separator: ', '
         in_draft:
+          label: Kladde
           separator: ', '
         sticky:
           label: Klæbrig
