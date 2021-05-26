@@ -11,9 +11,19 @@ targetEntityType: media
 bundle: audio
 mode: media_library
 content:
+  field_media_category:
+    type: entity_reference_autocomplete_tags
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true
@@ -21,7 +31,6 @@ content:
 hidden:
   created: true
   field_media_audio_file: true
-  field_media_category: true
   name: true
   path: true
   status: true
