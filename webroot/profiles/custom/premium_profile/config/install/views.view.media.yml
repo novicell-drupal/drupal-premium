@@ -876,7 +876,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: select
+          type: textfield
           limit: true
           vid: media_categories
           hierarchy: true

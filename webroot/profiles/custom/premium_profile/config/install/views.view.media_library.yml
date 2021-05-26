@@ -452,7 +452,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: select
+          type: textfield
           limit: true
           vid: media_categories
           hierarchy: true
@@ -528,6 +528,7 @@ display:
     cache_metadata:
       max-age: 0
       contexts:
+        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -1172,7 +1173,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: select
+          type: textfield
           limit: true
           vid: media_categories
           hierarchy: true
@@ -1536,7 +1537,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: select
+          type: textfield
           limit: true
           vid: media_categories
           hierarchy: true
