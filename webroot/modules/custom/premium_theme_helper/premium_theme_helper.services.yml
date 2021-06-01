@@ -1,0 +1,4 @@
+services:
+  premium_theme_helper.focal_point:
+    class: Drupal\premium_theme_helper\FocalPoint
+    arguments: ['@focal_point.manager']

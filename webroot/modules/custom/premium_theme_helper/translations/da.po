@@ -293,5 +293,71 @@ msgstr "Se WCAG-vejledning om <a href=\"https://www.w3.org/WAI/WCAG21/Techniques
 msgid "Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to display link text only. Enter %button to display keyboard-accessible link text only."
 msgstr "Begynd at skrive titlen på et stykke indhold for at vælge det. Du kan også indtaste en intern sti såsom %add-node eller en ekstern URL såsom %url. Indtast %front for at linke til forsiden. Indtast %nolink for kun at vise linktekst. Indtast %button for kun at vise tastaturtilgængelig linktekst."
 
-msgid "Close (Esc)"
-msgstr "Luk (Esc)"
+msgid "Close (esc)"
+msgstr "Luk (esc)"
+
+msgid "Shortcuts"
+msgstr "Genveje"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Search"
+msgstr "Søg"
+
+msgid "Go to previous page"
+msgstr "Gå til forrige side"
+
+msgid "Previous page"
+msgstr "Forrige side"
+
+msgid "Go to next page"
+msgstr "Gå til næste side"
+
+msgid "Next page"
+msgstr "Næste side"
+
+msgid "Next ›"
+msgstr "Næste ›"
+
+msgid "Last »"
+msgstr "Sidste »"
+
+msgid "Go to first page"
+msgstr "Gå til første side"
+
+msgid "Go to last page"
+msgstr "Gå til sidste side"
+
+msgid "Last page"
+msgstr "Sidste side"
+
+msgid "First page"
+msgstr "Første side"
+
+msgid "Pagination"
+msgstr "Paginering"
+
+msgid "Page"
+msgstr "Side"
+
+msgid "Current page"
+msgstr "Nuværende side"
+
+msgid "Configure block"
+msgstr "Konfigurer blok"
+
+msgid "Add another item"
+msgstr "Tilføj ny"
+
+msgid "Reusable"
+msgstr "Genanvendelig"
+
+msgid "Show media item weight"
+msgstr "Vis vægt"
+
+msgid "Remove"
+msgstr "Fjern"
+
+msgid "Add media"
+msgstr "Tilføj media"
