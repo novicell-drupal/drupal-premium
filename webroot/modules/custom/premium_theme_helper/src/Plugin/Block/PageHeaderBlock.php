@@ -123,12 +123,9 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
         }
       }
     }
+
     if (!isset($build['header'])) {
       $request = $this->requestStack->getCurrentRequest();
-      $status = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception');
-      if ($status && $status->getStatusCode() != 200){
-        $build['#cache']['max-age'] = 0;
-      }
       if (!is_null($request)) {
         $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
         $build['title'] = [
@@ -136,6 +133,11 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
           '#title' => $title,
         ];
       }
+    }
+
+    $status = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception');
+    if ($status && $status->getStatusCode() !== 200) {
+      $build['#cache']['max-age'] = 0;
     }
 
     return $build;
