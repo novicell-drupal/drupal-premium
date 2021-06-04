@@ -67,6 +67,7 @@
     "drupal/simple_sitemap": "^3.0",
     "drupal/webform": "^6.0",
     "drupal/webp": "^1.0.0-beta5",
+    "drupal/view_unpublished": "^1.0",
     "drush/drush": "^10.0",
     "novicell/atoms": "^0.1",
     "novicell/drupal-premium-theme": "^0.2",

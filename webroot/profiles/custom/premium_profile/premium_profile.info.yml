@@ -106,6 +106,7 @@ install:
   - media_icons
   - premium_tools
   - premium_theme_helper
+  - view_unpublished
   - premium_search
   - status_feed
 themes:
