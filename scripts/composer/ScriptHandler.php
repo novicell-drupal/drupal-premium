@@ -2,7 +2,6 @@
 namespace Premium\composer;
 
 use Composer\Factory;
-use Composer\IO\IOInterface;
 use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
@@ -33,7 +32,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/cookie_info',
         'operator' => '^',
-        'version' => '0.1'
+        'version' => '1.0'
       ]
     ],
     'GTM' => [
@@ -54,14 +53,14 @@ class ScriptHandler {
       [
         'package' => 'novicell/ie_warning',
         'operator' => '^',
-        'version' => '0.1'
+        'version' => '1.0'
       ]
     ],
     'Premium Maps' => [
       [
         'package' => 'novicell/premium_maps',
         'operator' => '^',
-        'version' => '0.1'
+        'version' => '1.0'
       ]
     ]
   ];
