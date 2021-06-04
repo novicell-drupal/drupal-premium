@@ -100,6 +100,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
       ],
     ];
 
+    $request = $this->requestStack->getCurrentRequest();
     /** @var \Drupal\Core\Entity\ContentEntityInterface $route_entity */
     $route_entity = $this->getEntityFromRouteMatch($this->routeMatch);
     if (!is_null($route_entity) && $route_entity instanceof ContentEntityInterface && $route_entity->hasField('field_header')) {
@@ -123,9 +124,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
         }
       }
     }
-
     if (!isset($build['header'])) {
-      $request = $this->requestStack->getCurrentRequest();
       if (!is_null($request)) {
         $title = $this->titleResolver->getTitle($request, $this->routeMatch->getRouteObject());
         $build['title'] = [
@@ -135,7 +134,7 @@ class PageHeaderBlock extends RouteEntityBaseBlock {
       }
     }
 
-    $status = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception');
+    $status = $request->attributes->get('exception');
     if ($status && $status->getStatusCode() !== 200) {
       $build['#cache']['max-age'] = 0;
     }
