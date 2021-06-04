@@ -71,7 +71,10 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
     case 'field_inline_navigation_pages':
       $parents = $elements[0]['target_id']['#field_parents'];
       $parents_input_name = array_shift($parents);
-      $parents_input_name .= '[' . implode('][', $parents) . ']';
+      if (!empty($parents)) {
+        $parents_input_name .= '[' . implode('][', $parents) . ']';
+      }
+
       $elements['#states'] = [
         'visible' => [
           ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "pages"],
@@ -90,7 +93,10 @@ function premium_theme_helper_field_widget_multivalue_form_alter(array &$element
       if (Drupal::moduleHandler()->moduleExists('content_hierarchy')) {
         $parents = $elements[0]['target_id']['#field_parents'];
         $parents_input_name = array_shift($parents);
-        $parents_input_name .= '[' . implode('][', $parents) . ']';
+        if (!empty($parents)) {
+          $parents_input_name .= '[' . implode('][', $parents) . ']';
+        }
+
         $elements[0]['target_id']['#states'] = [
           'visible' => [
             ':input[name="' . $parents_input_name . '[field_inline_navigation_mode]"]' => ["value" => "parent"],
