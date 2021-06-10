@@ -1,13 +1,10 @@
 /**
  * Nested imports.
- *
- * @see https://github.com/eriklharper/postcss-nested-import
- * Changed to support postcss 8.
  */
 
 const fs = require('fs');
 const postcss = require("postcss");
-const postcssCustomProperties = require('postcss-custom-properties');
+const postcssPresetEnv = require('postcss-preset-env');
 const cssnano = require('cssnano');
 
 function parseImportPath(path) {
@@ -27,22 +24,18 @@ function readFile(file) {
   });
 }
 /**
- * PostCSS Nested Import Plugin
- */
+* PostCSS Nested Import Plugin
+*/
 module.exports = (opts = {}) => {
-  const postcssCustomPropertiesOpts = {};
+  let postcssPresetEnvOpts = {};
   let cssnanoOpts = {};
+
   if ('cssnanoOptions' in opts) {
     cssnanoOpts = opts.cssnanoOptions;
   }
 
-  if ('importFrom' in opts || 'preserve' in opts) {
-    if ('importFrom' in opts) {
-      postcssCustomPropertiesOpts.importFrom = opts.importFrom;
-    }
-    if ('preserve' in opts) {
-      postcssCustomPropertiesOpts.preserve = opts.preserve;
-    }
+  if ('postcssPresetEnv' in opts) {
+    postcssPresetEnvOpts = opts.postcssPresetEnv;
   }
 
   return {
@@ -53,15 +46,27 @@ module.exports = (opts = {}) => {
         if (path == null) {
           return;
         }
+
+        // Handles plugins.
+        const plugins = [];
+
+        if (Object.keys(postcssPresetEnvOpts).length) {
+          plugins.push(postcssPresetEnv(postcssPresetEnvOpts));
+        }
+        if (Object.keys(cssnanoOpts).length) {
+          plugins.push(cssnano(cssnanoOpts));
+        }
+
+        // Load and read file, and replace atRule with fileContents.
         const fileContents = await readFile(path);
-        const parsedCustomProperties = await postcss([
-          postcssCustomProperties(postcssCustomPropertiesOpts),
-          cssnano(cssnanoOpts)
-        ]).process(fileContents);
+        if (fileContents.length === 0) {
+          return;
+        }
+
+        const parsedCustomProperties = await postcss(plugins).process(fileContents);
         atRule.replaceWith(parsedCustomProperties.css)
       }
     }
   }
 }
 module.exports.postcss = true;
-

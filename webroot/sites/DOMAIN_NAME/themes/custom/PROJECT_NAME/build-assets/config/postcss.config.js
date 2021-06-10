@@ -2,9 +2,6 @@ const path = require('path');
 const config = require('../config');
 
 const env = process.env.NODE_ENV || 'development';
-const importFrom = [
-  path.join(config.paths.src, '_base/_custom-media.css'),
-];
 
 const cssnanoOptions = {
   autoprefixer: false,
@@ -16,6 +13,18 @@ const cssnanoOptions = {
   zindex: false,
   discardUnused: {
     fontFace: false,
+  },
+};
+
+const postcssPresetEnv = {
+  importFrom: [path.join(config.paths.src, '_base/_custom-media.css')],
+  stage: 3,
+  preserve: false,
+  autoprefixer: {
+    grid: true,
+  },
+  features: {
+    'custom-media-queries': true,
   },
 };
 
@@ -32,21 +41,10 @@ module.exports = {
       ],
     }),
     require('./postcss-plugins/postcss-nested-import')({
-      importFrom,
-      preserve: false,
+      postcssPresetEnv,
       cssnanoOptions,
     }),
-    require('postcss-preset-env')({
-      importFrom,
-      stage: 3,
-      preserve: false,
-      autoprefixer: {
-        grid: true,
-      },
-      features: {
-        'custom-media-queries': true,
-      },
-    }),
+    require('postcss-preset-env')(postcssPresetEnv),
     require('postcss-nested'),
     require('cssnano')(cssnanoOptions),
     require('postcss-reporter')({
