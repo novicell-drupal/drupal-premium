@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - webp
+name: optimi
+label: Optimize

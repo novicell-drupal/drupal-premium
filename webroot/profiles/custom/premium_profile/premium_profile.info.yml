@@ -109,6 +109,7 @@ install:
   - view_unpublished
   - premium_search
   - status_feed
+  - imageapi_optimize
 themes:
   - adminimal_theme
   - PROJECT_NAME

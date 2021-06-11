@@ -34,7 +34,7 @@ content:
     settings:
       preview_image_style: thumbnail
       progress_indicator: throbber
-      preview_link: true
+      preview_link: false
       offsets: '50,50'
     third_party_settings: {  }
     type: image_focal_point
