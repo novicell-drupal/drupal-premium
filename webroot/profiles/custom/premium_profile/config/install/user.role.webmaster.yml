@@ -90,6 +90,8 @@ permissions:
   - 'revert page revisions'
   - 'select account cancellation method'
   - 'translate atom'
+  - 'translate menu_link_content'
+  - 'translate page node'
   - 'update any media'
   - 'update media'
   - 'use editorial transition archive'
