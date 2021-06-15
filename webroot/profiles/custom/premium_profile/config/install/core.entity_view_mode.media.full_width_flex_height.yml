@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.full_width_flex_height
+label: 'Full width - dynamic height'
+targetEntityType: media
+cache: true
