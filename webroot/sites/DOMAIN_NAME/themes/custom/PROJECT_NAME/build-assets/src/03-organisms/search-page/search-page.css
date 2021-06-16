@@ -21,6 +21,10 @@
         margin-top: 0;
       }
     }
+
+    .form-actions {
+      margin-top: 0;
+    }
   }
 
   &__form,
@@ -34,5 +38,17 @@
 
   &__pager {
     margin-bottom: 40px;
+  }
+}
+
+.search-result {
+  &__title {
+    font-size: var(--base-font-size-xlarge);
+  }
+
+  .search-hierarchy {
+    margin-top: 12px;
+    opacity: .6;
+    font-size: var(--base-font-size);
   }
 }

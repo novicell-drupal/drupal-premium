@@ -27,6 +27,14 @@ msgstr "En kolonne"
 msgid "Two column"
 msgstr "To kolonne"
 
+msgid "Found in"
+msgstr "Fundet i"
+
+msgid "1 result found"
+msgid_plural "@count results found"
+msgstr[0] "1 resultat fundet"
+msgstr[1] "@count resultater fundet"
+
 msgid "Three column"
 msgstr "Tre kolonne"
 

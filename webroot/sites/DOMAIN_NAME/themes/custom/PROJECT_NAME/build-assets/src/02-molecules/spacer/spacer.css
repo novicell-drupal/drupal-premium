@@ -10,14 +10,14 @@
   margin: 0;
 
   &--small {
-    height: var(--container-spacing);
+    height: 30px;
   }
 
   &--medium {
-    height: calc(var(--container-spacing) * 2);
+    height: 50px;
   }
 
   &--large {
-    height: calc(var(--container-spacing) * 3);
+    height: 70px;
   }
 }

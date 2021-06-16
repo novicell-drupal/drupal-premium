@@ -70,11 +70,11 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes }}>
+<div{{ attributes.addClass('search-result') }}>
 
     {{ title_prefix }}
     {% if not page %}
-        <h2{{ title_attributes }}>
+        <h2{{ title_attributes.addClass('search-result__title') }}>
             <a href="{{ url }}" rel="bookmark">{{ label }}</a>
         </h2>
     {% endif %}
@@ -94,8 +94,10 @@
         {{ content }}
     </div>
 
-</article>
+</div>
 
 {% include '@molecules/spacer/spacer.twig' with {
     'spacing': 'small'
 } %}
+
+{% include '@molecules/divider/divider.twig' %}
