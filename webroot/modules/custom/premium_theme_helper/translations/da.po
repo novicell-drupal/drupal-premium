@@ -369,3 +369,6 @@ msgstr "Fjern"
 
 msgid "Add media"
 msgstr "Tilføj media"
+
+msgid "Hide title"
+msgstr "Skjul titel"
