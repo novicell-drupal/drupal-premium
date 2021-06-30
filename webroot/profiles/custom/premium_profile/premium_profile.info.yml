@@ -89,6 +89,7 @@ install:
   - linkit
   - metatag
   - noreferrer
+  - promote_disable
   - pathauto
   - paragraphs
   - paragraphs_asymmetric_translation_widgets
