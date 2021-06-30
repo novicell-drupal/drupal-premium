@@ -791,6 +791,9 @@ if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
 }
 
 if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
+  if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
+    $settings['redis.connection']['host'] = 'redis';
+  }
   include $app_root . '/sites/default/settings.ddev.php';
 }
 

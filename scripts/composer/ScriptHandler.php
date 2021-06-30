@@ -210,12 +210,16 @@ class ScriptHandler {
       if (!empty($db_pass = $event->getIO()->askAndHideAnswer('Database password:'))) {
         $environment['DB_PASS'] = $db_pass;
       }
+      if (!empty($redis_host = $event->getIO()->ask('Redis host:', 'localhost'))) {
+        $environment['REDIS_HOST'] = $redis_host;
+      }
     } else {
       $environment['DB_HOST'] = 'db';
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
       $environment['DB_SCHEMA'] = 'db';
       $environment['DB_USER'] = 'db';
       $environment['DB_PASS'] = 'db';
+      $environment['REDIS_HOST'] = 'redis';
     }
 
     // Testing values
@@ -336,6 +340,12 @@ class ScriptHandler {
       self::replaceAllTokensInFile($filename, $tokens);
     }
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
+
+    // Preparing a DDEV configuration so it's ready get started up after installation
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Preparing DDEV configuration...</>");
+    $event->getIO()->write("");
+    self::replaceAllTokensInDirectory(".ddev", $tokens);
 
     // Install node modules and build front end assets...
     $event->getIO()->write("");
