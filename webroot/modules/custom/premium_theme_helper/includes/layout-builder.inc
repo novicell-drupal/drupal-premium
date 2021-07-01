@@ -152,6 +152,6 @@ function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_
     'layout_builder_add_block',
     'layout_builder_update_block',
   ])) {
-    $form['#attached']['library'][] = 'premium_theme_helper/dialog';
+    $form['#attached']['library'][] = 'premium_core/dialog';
   }
 }
