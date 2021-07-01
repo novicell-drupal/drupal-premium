@@ -367,6 +367,8 @@ class ScriptHandler {
   public static function postCreateProjectCmd(Event $event) {
     $tokens = json_decode(file_get_contents('tokens.json'), TRUE);
 
+    self::replaceAllTokensInDirectory('webroot/profiles/contrib/premium_profile', $tokens);
+
     /*$event->getIO()->write("");
     $event->getIO()->write("<options=bold>Installing Drupal site...</>");
     $event->getIO()->write("");
