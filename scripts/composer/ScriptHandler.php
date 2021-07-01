@@ -290,7 +290,6 @@ class ScriptHandler {
     }
     self::copyAndReplaceAllTokensInFile('webroot/sites/local.php', 'webroot/sites/sites.local.php', $tokens);
     self::copyAndReplaceAllTokensInFile('webroot/sites/' . $domain_name . '/local.php', 'webroot/sites/' . $domain_name . '/settings.local.php', $tokens);
-    self::replaceAllTokensInDirectory('webroot/profiles/custom/premium_profile', $tokens);
 
     // Preparing deployment method
     $event->getIO()->write("");
