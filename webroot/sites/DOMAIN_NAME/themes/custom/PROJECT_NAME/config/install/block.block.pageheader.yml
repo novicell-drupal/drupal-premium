@@ -14,6 +14,6 @@ plugin: premium_hero_block
 settings:
   id: premium_hero_block
   label: Pageheader
-  provider: premium_theme_helper
+  provider: premium_core
   label_display: '0'
 visibility: {  }
