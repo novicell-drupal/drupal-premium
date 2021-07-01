@@ -1,4 +1,4 @@
-name: PROJECT_NAME
+name: DOMAIN_ONLY
 type: drupal9
 docroot: webroot
 php_version: "7.4"
@@ -14,7 +14,7 @@ mariadb_version: "10.4"
 mysql_version: ""
 provider: default
 use_dns_when_possible: true
-composer_version: ""
+composer_version: "2"
 
 
 # This config.yaml was created with ddev version v1.16.7

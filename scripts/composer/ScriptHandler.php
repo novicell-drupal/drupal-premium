@@ -6,6 +6,8 @@ use Composer\Package\Link;
 use Composer\Script\Event;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\Constraint\MultiConstraint;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Setup of premium site.
@@ -222,17 +224,6 @@ class ScriptHandler {
       $environment['REDIS_HOST'] = 'redis';
     }
 
-    // Testing values
-    /*$environment['PROJECT_NAME'] = $project_name = 'premium';
-    $environment['DOMAIN_NAME'] = $domain_name = 'test.dk';
-    $environment['DB_HOST'] = 'localhost';
-    $environment['DB_PORT'] = '3306';
-    $environment['DB_SCHEMA'] = $project_name;
-    $environment['DB_USER'] = $project_name;
-    $environment['DB_PASS'] = $project_name;
-    $modules = [0, 1];
-    $deployment = 0;*/
-
     $tokens = [
       'PROJECT_NAME' => $project_name,
       'DOMAIN_NAME' => $domain_name
@@ -347,6 +338,17 @@ class ScriptHandler {
     $event->getIO()->write("");
     self::replaceAllTokensInDirectory(".ddev", $tokens);
 
+    // Clean up unused examples and remove scripthandler from composer
+    $event->getIO()->write("");
+    $event->getIO()->write("<options=bold>Clean up examples and composer...</>");
+    $event->getIO()->write("");
+    self::deleteDirectory("examples");
+    $json_file = Factory::getComposerFile();
+    $json = json_decode(file_get_contents($json_file));
+    unset($json->scripts);
+    unset($json->autoload);
+    file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
+
     // Install node modules and build front end assets...
     $event->getIO()->write("");
     $event->getIO()->write("<options=bold>Install node modules and build frontend assets...</>");
@@ -410,6 +412,23 @@ class ScriptHandler {
    * @param string $directory_name
    * @param array $tokens
    */
+  protected static function deleteDirectory($directory_name) {
+    $directory = new \RecursiveDirectoryIterator($directory_name, RecursiveDirectoryIterator::SKIP_DOTS);
+    $iterator = new \RecursiveIteratorIterator($directory, RecursiveIteratorIterator::CHILD_FIRST);
+    foreach ($iterator as $info) {
+      if ($info->isDir()){
+        rmdir($info->getRealPath());
+      } else {
+        unlink($info->getRealPath());
+      }
+    }
+    rmdir($directory_name);
+  }
+
+  /**
+   * @param string $directory_name
+   * @param array $tokens
+   */
   protected static function replaceAllTokensInDirectory($directory_name, array $tokens) {
     $directory = new \RecursiveDirectoryIterator($directory_name);
     $iterator = new \RecursiveIteratorIterator($directory);
@@ -423,6 +442,7 @@ class ScriptHandler {
       self::copyAndReplaceAllTokensInFile($filename, $filename, $tokens, FALSE);
     }
   }
+
   /**
    * @param $source
    * @param $destination

@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Media categories'
-vid: media_categories
-description: 'Used to organize media'
-weight: 0
