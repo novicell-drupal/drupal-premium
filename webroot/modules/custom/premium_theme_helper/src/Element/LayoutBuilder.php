@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\premium_core\Element;
+namespace Drupal\premium_theme_helper\Element;
 
 use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\layout_builder\Element\LayoutBuilder as LayoutBuilderOrg;
@@ -9,7 +9,7 @@ use Drupal\layout_builder\SectionStorageInterface;
 /**
  * Change layout builder structure.
  *
- * @package Drupal\premium_core\Element
+ * @package Drupal\premium_theme_helper\Element
  */
 class LayoutBuilder extends LayoutBuilderOrg {
 
