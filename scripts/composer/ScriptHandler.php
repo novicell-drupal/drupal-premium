@@ -64,6 +64,13 @@ class ScriptHandler {
         'operator' => '^',
         'version' => '1.0'
       ]
+    ],
+    'Drupal Commerce' => [
+      [
+        'package' => 'drupal/commerce',
+        'operator' => '^',
+        'version' => '2.0'
+      ]
     ]
   ];
 
