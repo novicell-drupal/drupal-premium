@@ -127,7 +127,12 @@
           "mode": "replace",
           "path": "assets/development.services.yml",
           "overwrite": false
-        }
+        }/*,
+        "[web-root]/core/install.php": {
+          "mode": "replace",
+          "path": "assets/install.php",
+          "overwrite": true
+        }*/
       }
     },
     "installer-paths": {
