@@ -22,7 +22,7 @@
     }
   ],
   "require": {
-    "php": ">=7.3",
+    "php": ">=8.0",
     "ext-json": "*",
     "ext-pdo": "*",
     "bower-asset/jquery-simple-color": "^1.2",
@@ -95,6 +95,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
+    "platform": {
+      "php": "8.0"
+    },
     "optimize-autoloader": true,
     "sort-packages": true
   },
