@@ -381,7 +381,7 @@ class ScriptHandler {
     $tokens = json_decode(file_get_contents('tokens.json'), TRUE);
 
     //self::replaceAllTokensInDirectory('webroot/profiles/contrib/premium_profile', $tokens);
-    self::replaceAllTokensInFile('webroot/profiles/contrib/premium_profile/premium_profile.info', $tokens);
+    self::replaceAllTokensInFile('webroot/profiles/contrib/premium_profile/premium_profile.info.yml', $tokens);
 
     /*$event->getIO()->write("");
     $event->getIO()->write("<options=bold>Installing Drupal site...</>");
