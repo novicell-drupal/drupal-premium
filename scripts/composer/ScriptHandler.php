@@ -125,6 +125,7 @@ class ScriptHandler {
     '.info.yml',
     '.theme',
     '.atoms.yml',
+    '.styles.yml',
     '.breakpoints.yml',
     '.key_value.yml',
     '.libraries.yml'
