@@ -1,0 +1,13 @@
+color_theme:
+  label: Color themes
+  libraries: PROJECT_NAME/theme-preview
+  preview_style: background
+  base_styles:
+    - theme
+  styles:
+    theme-primary: Primary
+    theme-secondary: Secondary
+    theme-green: Green
+    theme-red: Red
+    theme-seashell: Seashell
+    theme-yellow: Yellow
