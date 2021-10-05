@@ -80,7 +80,7 @@ class ScriptHandler {
         [
           'package' => 'deployer/deployer',
           'operator' => '^',
-          'version' => '6.8'
+          'version' => '7.0'
         ],
         [
           'package' => 'deployer/recipes',
