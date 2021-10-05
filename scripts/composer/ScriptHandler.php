@@ -75,12 +75,18 @@ class ScriptHandler {
   ];
 
   private static $deployment_options = [
+    'None' => [
+      'require-dev' => [],
+      'dirs' => [],
+      'copy' => [],
+      'token_replace' => []
+    ],
     'Deployer' => [
       'require-dev' => [
         [
           'package' => 'deployer/deployer',
           'operator' => '^',
-          'version' => '7.0'
+          'version' => '6.8'
         ],
         [
           'package' => 'deployer/recipes',
