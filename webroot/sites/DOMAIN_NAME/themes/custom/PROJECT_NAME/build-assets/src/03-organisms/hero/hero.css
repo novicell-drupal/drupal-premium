@@ -10,7 +10,6 @@
 
 .hero {
   position: relative;
-  color: black;
   overflow: hidden;
   max-height: var(--hero-max-height);
 
@@ -104,10 +103,6 @@
     .hero__description {
       text-align: right;
     }
-  }
-
-  &--inverted {
-    color: white;
   }
 
   &--image-added {

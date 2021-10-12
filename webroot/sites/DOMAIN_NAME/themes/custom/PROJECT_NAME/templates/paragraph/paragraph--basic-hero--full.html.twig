@@ -59,7 +59,7 @@
 
   <section{{ attributes.addClass('section').addClass('section--no-spacing') }}>
     {% include '@organisms/hero/hero.twig' with {
-      'attributes': create_attribute().addClass(position != 'left' ? 'hero--' ~ position).addClass(text_color != 'dark' ? 'hero--inverted').addClass(overlay == 1 ? 'hero--overlay'),
+      'attributes': create_attribute().addClass(position != 'hero--left' ? position).addClass(overlay == 1 ? 'hero--overlay'),
       'media': media,
       'media_image': media_image,
       'position': position,

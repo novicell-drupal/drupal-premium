@@ -1,12 +1,24 @@
+button_style:
+  label: Button styles
+  libraries: PROJECT_NAME/master
+  preview_style: button
+  base_styles:
+    - premium-layout-wrapper
+    - button
+  styles:
+    button--normal: Normal
+    button--ghost: Ghost
+
 color_theme:
   label: Color themes
   libraries: PROJECT_NAME/theme-preview
-  preview_style: background
+  preview_style: color_theme
   base_styles:
     - theme
   styles:
     theme-primary: Primary
     theme-secondary: Secondary
+    theme-light: Light
     theme-green: Green
     theme-red: Red
     theme-seashell: Seashell
