@@ -54,7 +54,7 @@
 
   {% if color_theme != '' and color_theme != 'none' %}
     {% set attributes = attributes.addClass('theme').addClass(color_theme) %}
-    {{ attach_library('test/' ~ color_theme) }}
+    {{ attach_library('PROJECT_NAME/' ~ color_theme) }}
   {% endif %}
 
   <section{{ attributes.addClass('section').addClass('section--no-spacing') }}>

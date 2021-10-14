@@ -34,11 +34,11 @@ theme-secondary:
   dependencies:
     - PROJECT_NAME/theme
 
-theme-light:
+theme-dark:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/_themes/theme-light.css: {}
+      build-assets/dist/css/_themes/theme-dark.css: {}
   dependencies:
     - PROJECT_NAME/theme
 
@@ -74,6 +74,7 @@ theme-yellow:
   dependencies:
     - PROJECT_NAME/theme
 
+# Previews.
 theme-preview:
   version: VERSION
   css:
@@ -82,7 +83,7 @@ theme-preview:
   dependencies:
     - PROJECT_NAME/theme-primary
     - PROJECT_NAME/theme-secondary
-    - PROJECT_NAME/theme-light
+    - PROJECT_NAME/theme-dark
     - PROJECT_NAME/theme-green
     - PROJECT_NAME/theme-red
     - PROJECT_NAME/theme-seashell
@@ -92,15 +93,7 @@ button-preview:
   version: VERSION
   css:
     theme:
-      build-assets/dist/css/_themes/theme-preview.css: {}
-  dependencies:
-    - PROJECT_NAME/theme-primary
-    - PROJECT_NAME/theme-secondary
-    - PROJECT_NAME/theme-light
-    - PROJECT_NAME/theme-green
-    - PROJECT_NAME/theme-red
-    - PROJECT_NAME/theme-seashell
-    - PROJECT_NAME/theme-yellow
+      build-assets/dist/css/_preview/button.css: {}
 
 # Molecules.
 breadcrumb:

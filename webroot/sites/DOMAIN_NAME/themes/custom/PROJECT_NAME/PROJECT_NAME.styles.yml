@@ -1,9 +1,8 @@
 button_style:
   label: Button styles
-  libraries: PROJECT_NAME/master
+  preview_libraries: PROJECT_NAME/button-preview
   preview_style: button
   base_styles:
-    - premium-layout-wrapper
     - button
   styles:
     button--normal: Normal
@@ -18,7 +17,7 @@ color_theme:
   styles:
     theme-primary: Primary
     theme-secondary: Secondary
-    theme-light: Light
+    theme-dark: Dark
     theme-green: Green
     theme-red: Red
     theme-seashell: Seashell
