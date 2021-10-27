@@ -58,6 +58,13 @@ class ScriptHandler {
         'version' => '1.0'
       ]
     ],
+    'Premium Articles' => [
+      [
+        'package' => 'novicell/premium_articles',
+        'operator' => '^',
+        'version' => '1.0'
+      ]
+    ],
     'Premium Maps' => [
       [
         'package' => 'novicell/premium_maps',
