@@ -216,22 +216,22 @@ class ScriptHandler {
     $deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE);
 
     if (!$in_ddev) {
-      if (!empty($db_host = $event->getIO()->ask('Database host: ', 'localhost'))) {
+      if (!empty($db_host = $event->getIO()->ask('Database host (localhost): ', 'localhost'))) {
         $environment['DB_HOST'] = $db_host;
       }
-      if (!empty($db_port = $event->getIO()->ask('Database port: ', '3306'))) {
+      if (!empty($db_port = $event->getIO()->ask('Database port (3306): ', '3306'))) {
         $environment['DB_PORT'] = $db_port;
       }
-      if (!empty($db_name = $event->getIO()->ask('Database name: ', $project_name))) {
+      if (!empty($db_name = $event->getIO()->ask('Database name (project name): ', $project_name))) {
         $environment['DB_SCHEMA'] = $db_name;
       }
-      if (!empty($db_user = $event->getIO()->ask('Database user: ', $project_name))) {
+      if (!empty($db_user = $event->getIO()->ask('Database user (project name): ', $project_name))) {
         $environment['DB_USER'] = $db_user;
       }
       if (!empty($db_pass = $event->getIO()->askAndHideAnswer('Database password: '))) {
         $environment['DB_PASS'] = $db_pass;
       }
-      if (!empty($redis_host = $event->getIO()->ask('Redis host: ', 'localhost'))) {
+      if (!empty($redis_host = $event->getIO()->ask('Redis host (localhost): ', 'localhost'))) {
         $environment['REDIS_HOST'] = $redis_host;
       }
     } else {
