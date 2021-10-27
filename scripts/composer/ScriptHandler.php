@@ -222,10 +222,10 @@ class ScriptHandler {
       if (!empty($db_port = $event->getIO()->ask('Database port (3306): ', '3306'))) {
         $environment['DB_PORT'] = $db_port;
       }
-      if (!empty($db_name = $event->getIO()->ask('Database name (project name): ', $project_name))) {
+      if (!empty($db_name = $event->getIO()->ask('Database name (' . $project_name . '): ', $project_name))) {
         $environment['DB_SCHEMA'] = $db_name;
       }
-      if (!empty($db_user = $event->getIO()->ask('Database user (project name): ', $project_name))) {
+      if (!empty($db_user = $event->getIO()->ask('Database user (' . $project_name . '): ', $project_name))) {
         $environment['DB_USER'] = $db_user;
       }
       if (!empty($db_pass = $event->getIO()->askAndHideAnswer('Database password: '))) {
