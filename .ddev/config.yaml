@@ -1,8 +1,8 @@
 name: DOMAIN_ONLY
 type: drupal9
 docroot: webroot
-php_version: "7.4"
-webimage_extra_packages: [php7.4-redis]
+php_version: "8.0"
+webimage_extra_packages: [php8.0-redis]
 project_tld: localhost
 webserver_type: nginx-fpm
 router_http_port: "80"
