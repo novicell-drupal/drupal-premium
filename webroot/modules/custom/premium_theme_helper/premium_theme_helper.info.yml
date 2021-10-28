@@ -5,7 +5,7 @@ type: module
 core_version_requirement: ^8 || ^9
 
 dependencies:
-  - PROJECT_NAME:PROJECT_NAME
+  - premium_core:premium_core
 
 interface translation project: premium_theme_helper
 interface translation server pattern: modules/custom/premium_theme_helper/translations/%language.po
