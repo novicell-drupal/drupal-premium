@@ -148,7 +148,7 @@ class ScriptHandler {
     'drush/drush.yml',
     'drush/drushrc.php',
     'assets/robots-additions.txt',
-    'webroot/modules/custom/premium_theme_helper/premium_theme_helper.info'
+    'webroot/modules/custom/premium_theme_helper/premium_theme_helper.info.yml'
   ];
 
   /**
