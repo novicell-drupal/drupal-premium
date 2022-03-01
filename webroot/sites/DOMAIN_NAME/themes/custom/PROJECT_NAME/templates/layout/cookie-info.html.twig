@@ -9,9 +9,11 @@
     {% if body %}
       <div class="cookie-info__body">{{ body.value | raw }}</div>
     {% endif %}
-    {% include '@particles/button/button.twig' with {
-      'text': close,
-      'attributes': create_attribute().setAttribute('id', 'cookie-info-close').addClass('cookie-info__close')
-    } %}
+    <button {{ create_attribute().addClass('button')
+      .setAttribute('type', 'submit')
+      .setAttribute('id', 'cookie-info-close')
+      .addClass('cookie-info__close') }}>
+      {{ close }}
+    </button>
   </div>
 </section>

@@ -1,8 +1,0 @@
-{
-  "title": "Quote",
-  "status": "ready",
-  "context": {
-    "quote_text": "Lorem ipsum dolor sit amet",
-    "quote_source": "Lorem ipsum"
-  }
-}

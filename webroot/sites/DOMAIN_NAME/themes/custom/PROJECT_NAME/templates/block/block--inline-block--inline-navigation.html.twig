@@ -25,14 +25,12 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@organisms/inline-navigation/inline-navigation.twig' with {
-  'attributes': attributes
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-  {% block content %}
+{{ attach_library('PROJECT_NAME/inline-navigation') }}
+
+<div{{ attributes.addClass('inline-navigation') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <ul class="inline-navigation__list js-inline-navigation-slider">
     {{ content }}
-  {% endblock %}
-{% endembed %}
+  </ul>
+</div>

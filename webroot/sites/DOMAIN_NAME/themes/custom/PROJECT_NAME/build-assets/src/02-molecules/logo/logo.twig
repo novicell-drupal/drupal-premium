@@ -1,9 +1,0 @@
-{{ attach_library('PROJECT_NAME/logo') }}
-
-<a{{ (not attributes ? create_attribute() : attributes).addClass('logo').setAttribute('href', href) }}>
-  {% if logo_path %}
-    <img class="logo__image" src="{{ logo_path }}" alt="{{ alt }}">
-  {% elseif site_name %}
-    {{ site_name }}
-  {% endif %}
-</a>

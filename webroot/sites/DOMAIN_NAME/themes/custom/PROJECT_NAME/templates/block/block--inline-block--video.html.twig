@@ -25,16 +25,23 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/video/video.twig' with {
-  'attributes': attributes,
-  'media': content.field_video_media,
-  'media_image': media_image,
-  'title': content.field_video_headline,
-  'subtitle': content.field_video_subline,
-  'inverted': content['#block_content'].field_video_text_color.value != 'dark'
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/video') }}
+
+{% set inverted = content['#block_content'].field_video_text_color.value != 'dark' %}
+
+<div{{ attributes.addClass('video').addClass('js-video').addClass(inverted ? 'video--inverted') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div class="video__iframe-wrapper js-video-iframe-wrapper">{{ content.field_video_media }}</div>
+  {{ media_image }}
+  <div class="video__play-icon js-video-play-icon">
+    {% include '@particles/svg-icon.twig' with {
+      'attributes': '',
+      'svgIconName': 'play'
+    } %}
+  </div>
+  <div class="video__content">
+    <div class="video__title">{{ content.field_video_headline }}</div>
+    <div class="video__subtitle">{{ content.field_video_subline }}</div>
+  </div>
+</div>

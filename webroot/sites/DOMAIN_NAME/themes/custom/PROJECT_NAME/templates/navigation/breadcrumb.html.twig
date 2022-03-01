@@ -7,12 +7,23 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-<div class="container">
-  {% include '@molecules/breadcrumb/breadcrumb.twig' with {
-    'breadcrumb_json_data': breadcrumb_json_data,
-    'attributes': attributes,
-    'items_attributes': items_attributes,
-    'breadcrumb': breadcrumb,
-    'disable': disable
-  } %}
-</div>
+{% if breadcrumb and disable == FALSE %}
+  {{ attach_library('PROJECT_NAME/breadcrumb') }}
+
+  <div class="container">
+    <div{{ attributes.addClass('breadcrumb') }}>
+      <ol{{ items_attributes.addClass('breadcrumb__items') }}>
+        {% for item in breadcrumb %}
+          <li class="breadcrumb__item">
+            {% if item.url %}
+              <a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
+            {% else %}
+              <span class="breadcrumb__link breadcrumb__link--active">{{ item.text }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+    {{ breadcrumb_json_data }}
+  </div>
+{% endif %}

@@ -10,6 +10,6 @@
  * @see template_preprocess_views_mini_pager()
  */
 #}
-{% include '@organisms/pager/pager.twig' with {
-  'items': items
-} %}
+{{ attach_library('PROJECT_NAME/pager') }}
+
+{% extends 'views-mini-pager.html.twig' %}

@@ -14,6 +14,10 @@ webroot/core
 # Core's dependencies are managed with Composer.
 vendor
 
+# Ignore various frontend assets.
+webroot/sites/*/themes/custom/*/dist
+webroot/sites/*/themes/custom/*/node_modules
+
 # Ignore contributed packages, since we manage them with composer
 webroot/modules/contrib
 webroot/themes/contrib

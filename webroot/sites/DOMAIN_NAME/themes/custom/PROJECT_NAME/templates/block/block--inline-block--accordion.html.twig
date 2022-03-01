@@ -25,17 +25,27 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@organisms/accordion/accordion.twig' with {
-  'attributes': attributes,
-  'headline': content.field_accordion_headline,
-  'show_more_text': content['#block_content'].field_accordion_show_more.value,
-  'items_count': content['#block_content'].field_accordion_items|length
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-  {% block content %}
-    {{ content.field_accordion_items }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/accordion') }}
+
+{% set button_classes = [
+  'button',
+  'button--center',
+  'js-accordion-show-more'
+] %}
+{% set show_more_text = content['#block_content'].field_accordion_show_more.value %}
+{% set items_count = content['#block_content'].field_accordion_items|length %}
+
+<div{{ attributes.addClass(['accordion', 'js-accordion']) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <h2 class="accordion__headline">{{ content.field_accordion_headline }}</h2>
+  <div class="accordion__items">{{ content.field_accordion_items }}</div>
+  {% if items_count > 5 and show_more_text %}
+    <div v-show="!showAllHiddenItems">
+      <br>
+      <button {{ create_attribute().addClass(button_classes).setAttribute('@click.prevent', 'displayHiddenItems') }}>
+        {{ show_more_text }}
+      </button>
+    </div>
+  {% endif %}
+</div>

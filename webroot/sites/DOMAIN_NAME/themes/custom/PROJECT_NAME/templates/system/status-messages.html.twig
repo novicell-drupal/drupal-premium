@@ -23,7 +23,27 @@
 * @ingroup themeable
 */
 #}
-{% include '@organisms/status-message/status-message.twig' with {
-  'message_list': message_list,
-  'status_headings': status_headings
-} %}
+{{ attach_library('PROJECT_NAME/status-message') }}
+
+{% if message_list|length > 0 %}
+  {% set attributes =  attributes|without('role', 'aria-label') %}
+  {% set heading = status_headings[type] %}
+
+  <div class="status-messages">
+    {% for type, messages in message_list %}
+      <div role="contentinfo" aria-label="{{ heading }}"{{ attributes.addClass('status-message-container') }}>
+        <div class="status-message status-message--{{ type }}">
+          {% if messages|length > 1 %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {{ messages|first }}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

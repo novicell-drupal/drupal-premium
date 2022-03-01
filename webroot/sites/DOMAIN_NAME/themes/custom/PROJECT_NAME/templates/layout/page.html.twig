@@ -70,27 +70,8 @@
       </main>
     {% endblock %}
 
-    {% block page_footer %}
-      {% include '@organisms/footer/footer.twig' with {
-        'cols': [
-          {
-            'headline': atom('footer-col1-header'),
-            'content': atom('footer-col1-text'),
-          },
-          {
-            'headline': atom('footer-col2-header'),
-            'content': atom('footer-col2-text'),
-          },
-          {
-            'headline': atom('footer-col3-header'),
-            'content': atom('footer-col3-text'),
-          },
-          {
-            'headline': atom('footer-col4-header'),
-            'content': atom('footer-col4-text'),
-          }
-        ]
-      } %}
+    {% block footer %}
+      {{ page.footer }}
     {% endblock %}
   </div>{# /.layout-container #}
 
@@ -98,7 +79,7 @@
     {{ page.burgermenu }}
   {% endblock %}
 
-  {# Add search overlay to all pages #}
-  {% include '@organisms/search-overlay/search-overlay.twig' %}
-
+  {% block search_overlay %}
+    {{ page.search_overlay }}
+  {% endblock %}
 </div>
