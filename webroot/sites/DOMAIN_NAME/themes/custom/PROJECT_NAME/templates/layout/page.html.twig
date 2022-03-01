@@ -70,16 +70,77 @@
       </main>
     {% endblock %}
 
-    {% block footer %}
-      {{ page.footer }}
-    {% endblock %}
+    {% set footer_cols = [
+      {
+        'headline': atom('footer-col1-header'),
+        'content': atom('footer-col1-text'),
+      },
+      {
+        'headline': atom('footer-col2-header'),
+        'content': atom('footer-col2-text'),
+      },
+      {
+        'headline': atom('footer-col3-header'),
+        'content': atom('footer-col3-text'),
+      },
+      {
+        'headline': atom('footer-col4-header'),
+        'content': atom('footer-col4-text'),
+      }
+    ] %}
+
+    <footer class="footer">
+      <div{{ create_attribute().addClass(['footer__inner', 'section', 'theme', 'theme-primary']) }}>
+        <div class="container">
+          <div class="row">
+            {% if footer_cols|length > 0 %}
+              {% set number_of_cols = 12 / footer_cols|length %}
+              {% for col in footer_cols %}
+                <div class="col-xs-12 col-md-{{ number_of_cols }}">
+                  {% if col.headline %}
+                    <div><b>{{ col.headline }}</b></div>
+                  {% endif %}
+                  {{ col.content }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>{# /.layout-container #}
 
   {% block page_burgermenu %}
     {{ page.burgermenu }}
   {% endblock %}
 
-  {% block search_overlay %}
-    {{ page.search_overlay }}
-  {% endblock %}
+  <div :class="{'search-overlay--open' : isOpen }" class="search-overlay" id="js-search-overlay">
+    <div @click="closeSearchOverlay()" class="search-overlay__close">
+      {% include '@reusable-component/svg-icon.twig' with {
+        'attributes': '',
+        'svgIconName': 'close'
+      } %}
+      <span class="search-overlay__close-label">{{ 'Close (Esc)'|t }}</span>
+    </div>
+    <div class="search-overlay__content">
+      <div class="container">
+        <form action="/search" method="get">
+          <div class="search-overlay__input-field">
+            <label class="sr-only" for="js-search-overlay-input">{{ 'Search'|t }}</label>
+            <input {{ create_attribute().addClass('input')
+              .setAttribute('type', 'search').setAttribute('aria-label', 'Search'|t)
+              .setAttribute('placeholder', 'Search'|t)
+              .setAttribute('name', 'keys')
+              .setAttribute('id', 'js-search-overlay-input') }}>
+            <button {{ create_attribute().setAttribute('type', 'submit').addClass('search-overlay__submit') }}>
+              {% include '@reusable-component/svg-icon.twig' with {
+                'attributes': '',
+                'svgIconName': 'search'
+              } %}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

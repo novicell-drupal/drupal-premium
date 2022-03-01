@@ -9,9 +9,17 @@ master:
       dist/components/css/base/helpers.css: {}
       dist/components/css/base/modal.css: {}
       dist/components/css/base/typography.css: { }
-      dist/components/css/layout/form-styling.css: { }
+      dist/components/css/base/form-styling.css: { }
+      dist/components/css/base/pager.css: { }
+    component:
+      dist/components/css/components/03-organisms/search-overlay.css: {}
+      dist/components/css/components/03-organisms/footer.css: {}
     layout:
       dist/components/css/layout/grid.css: {}
+  js:
+    dist/components/js/search-overlay.js: {}
+  dependencies:
+    - PROJECT_NAME/theme-primary
 
 # Themes.
 theme:
@@ -228,14 +236,6 @@ burger-menu:
   js:
     dist/components/js/burger-menu.js: {}
 
-footer:
-  version: VERSION
-  css:
-    theme:
-      dist/components/css/components/03-organisms/footer.css: {}
-  dependencies:
-    - PROJECT_NAME/theme-primary
-
 header:
   version: VERSION
   css:
@@ -268,20 +268,6 @@ local-tasks:
   css:
     theme:
       dist/components/css/components/03-organisms/local-tasks.css: {}
-
-pager:
-  version: VERSION
-  css:
-    theme:
-      dist/components/css/components/03-organisms/pager.css: {}
-
-search-overlay:
-  version: VERSION
-  css:
-    theme:
-      dist/components/css/components/03-organisms/search-overlay.css: {}
-  js:
-    dist/components/js/search-overlay.js: {}
 
 search-page:
   version: VERSION

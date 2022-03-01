@@ -51,8 +51,8 @@
   {% set text_color = paragraph.field_text_color.value %}
   {% set overlay = paragraph.field_overlay.value %}
 
-  {% include '@components/hero.twig' with {
-    'attributes': attributes.addClass(position != 'left' ? 'hero--' ~ position)
+  {% include '@reusable-component/hero.twig' with {
+    'attributes': attributes.addClass(position != 'hero--left' ? position)
       .addClass(text_color != 'dark' ? 'hero--inverted')
       .addClass(overlay == 1 ? 'hero--overlay'),
     'media': media,

@@ -1,9 +1,9 @@
 {{ attach_library('PROJECT_NAME/hero') }}
 
 {% set hero_position = {
-  'center': 'col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2',
-  'right': 'col-xs-10 col-md-8 col-xs-offset-2 col-md-offset-4',
-  'left': 'col-xs-10 col-md-8'
+  'hero--center': 'col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2',
+  'hero--right': 'col-xs-10 col-md-8 col-xs-offset-2 col-md-offset-4',
+  'hero--left': 'col-xs-10 col-md-8'
 } %}
 
 <div{{ attributes.addClass(['hero', 'js-hero']).addClass(media_image ? 'hero--image-added' : 'hero--narrow-height') }}>

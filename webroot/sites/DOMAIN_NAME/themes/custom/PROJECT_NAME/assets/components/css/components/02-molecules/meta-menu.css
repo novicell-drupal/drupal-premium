@@ -5,7 +5,7 @@
 
 .meta-menu {
   display: none;
-  background-color: var(--color-gray);
+  background-color: var(--color-gray-light);
 
   @media (--viewport-md-min) {
     display: block;

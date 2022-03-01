@@ -1,4 +1,4 @@
-{% set directory = (not directory ? '' : directory ~ '/build-assets/') %}
+{% set directory = (not directory ? '' : directory ~ '/') %}
 {% set iconPath = (not iconPath ? directory ~ 'dist/icons/icons.svg' : iconPath) %}
 
 <svg{{ (not attributes ? create_attribute() : attributes).addClass(['icon', 'icon--' ~ svgIconName]) }}>

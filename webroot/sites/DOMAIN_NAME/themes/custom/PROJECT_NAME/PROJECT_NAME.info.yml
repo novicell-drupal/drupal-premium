@@ -20,16 +20,13 @@ regions:
   breadcrumb: Breadcrumb
   content: Content
   burgermenu: Burgermenu
-  footer: Footer
-  search_overlay: Search overlay
 
 component-libraries:
-  particles:
+  reusable-component:
     paths:
-      - assets/components/js/01-particles
-  molecules:
-    paths:
-      - assets/components/js/02-molecules
+      - assets/components/twig/01-particles
+      - assets/components/twig/02-molecules
+      - assets/components/twig/03-organisms
 
 interface translation project: PROJECT_NAME
 interface translation server pattern: PROJECT_NAME/translations/%language.po

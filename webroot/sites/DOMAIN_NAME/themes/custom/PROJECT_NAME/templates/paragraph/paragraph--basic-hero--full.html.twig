@@ -53,13 +53,13 @@
   {% set overlay = paragraph.field_overlay.value %}
 
   {% if color_theme != '' and color_theme != 'none' %}
-    {% set attributes = attributes.addClass('theme').addClass('theme-' ~ color_theme) %}
-    {{ attach_library('PROJECT_NAME/theme-' ~ color_theme) }}
+    {% set attributes = attributes.addClass('theme').addClass(color_theme) %}
+    {{ attach_library('PROJECT_NAME/' ~ color_theme) }}
   {% endif %}
 
   <section{{ attributes.addClass('section').addClass('section--no-spacing') }}>
-    {% include '@components/hero.twig' with {
-      'attributes': create_attribute().addClass(position != 'left' ? 'hero--' ~ position)
+    {% include '@reusable-component/hero.twig' with {
+      'attributes': create_attribute().addClass(position != 'hero--left' ? position)
         .addClass(text_color != 'dark' ? 'hero--inverted')
         .addClass(overlay == 1 ? 'hero--overlay'),
       'media': media,

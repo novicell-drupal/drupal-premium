@@ -30,12 +30,12 @@
 <div{{ attributes.addClass('quote') }}>
   {{ title_prefix }}
   {{ title_suffix }}
-  {% include '@particles/svg-icon.twig' with {
+  {% include '@reusable-component/svg-icon.twig' with {
     'attributes': '',
     'svgIconName': 'quote'
   } %}
   <p>{{ content['#block_content'].field_quote_text.value }}</p>
-  {% include '@particles/svg-icon.twig' with {
+  {% include '@reusable-component/svg-icon.twig' with {
     'attributes': '',
     'svgIconName': 'quote'
   } %}
