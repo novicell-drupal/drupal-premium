@@ -22,15 +22,11 @@ regions:
   burgermenu: Burgermenu
 
 component-libraries:
-  particles:
+  reusable-component:
     paths:
-      - build-assets/src/01-particles
-  molecules:
-    paths:
-      - build-assets/src/02-molecules
-  organisms:
-    paths:
-      - build-assets/src/03-organisms
+      - assets/components/twig/01-particles
+      - assets/components/twig/02-molecules
+      - assets/components/twig/03-organisms
 
 interface translation project: PROJECT_NAME
 interface translation server pattern: PROJECT_NAME/translations/%language.po

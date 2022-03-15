@@ -71,7 +71,7 @@
  */
 #}
 {% set media = content.field_list_media %}
-{% include '@molecules/inline-navigation-item/inline-navigation-item.twig' with {
+{% include '@reusable-component/inline-navigation-item.twig' with {
   'url': url,
   'media': media[0] is defined ? media,
   'label': label,

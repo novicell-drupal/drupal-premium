@@ -28,11 +28,9 @@
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ title_suffix }}
-  {% block content %}
-    {% if layout_builder_mode == true %}
-      {{ content['#block_content'].field_code_content.value }}
-    {% else %}
-      {{ content['#block_content'].field_code_content.value|raw }}
-    {% endif %}
-  {% endblock %}
+  {% if layout_builder_mode == true %}
+    {{ content['#block_content'].field_code_content.value }}
+  {% else %}
+    {{ content['#block_content'].field_code_content.value|raw }}
+  {% endif %}
 </div>

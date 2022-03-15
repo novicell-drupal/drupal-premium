@@ -25,14 +25,22 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/quote/quote.twig' with {
-  'attributes': attributes,
-  'quote_text': content['#block_content'].field_quote_text.value,
-  'quote_source': content['#block_content'].field_quote_source.value
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/quote') }}
+
+<div{{ attributes.addClass('quote') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include '@reusable-component/svg-icon.twig' with {
+    'attributes': '',
+    'svgIconName': 'quote'
+  } %}
+  <p>{{ content['#block_content'].field_quote_text.value }}</p>
+  {% include '@reusable-component/svg-icon.twig' with {
+    'attributes': '',
+    'svgIconName': 'quote'
+  } %}
+  {% if quote_source %}
+    <div class="quote__author">{{ content['#block_content'].field_quote_source.value }}</div>
+  {% endif %}
+</div>
 

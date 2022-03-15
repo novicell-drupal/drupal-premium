@@ -1,23 +1,26 @@
-{% embed '@organisms/search-page/search-page.twig' with {
-    'form': form,
-    'title': search_title,
-    'no_of_results': no_of_results,
-    'no_results_found': no_results_found,
-    'search_help': search_help,
-    'results': results,
-    'pager': pager,
-} %}
-    {% block form %}
-        {{ form }}
-    {% endblock %}
+{{ attach_library('PROJECT_NAME/search-page') }}
 
-    {% block results %}
-        {{ results }}
-        {{ no_results_found }}
-    {% endblock %}
-
-    {% block pager %}
-        {{ pager }}
-    {% endblock %}
-
-{% endembed %}
+<div{{ attributes.addClass('container') }}>
+    <div class="search-page">
+        <div class="search-page__title">
+            {% if search_title %}
+                <h2>{{ search_title }}</h2>
+            {% endif %}
+        </div>
+        <div class="search-page__no-of-results">
+            {% if no_of_results %}
+                <p>{{ no_of_results }}</p>
+            {% endif %}
+        </div>
+        <div class="search-page__form">
+            {{ form }}
+        </div>
+        <div class="search-page__results">
+            {{ results }}
+            {{ no_results_found }}
+        </div>
+        <div class="search-page__pager">
+            {{ pager }}
+        </div>
+    </div>
+</div>

@@ -1,3 +1,22 @@
-{% include '@molecules/language-menu/language-menu.twig' with {
-  'links': links,
-} %}
+{{ attach_library('PROJECT_NAME/language-menu') }}
+
+<div class="language-menu" id="js-language-menu">
+  <div class="language-menu__trigger" id="js-language-menu-trigger" @click="toggleLanguageMenu()">
+    {% include '@reusable-component/svg-icon.twig' with {
+      'attributes': '',
+      'svgIconName': 'globe'
+    } %}
+    {{ 'Choose Country'|t }}
+    {% include '@reusable-component/svg-icon.twig' with {
+      'attributes': '',
+      'svgIconName': 'arrow-down'
+    } %}
+  </div>
+  <ul class="language-menu-list" :class="{ 'active': isOpen }" id="js-language-menu-list">
+    {%- for item in links -%}
+      <li class="language-menu-list-item">
+        {{ item.link }}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>

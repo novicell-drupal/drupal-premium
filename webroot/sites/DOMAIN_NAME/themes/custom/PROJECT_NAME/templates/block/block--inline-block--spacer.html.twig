@@ -25,12 +25,11 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/spacer/spacer.twig' with {
-  'attributes': attributes,
-  'spacing': content['#block_content'].field_height.value
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/spacer') }}
+
+{% set spacing = content['#block_content'].field_height.value %}
+
+<div {{ attributes.addClass('spacer').addClass(spacing ? 'spacer--' ~ spacing) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+</div>

@@ -14,14 +14,26 @@
  * @ingroup themeable
  */
 #}
+{{ attach_library('PROJECT_NAME/burger-menu') }}
 
-{% embed '@organisms/burger-menu/burger-menu.twig' with {
-  'contacts': contacts
-} %}
-  {% block navigation %}
-    {{ elements.mainnavigation_bm }}
-  {% endblock %}
-  {% block meta_menu %}
-    {{ elements.metamenu_bm }}
-  {% endblock %}
-{% endembed %}
+<nav :class="{ 'burger-menu--open': isOpen }" class="burger-menu" id="js-burger-menu">
+  <div @click="closeBurgerMenu()" class="burger-menu__close">
+    <div class="burger-menu__close-label">{{ 'Close (Esc)'|t }}</div>
+    {% include '@reusable-component/svg-icon.twig' with {
+      'attributes': '',
+      'svgIconName': 'close'
+    } %}
+  </div>
+  <div class="container">
+    <div class="burger-menu__inner">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-6">
+          {{ elements.mainnavigation_bm }}
+        </div>
+        <div class="col-xs-12 col-md-4">
+          {{ elements.metamenu_bm }}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

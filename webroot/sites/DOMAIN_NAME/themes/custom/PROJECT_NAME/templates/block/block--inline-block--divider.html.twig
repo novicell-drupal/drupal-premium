@@ -25,11 +25,9 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/divider/divider.twig' with {
-  'attributes': attributes
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/divider') }}
+
+<div{{ attributes.addClass('divider') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+</div>

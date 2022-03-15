@@ -58,15 +58,16 @@
   {% endif %}
 
   <section{{ attributes.addClass('section').addClass('section--no-spacing') }}>
-    {% include '@organisms/hero/hero.twig' with {
-      'attributes': create_attribute().addClass(position != 'hero--left' ? position).addClass(overlay == 1 ? 'hero--overlay'),
+    {% include '@reusable-component/hero.twig' with {
+      'attributes': create_attribute().addClass(position != 'hero--left' ? position)
+        .addClass(text_color != 'dark' ? 'hero--inverted')
+        .addClass(overlay == 1 ? 'hero--overlay'),
       'media': media,
       'media_image': media_image,
       'position': position,
       'title': title,
       'text': content.field_text,
-      'cta': link,
+      'cta': content.field_cta,
     } %}
   </section>
 {% endblock paragraph %}
-

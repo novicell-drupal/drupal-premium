@@ -14,23 +14,39 @@
  * @ingroup themeable
  */
 #}
+{{ attach_library('PROJECT_NAME/header') }}
+{{ attach_library('PROJECT_NAME/burger') }}
+{{ attach_library('PROJECT_NAME/meta-menu') }}
+{{ attach_library('PROJECT_NAME/search-toggle') }}
 
-{% embed '@organisms/header/header.twig' with {
-  'display_burger_toggle': true,
-  'display_search_toggle': true
-} %}
-  {% block site_branding %}
-    {{ elements.site_branding }}
-  {% endblock %}
-  {% block navigation %}
-    {{ elements.mainnavigation }}
-  {% endblock %}
-  {% block topbar %}
-    {% embed '@molecules/meta-menu/meta-menu.twig' %}
-      {% block meta_menu_content %}
+<header class="header">
+  <div class="meta-menu">
+    <div class="container">
+      <div class="meta-menu__inner">
         {{ elements.languageswitcher }}
         {{ elements.metamenu }}
-      {% endblock %}
-    {% endembed %}
-  {% endblock %}
-{% endembed %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="header__inner">
+      {{ elements.site_branding }}
+      {{ elements.mainnavigation }}
+      <div class="burger" id="js-burger">
+        <div class="burger__lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="burger__label">{{ 'Menu'|t }}</div>
+      </div>
+      <div class="search-toggle js-search-toggle">
+        {% include '@reusable-component/svg-icon.twig' with {
+          'attributes': '',
+          'svgIconName': 'search'
+        } %}
+        {{ 'Search'|t }}
+      </div>
+    </div>
+  </div>
+</header>

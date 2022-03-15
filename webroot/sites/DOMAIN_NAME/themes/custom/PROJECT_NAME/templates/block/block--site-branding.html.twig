@@ -25,19 +25,10 @@
  * @see template_preprocess_block()
  */
 #}
-{% if site_logo %}
-  {% include '@molecules/logo/logo.twig' with {
-    'attributes': attributes.setAttribute('title', 'Home'|t).setAttribute('rel', 'home'),
-    'href': path('<front>'),
-    'logo_path': site_logo,
-    'alt':  'Home'|t
-  } %}
-{% endif %}
+{{ attach_library('PROJECT_NAME/logo') }}
 
-{% if site_name %}
-  {% include '@molecules/logo/logo.twig' with {
-    'attributes': attributes.setAttribute('title', 'Home'|t).setAttribute('rel', 'home'),
-    'href': path('<front>'),
-    'site_name': site_name
-  } %}
-{% endif %}
+<a{{ attributes.addClass('logo').setAttribute('href', path('<front>'))
+  .setAttribute('title', 'Home'|t)
+  .setAttribute('rel', 'home') }}>
+  <img class="logo__image" src="{{ site_logo }}" alt="{{ 'Home'|t }}">
+</a>

@@ -1,5 +1,0 @@
-{{ attach_library('PROJECT_NAME/spacer') }}
-
-<div {{ (not attributes ? create_attribute() : attributes).addClass('spacer').addClass(spacing ? 'spacer--' ~ spacing) }}>
-  {% block block_content %}{% endblock %}
-</div>

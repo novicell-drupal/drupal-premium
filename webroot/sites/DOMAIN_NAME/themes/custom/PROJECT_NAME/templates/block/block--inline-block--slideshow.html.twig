@@ -25,13 +25,23 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/image-slideshow/image-slideshow.twig' with {
-  'attributes': attributes,
-  'items': items,
-  'autoplay': content['#block_content'].field_slideshow_autoplay.value == 1
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/image-slideshow') }}
+
+{% set autoplay = content['#block_content'].field_slideshow_autoplay.value == 1 %}
+
+<div{{ attributes.addClass('image-slideshow-wrapper').addClass('js-image-slideshow-wrapper').setAttribute('data-autoplay', autoplay ? 'true' : 'false') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <ul class="image-slideshow js-image-slideshow">
+    {% for item in items %}
+      <li class="image-slideshow-slide">
+        {{ item.image }}
+      </li>
+    {% endfor %}
+  </ul>
+  <ul class="image-slideshow-navigation js-image-slideshow-navigation">
+    {% for item in items %}
+      <li class="image-slideshow-navigation__dot"></li>
+    {% endfor %}
+  </ul>
+</div>

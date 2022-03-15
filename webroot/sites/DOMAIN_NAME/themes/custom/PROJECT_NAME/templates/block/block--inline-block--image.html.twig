@@ -25,14 +25,27 @@
  * @see template_preprocess_block()
  */
 #}
-{% embed '@molecules/image/image.twig' with {
-  'attributes': attributes,
-  'media': media,
-  'caption': content.field_image_caption,
-  'link': link
-} %}
-  {% block block_content %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endblock %}
-{% endembed %}
+{{ attach_library('PROJECT_NAME/image') }}
+
+{% macro image(media, caption, attributes, block_content) %}
+  {% import _self as self_image %}
+  <figure>
+    {{ media }}
+    {% if caption %}
+      <figcaption>{{ caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% endmacro %}
+
+<div{{ attributes.addClass('image') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% import _self as self_image %}
+  {% if link.url %}
+    <a {{ create_attribute().setAttribute('href', link.url).setAttribute('target', link.target) }}>
+      {{ self_image.image(media, content.field_image_caption, attributes, block_content) }}
+    </a>
+  {% else %}
+    {{ self_image.image(media, content.field_image_caption, attributes, block_content) }}
+  {% endif %}
+</div>
