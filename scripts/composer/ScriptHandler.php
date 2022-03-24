@@ -372,7 +372,7 @@ class ScriptHandler {
     $event->getIO()->write("");
     $event->getIO()->write("<options=bold>Install node modules and build frontend assets...</>");
     $event->getIO()->write("");
-    exec('cd ' . $theme_dir . '/build-assets && npm ci && npm run build:prod');
+    exec('cd ' . $theme_dir . ' && npm ci && npm run build:prod');
 
     // Now it's time to just let Composer install all the packages and we're done!
     $event->getIO()->write("");
