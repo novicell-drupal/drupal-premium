@@ -100,7 +100,16 @@
       "php": "8.0"
     },
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/core-project-message": true,
+      "drupal/core-vendor-hardening": true,
+      "composer/installers": true,
+      "wikimedia/composer-merge-plugin": true,
+      "oomphinc/composer-installers-extender": true
+    }
   },
   "autoload": {
     "classmap": [
