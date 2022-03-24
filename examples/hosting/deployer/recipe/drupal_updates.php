@@ -36,7 +36,7 @@ task('deploy:drupal:post_deploy_updates', function () {
     writeln('Skipping config import');
   }
 
-  if (get('drupal_core_version') > 7 && input()->hasOption('no-deploy-hook') && empty(input()->getOption('no-deploy-hook'))) {
+  if (get('drupal_core_version') > 8 && input()->hasOption('no-deploy-hook') && empty(input()->getOption('no-deploy-hook'))) {
     set('rollback_db', 'true');
     writeln('Running deploy hook');
     run("cd {{drush_exec_path_absolute}} && drush deploy:hook -y");
