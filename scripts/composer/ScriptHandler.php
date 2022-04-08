@@ -272,8 +272,8 @@ class ScriptHandler {
     foreach ($modules as $choice) {
       $packages = array_values(self::$optional_modules)[$choice];
       foreach ($packages as $requirement) {
-        $links[] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $package = $requirement['package'];
+        $links[$package] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $json->require->$package = $requirement['operator'] . $requirement['version'];
       }
     }
