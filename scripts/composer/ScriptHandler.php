@@ -331,8 +331,8 @@ class ScriptHandler {
       $links = $event->getComposer()->getPackage()->getDevRequires();
       $packages = $deployment_steps['require-dev'];
       foreach ($packages as $requirement) {
-        $links[] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $package = $requirement['package'];
+        $links[$package] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
         $json->{'require-dev'}->$package = $requirement['operator'] . $requirement['version'];
       }
       $event->getComposer()->getPackage()->setDevRequires($links);
