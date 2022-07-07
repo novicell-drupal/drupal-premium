@@ -249,6 +249,7 @@ class ScriptHandler {
       'DOMAIN_NAME' => $domain_name
     ];
     $environment['HASH_SALT'] = $hash_salt = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55)));
+    $environment['CONFIG_SPLIT_DEVELOPMENT'] = 'TRUE';
     $deployment_steps = array_values(self::$deployment_options)[$deployment];
 
     // TODO: find a way to handle second level domains
