@@ -93,12 +93,7 @@ class ScriptHandler {
         [
           'package' => 'deployer/deployer',
           'operator' => '^',
-          'version' => '6.8'
-        ],
-        [
-          'package' => 'deployer/recipes',
-          'operator' => '^',
-          'version' => '6.2'
+          'version' => '7.0'
         ]
       ],
       'dirs' => [
