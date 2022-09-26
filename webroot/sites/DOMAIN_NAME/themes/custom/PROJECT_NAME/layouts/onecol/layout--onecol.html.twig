@@ -14,18 +14,11 @@
 {% set classes = [
   'layout',
   'layout--onecol',
-  settings.color_theme is not empty ? 'theme ' ~ settings.color_theme,
-  'section',
-  'section--spacing-top-' ~ settings.column_spacing_top,
-  'section--spacing-bottom-' ~ settings.column_spacing_bottom
+  'section'
 ] %}
 
-{% if settings.color_theme is not empty %}
-  {{ attach_library('PROJECT_NAME/' ~ settings.color_theme) }}
-{% endif %}
-
 <section {{ attributes.addClass(classes) }}>
-  {% if settings.column_width == 'fullwidth' %}
+  {% if settings.column_width == 'section--width-full' %}
     {% if header and header is not empty %}
     <div class="layout-builder__section--header">
       {{ header }}
@@ -34,7 +27,7 @@
     <div {{ region_attributes.content.addClass(['layout__region', 'layout__region--first']) }}>
       {{ content.content }}
     </div>
-  {% elseif settings.column_width == 'narrow' %}
+  {% elseif settings.column_width == 'section--width-narrow' %}
     <div class="container">
       {% if header and header is not empty %}
       <div class="row">
