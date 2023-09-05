@@ -70,7 +70,7 @@
     "drupal/simple_sitemap": "^3.0",
     "drupal/view_unpublished": "^1.0",
     "drupal/webform": "^6.0",
-    "drupal/webp": "^1.0.0-beta5",
+    "drupal/webp": "^1.0@RC",
     "drush/drush": "^10.0",
     "novicell/atoms": "^1.0",
     "novicell/drupal-premium-theme": "^1.0",
@@ -170,9 +170,6 @@
       },
       "drupal/paragraphs": {
         "(#2901390) Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
-      },
-      "drupal/webp": {
-        "(#3153137) Using Image Widget Crop in responsive images does not refresh webp image": "https://www.drupal.org/files/issues/2021-05-04/webp-support-image-crop-3153137-11.patch"
       }
     }
   }
