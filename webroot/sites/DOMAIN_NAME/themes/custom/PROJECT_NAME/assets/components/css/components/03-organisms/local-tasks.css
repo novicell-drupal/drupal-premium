@@ -31,6 +31,14 @@
   a {
     color: var(--color-white);
     text-decoration: none;
+
+    .gin--vertical-toolbar &,
+    .gin--horizontal-toolbar &,
+    .gin--classic-toolbar & {
+      font-weight: var(--gin-font-weight-normal);
+      font-size: small;
+      font-family: var(--gin-font);
+    }
   }
 
   a:hover,
