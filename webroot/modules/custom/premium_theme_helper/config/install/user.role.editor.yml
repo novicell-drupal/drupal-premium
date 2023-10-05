@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - scheduled_transitions
+id: editor
+label: Editor
+weight: 3
+is_admin: null
+permissions:
+  - 'add scheduled transitions node page'
+  - 'reschedule scheduled transitions node page'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'view scheduled transitions node page'

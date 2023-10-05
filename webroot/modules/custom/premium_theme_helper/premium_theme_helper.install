@@ -10,5 +10,4 @@
  */
 function premium_theme_helper_install() {
   \Drupal::service('theme_installer')->install(['drupal10test']);
-  _premium_theme_helper_permissions();
 }

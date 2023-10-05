@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - role_delegation
+    - scheduled_transitions
+id: webmaster
+label: Webmaster
+weight: 4
+is_admin: null
+permissions:
+  - 'assign webmaster role'
+  - 'add scheduled transitions node page'
+  - 'reschedule scheduled transitions node page'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'view scheduled transitions node page'
