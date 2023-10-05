@@ -105,7 +105,7 @@ function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_
  *   An array of permission names to assign to the role.
  * @throws \Drupal\Core\Entity\EntityStorageException
  */
-function premium_theme_helper_enable() {
+function premium_theme_helper_install() {
   $editor_role = Role::load('editor');
   $webmaster_role = Role::load('webmaster');
 
