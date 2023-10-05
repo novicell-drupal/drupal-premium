@@ -118,13 +118,14 @@ function premium_theme_helper_enable() {
     'use editorial transition publish',
     'view scheduled transitions node page'
   ];
+  $permissions_webmaster = array_combine($permissions, array('assign webmaster role'));
 
   if ($editor_role) {
     user_role_grant_permissions($editor_role->rid, $permissions);
   }
 
   if ($webmaster_role) {
-    user_role_grant_permissions($webmaster_role->rid, $permissions);
+    user_role_grant_permissions($webmaster_role->rid, $permissions_webmaster);
   }
 }
 
