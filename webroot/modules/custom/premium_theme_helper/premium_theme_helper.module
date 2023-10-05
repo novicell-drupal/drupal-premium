@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\Role;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -90,3 +91,43 @@ function premium_theme_helper_views_pre_render(ViewExecutable $view) {
 function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
   _premium_theme_helper_form_alter($form, $form_state, $form_id);
 }
+
+/**
+ * Assign permissions to a user roles.
+ *
+ * @param string $editor_role
+ *   The editor user role.
+ *
+ * @param string $webmaster_role
+ *   The webmaster user role.
+ */
+function premium_theme_helper_enable() {
+  $editor_role = Role::load('editor');
+  if ($editor_role) {
+    user_role_grant_permissions($editor_role->rid, array(
+      'add scheduled transitions node page',
+      'reschedule scheduled transitions node page',
+      'use editorial transition archive',
+      'use editorial transition archived_draft',
+      'use editorial transition archived_published',
+      'use editorial transition create_new_draft',
+      'use editorial transition publish',
+      'view scheduled transitions node page'
+    ));
+  }
+
+  $webmaster_role = Role::load('editor');
+  if ($webmaster_role) {
+    user_role_grant_permissions($webmaster_role->rid, array(
+      'add scheduled transitions node page',
+      'reschedule scheduled transitions node page',
+      'use editorial transition archive',
+      'use editorial transition archived_draft',
+      'use editorial transition archived_published',
+      'use editorial transition create_new_draft',
+      'use editorial transition publish',
+      'view scheduled transitions node page'
+    ));
+  }
+}
+
