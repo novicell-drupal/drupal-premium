@@ -103,6 +103,7 @@ function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_
  *
  * @param array $permissions
  *   An array of permission names to assign to the role.
+ * @throws \Drupal\Core\Entity\EntityStorageException
  */
 function premium_theme_helper_enable() {
   $editor_role = Role::load('editor');
@@ -129,5 +130,9 @@ function premium_theme_helper_enable() {
 
   // Grant permissions to webmaster role.
   $webmaster_role->grantPermission('assign webmaster role');
+
+  // Save roles.
+  $editor_role->save();
+  $webmaster_role->save();
 }
 
