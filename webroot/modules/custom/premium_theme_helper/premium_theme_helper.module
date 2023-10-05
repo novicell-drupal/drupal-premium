@@ -100,34 +100,31 @@ function premium_theme_helper_form_alter(array &$form, FormStateInterface $form_
  *
  * @param string $webmaster_role
  *   The webmaster user role.
+ *
+ * @param array $permissions
+ *   An array of permission names to assign to the role.
  */
 function premium_theme_helper_enable() {
   $editor_role = Role::load('editor');
+  $webmaster_role = Role::load('editor');
+  $permissions = [
+    'create reusable blocks',
+    'add scheduled transitions node page',
+    'reschedule scheduled transitions node page',
+    'use editorial transition archive',
+    'use editorial transition archived_draft',
+    'use editorial transition archived_published',
+    'use editorial transition create_new_draft',
+    'use editorial transition publish',
+    'view scheduled transitions node page'
+  ];
+
   if ($editor_role) {
-    user_role_grant_permissions($editor_role->rid, array(
-      'add scheduled transitions node page',
-      'reschedule scheduled transitions node page',
-      'use editorial transition archive',
-      'use editorial transition archived_draft',
-      'use editorial transition archived_published',
-      'use editorial transition create_new_draft',
-      'use editorial transition publish',
-      'view scheduled transitions node page'
-    ));
+    user_role_grant_permissions($editor_role->rid, $permissions);
   }
 
-  $webmaster_role = Role::load('editor');
   if ($webmaster_role) {
-    user_role_grant_permissions($webmaster_role->rid, array(
-      'add scheduled transitions node page',
-      'reschedule scheduled transitions node page',
-      'use editorial transition archive',
-      'use editorial transition archived_draft',
-      'use editorial transition archived_published',
-      'use editorial transition create_new_draft',
-      'use editorial transition publish',
-      'view scheduled transitions node page'
-    ));
+    user_role_grant_permissions($webmaster_role->rid, $permissions);
   }
 }
 
