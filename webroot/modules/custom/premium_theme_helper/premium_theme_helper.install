@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\user\Entity\Role;
+
 /**
  * Implements hook_install().
  *
@@ -8,5 +10,33 @@
  * @see system_install()
  */
 function premium_theme_helper_install() {
-  \Drupal::service('theme_installer')->install(['PROJECT_NAME']);
+  \Drupal::service('theme_installer')->install(['drupal10test']);
+  $editor_role = Role::load('editor');
+  $webmaster_role = Role::load('webmaster');
+
+  // Set permissions.
+  $permissions = [
+    'create reusable blocks',
+    'add scheduled transitions node page',
+    'reschedule scheduled transitions node page',
+    'use editorial transition archive',
+    'use editorial transition archived_draft',
+    'use editorial transition archived_published',
+    'use editorial transition create_new_draft',
+    'use editorial transition publish',
+    'view scheduled transitions node page'
+  ];
+
+  // Grant permissions to editor and webmaster roles.
+  foreach ($permissions as $permission) {
+    $editor_role->grantPermission($permission);
+    $webmaster_role->grantPermission($permission);
+  }
+
+  // Grant permissions to webmaster role.
+  $webmaster_role->grantPermission('assign webmaster role');
+
+  // Save roles.
+  $editor_role->save();
+  $webmaster_role->save();
 }
