@@ -44,7 +44,6 @@
     "drupal/field_group": "^3.0",
     "drupal/focal_point": "^2.0",
     "drupal/gin": "^3.0@RC",
-    "drupal/gin_lb": "^1.0@RC",
     "drupal/hreflang": "^1.0",
     "drupal/imageapi_optimize": "^4.0",
     "drupal/inline_block_title_automatic": "^1.0",
