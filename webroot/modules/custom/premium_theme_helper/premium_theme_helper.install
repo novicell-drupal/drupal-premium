@@ -9,5 +9,5 @@
  * @see system_install()
  */
 function premium_theme_helper_install() {
-  \Drupal::service('theme_installer')->install(['drupal10test']);
+  \Drupal::service('theme_installer')->install(['PROJECT_NAME']);
 }
