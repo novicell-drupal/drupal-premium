@@ -46,6 +46,7 @@
     "drupal/focal_point": "^2.0",
     "drupal/gin": "^3.0@RC",
     "drupal/gin_toolbar": "^1.0@RC",
+    "drupal/health_check": "^3.0",
     "drupal/hreflang": "^1.0",
     "drupal/imageapi_optimize": "^4.0",
     "drupal/inline_block_title_automatic": "^1.0",
@@ -72,7 +73,6 @@
     "drupal/webp": "^1.0@RC",
     "drush/drush": "^12",
     "novicell/atoms": "^1.0",
-    "novicell/drupal-premium-theme": "^1.0",
     "novicell/dynamic_key_value": "^1.0",
     "novicell/media_icons": "^1.0",
     "novicell/premium_core": "^1.0",
@@ -87,6 +87,7 @@
   },
   "require-dev": {
     "drupal/devel": "^5.0",
+    "drupal/upgrade_status": "^4.0",
     "kint-php/kint": "^3.3"
   },
   "conflict": {

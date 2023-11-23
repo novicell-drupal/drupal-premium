@@ -81,6 +81,43 @@ class ScriptHandler {
     ]
   ];
 
+  /**
+   * List of optional installations with list of composer packages and versions
+   *
+   * @var string[][][]
+   */
+  private static $headless_packages = [
+    'Premium Headless' => [
+      [
+        'package' => 'novicell/premium_headless',
+        'operator' => '^',
+        'version' => '1.0'
+      ]
+    ],
+    'Premium Headless theme' => [
+      [
+        'package' => 'novicell/premium_headless_theme',
+        'operator' => '^',
+        'version' => '1.0'
+      ]
+    ]
+  ];
+
+  /**
+   * List of optional installations with list of composer packages and versions
+   *
+   * @var string[][][]
+   */
+  private static $monolith_packages = [
+    'Drupal Premium theme' => [
+      [
+        'package' => 'novicell/drupal-premium-theme',
+        'operator' => '^',
+        'version' => '1.0'
+      ]
+    ]
+  ];
+
   private static $deployment_options = [
     'None' => [
       'require-dev' => [],
@@ -208,6 +245,7 @@ class ScriptHandler {
     if (!empty($domain_name = $event->getIO()->ask('Domain name (without www.): '))) {
       $environment['DOMAIN_NAME'] = $domain_name;
     }
+    $headless = $event->getIO()->askConfirmation('Is it a headless project?', FALSE);
     $modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE);
     $deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE);
 
@@ -265,13 +303,18 @@ class ScriptHandler {
     $json_file = Factory::getComposerFile();
     $json = json_decode(file_get_contents($json_file));
     $links = $event->getComposer()->getPackage()->getRequires();
+    if ($headless) {
+      foreach (self::$headless_packages as $name => $packages) {
+        self::addPackagesToComposer($links, $json, $event, $packages);
+      }
+    } else {
+      foreach (self::$monolith_packages as $name => $packages) {
+        self::addPackagesToComposer($links, $json, $event, $packages);
+      }
+    }
     foreach ($modules as $choice) {
       $packages = array_values(self::$optional_modules)[$choice];
-      foreach ($packages as $requirement) {
-        $package = $requirement['package'];
-        $links[$package] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
-        $json->require->$package = $requirement['operator'] . $requirement['version'];
-      }
+      self::addPackagesToComposer($links, $json, $event, $packages);
     }
     $event->getComposer()->getPackage()->setRequires($links);
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
@@ -293,7 +336,13 @@ class ScriptHandler {
     $event->getIO()->write("<options=bold>Renaming directories...</>");
     $event->getIO()->write("");
     $site_dir = 'webroot/sites/' . $domain_name;
-    rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
+    if ($headless) {
+      self::deleteDirectory('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME');
+      rename('webroot/sites/DOMAIN_NAME/themes/custom/HEADLESS', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
+    } else {
+      self::deleteDirectory('webroot/sites/DOMAIN_NAME/themes/custom/HEADLESS');
+      rename('webroot/sites/DOMAIN_NAME/themes/custom/PROJECT_NAME', 'webroot/sites/DOMAIN_NAME/themes/custom/' . $project_name);
+    }
     rename('webroot/sites/DOMAIN_NAME', $site_dir);
 
     // Preparing site configuration
@@ -342,8 +391,10 @@ class ScriptHandler {
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
-      rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
-      self::replaceAllTokensInFile($filename, $tokens);
+      if (file_exists($filename)) {
+        rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
+        self::replaceAllTokensInFile($filename, $tokens);
+      }
     }
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
 
@@ -424,6 +475,14 @@ class ScriptHandler {
     ]);
     $event->getIO()->write("http://" . $tokens['LOCAL_SITE']);
 
+  }
+
+  protected static function addPackagesToComposer(&$links, $json, $event, $packages) {
+    foreach ($packages as $requirement) {
+      $package = $requirement['package'];
+      $links[$package] = self::createComposerLink($event, $requirement['package'], $requirement['operator'], $requirement['version']);
+      $json->require->$package = $requirement['operator'] . $requirement['version'];
+    }
   }
 
   /**
