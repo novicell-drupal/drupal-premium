@@ -4,8 +4,12 @@
  */
 
 /* When user is logged in, we remove fixed from header */
-body.adminimal-admin-toolbar header.header {
-  position: relative;
+body.gin--vertical-toolbar,
+body.gin--horizontal-toolbar,
+body.gin--classic-toolbar {
+  & header.header {
+    position: relative;
+  }
 }
 
 .header {

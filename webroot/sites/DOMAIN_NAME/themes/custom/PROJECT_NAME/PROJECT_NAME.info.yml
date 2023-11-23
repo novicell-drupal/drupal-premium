@@ -3,7 +3,7 @@ type: theme
 description: 'Premium subtheme'
 package: Drupal Premium
 version: 2.0.0
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^8.8 || ^9 || ^10
 base theme: premium_theme
 dependencies:
   - styles
@@ -21,9 +21,9 @@ regions:
   content: Content
   burgermenu: Burgermenu
 
-component-libraries:
-  reusable-component:
-    paths:
+components:
+  namespaces:
+    reusable-component:
       - assets/components/twig/01-particles
       - assets/components/twig/02-molecules
       - assets/components/twig/03-organisms

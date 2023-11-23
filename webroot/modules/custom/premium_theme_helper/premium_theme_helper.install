@@ -3,8 +3,9 @@
 /**
  * Implements hook_install().
  *
- * Install custom theme.
+ * Install custom theme and permissions.
  *
+ * @throws \Drupal\Core\Entity\EntityStorageException
  * @see system_install()
  */
 function premium_theme_helper_install() {
