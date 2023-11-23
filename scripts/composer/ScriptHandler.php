@@ -8,6 +8,7 @@ use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\Constraint\MultiConstraint;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Throwable;
 
 /**
  * Setup of premium site.
@@ -245,7 +246,7 @@ class ScriptHandler {
     if (!empty($domain_name = $event->getIO()->ask('Domain name (without www.): '))) {
       $environment['DOMAIN_NAME'] = $domain_name;
     }
-    $headless = $event->getIO()->askConfirmation('Is it a headless project?', FALSE);
+    $headless = $event->getIO()->askConfirmation('Is it a headless project? ', FALSE);
     $modules = $event->getIO()->select('Optional modules', array_keys(self::$optional_modules), 'none', FALSE, 'Value "%s" is invalid', TRUE);
     $deployment = $event->getIO()->select('Deployment method', array_keys(self::$deployment_options), 0, FALSE, 'Value "%s" is invalid', FALSE);
 
@@ -391,8 +392,12 @@ class ScriptHandler {
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
-      rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
-      self::replaceAllTokensInFile($filename, $tokens);
+      try {
+        rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
+        self::replaceAllTokensInFile($filename, $tokens);
+      } catch (Throwable) {
+
+      }
     }
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
 
