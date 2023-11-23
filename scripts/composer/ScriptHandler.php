@@ -391,10 +391,8 @@ class ScriptHandler {
     $theme_dir = 'webroot/sites/' . $domain_name . '/themes/custom/' . $project_name;
     foreach (self::$theme_files as $theme_file) {
       $filename = $theme_dir . '/' . $project_name . $theme_file;
-      if (file_exists($filename)) {
-        rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
-        self::replaceAllTokensInFile($filename, $tokens);
-      }
+      rename($theme_dir . '/PROJECT_NAME' . $theme_file, $filename);
+      self::replaceAllTokensInFile($filename, $tokens);
     }
     self::replaceAllTokensInDirectory($theme_dir, $tokens);
 
@@ -415,11 +413,13 @@ class ScriptHandler {
     unset($json->autoload);
     file_put_contents($json_file, str_replace('\/', '/', json_encode($json, JSON_PRETTY_PRINT)));
 
-    // Install node modules and build front end assets...
-    $event->getIO()->write("");
-    $event->getIO()->write("<options=bold>Install node modules and build frontend assets...</>");
-    $event->getIO()->write("");
-    exec('cd ' . $theme_dir . ' && npm ci && npm run build:prod');
+    if (!$headless) {
+      // Install node modules and build front end assets...
+      $event->getIO()->write("");
+      $event->getIO()->write("<options=bold>Install node modules and build frontend assets...</>");
+      $event->getIO()->write("");
+      exec('cd ' . $theme_dir . ' && npm ci && npm run build:prod');
+    }
 
     // Now it's time to just let Composer install all the packages and we're done!
     $event->getIO()->write("");
