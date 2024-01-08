@@ -88,7 +88,7 @@
   "require-dev": {
     "drupal/devel": "^5.0",
     "drupal/upgrade_status": "^4.0",
-    "kint-php/kint": "^3.3"
+    "kint-php/kint": "^5.1"
   },
   "conflict": {
     "drupal/drupal": "*"
