@@ -101,6 +101,13 @@ class ScriptHandler {
         'operator' => '^',
         'version' => '1.0'
       ]
+    ],
+    'Pathologic' => [
+      [
+        'package' => 'drupal/pathologic',
+        'operator' => '^',
+        'version' => '2.0@alpha'
+      ]
     ]
   ];
 
