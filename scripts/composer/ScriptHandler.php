@@ -265,7 +265,7 @@ class ScriptHandler {
         $environment['DB_PORT'] = $db_port;
       }
       if (!empty($db_name = $event->getIO()->ask('Database name (' . $project_name . '): ', $project_name))) {
-        $environment['DB_SCHEMA'] = $db_name;
+        $environment['DB_NAME'] = $db_name;
       }
       if (!empty($db_user = $event->getIO()->ask('Database user (' . $project_name . '): ', $project_name))) {
         $environment['DB_USER'] = $db_user;
@@ -279,7 +279,7 @@ class ScriptHandler {
     } else {
       $environment['DB_HOST'] = 'db';
       $environment['DB_PORT'] = getenv('DDEV_HOST_DB_PORT');
-      $environment['DB_SCHEMA'] = 'db';
+      $environment['DB_NAME'] = 'db';
       $environment['DB_USER'] = 'db';
       $environment['DB_PASS'] = 'db';
       $environment['REDIS_HOST'] = 'redis';
