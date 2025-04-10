@@ -72,7 +72,6 @@
     "drupal/webform": "^6.3@beta",
     "drupal/webp": "^1.0@RC",
     "drush/drush": "^13",
-    "novicell/dynamic_key_value": "^1.0",
     "novicell/media_icons": "^1.0",
     "novicell/premium_core": "^1.0",
     "novicell/premium_profile": "^11.0",

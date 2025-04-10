@@ -121,7 +121,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/drupal-premium-theme',
         'operator' => '^',
-        'version' => '1.0'
+        'version' => '2.0'
       ]
     ]
   ];
