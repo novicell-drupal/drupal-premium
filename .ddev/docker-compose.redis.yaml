@@ -1,7 +1,4 @@
 # ddev redis recipe file
-#
-version: '3.6'
-
 services:
   redis:
     container_name: ddev-${DDEV_SITENAME}-redis
