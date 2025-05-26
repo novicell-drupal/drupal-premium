@@ -1,0 +1,1 @@
+# The services of the project.&#10#&#10# Each service listed will be deployed&#10# to power your Platform.sh project.&#10&#10db:&#10  type: mariadb:10.11&#10  disk: 2048&#10&#10cache:&#10  type: redis:7.2&#10
