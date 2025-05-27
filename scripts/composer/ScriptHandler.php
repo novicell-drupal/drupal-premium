@@ -179,7 +179,10 @@ class ScriptHandler {
         'examples/hosting/platform/settings.platformsh.php'   => 'webroot/sites/settings.platformsh.php',
         'examples/hosting/platform/sites.platformsh.php'      => 'webroot/sites/sites.platformsh.php',
       ],
-      'token_replace' => []
+      'token_replace' => [
+        'webroot/sites/sites.platformsh.php',
+        '.platform.app.yaml',
+      ]
     ],
   ];
 
