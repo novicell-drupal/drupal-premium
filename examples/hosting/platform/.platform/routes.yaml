@@ -1,1 +1,17 @@
-# The routes of the project.&#10#&#10# Each route describes how an incoming URL is going&#10# to be processed by Platform.sh.&#10&#10"https://{default}/":&#10  type: upstream&#10  upstream: "drupal:http"&#10  cache:&#10    enabled: true&#10&#10    # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.&#10    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']&#10&#10"https://www.{default}/":&#10  type: redirect&#10  to: "https://{default}/"&#10
+# The routes of the project.
+#
+# Each route describes how an incoming URL is going
+# to be processed by Platform.sh.
+
+"https://{default}/":
+  type: upstream
+  upstream: "drupal:http"
+  cache:
+    enabled: true
+
+    # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.{default}/":
+  type: redirect
+  to: "https://{default}/"

@@ -1,1 +1,15 @@
-<?php&#10&#10$platformsh = new \Platformsh\ConfigReader\Config();&#10if (!$platformsh->inRuntime()) {&#10  return;&#10}&#10&#10// The following block adds a $sites[] entry for each subdomain that is defined&#10// in routes.yaml.&#10foreach ($platformsh->getUpstreamRoutes($platformsh->applicationName) as $route) {&#10  $host = parse_url($route['url'], PHP_URL_HOST);&#10  if ($host !== FALSE) {&#10    $sites[$host] = 'DOMAIN_NAME';&#10  }&#10}&#10
+<?php
+
+$platformsh = new \Platformsh\ConfigReader\Config();
+if (!$platformsh->inRuntime()) {
+  return;
+}
+
+// The following block adds a $sites[] entry for each subdomain that is defined
+// in routes.yaml.
+foreach ($platformsh->getUpstreamRoutes($platformsh->applicationName) as $route) {
+  $host = parse_url($route['url'], PHP_URL_HOST);
+  if ($host !== FALSE) {
+    $sites[$host] = 'DOMAIN_NAME';
+  }
+}

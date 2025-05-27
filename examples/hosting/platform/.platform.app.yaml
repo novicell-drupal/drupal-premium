@@ -1,1 +1,158 @@
-# This file describes an application. You can have multiple applications&#10# in the same project.&#10#&#10# See https://docs.platform.sh/configuration/app.html&#10&#10# The name of this app. Must be unique within a project.&#10name: 'drupal'&#10&#10# The runtime the application uses.&#10type: 'php:8.3'&#10&#10dependencies:&#10  php:&#10    composer/composer: '^2.1'&#10&#10runtime:&#10  # Enable the redis extension so Drupal can communicate with the Redis cache.&#10  extensions:&#10    - redis&#10    - sodium&#10    - apcu&#10    - blackfire&#10&#10# The relationships of the application with services or other applications.&#10#&#10# The left-hand side is the name of the relationship as it will be exposed&#10# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand&#10# side is in the form `<service name>:<endpoint name>`.&#10relationships:&#10  database: 'db:mysql'&#10  redis: 'cache:redis'&#10&#10# The size of the persistent disk of the application (in MB).&#10disk: 2048&#10&#10# The 'mounts' describe writable, persistent filesystem mounts in the application.&#10mounts:&#10  # The default Drupal files directory.&#10  '/web/sites/default/files':&#10    source: local&#10    source_path: 'files'&#10  # Drupal gets its own dedicated tmp directory. The settings.platformsh.php&#10  # file will automatically configure Drupal to use this directory.&#10  '/tmp':&#10    source: local&#10    source_path: 'tmp'&#10  # Private file uploads are stored outside the web root. The settings.platformsh.php&#10  # file will automatically configure Drupal to use this directory.&#10  '/private':&#10    source: local&#10    source_path: 'private'&#10  # Drush needs a scratch space for its own caches.&#10  '/.drush':&#10    source: local&#10    source_path: 'drush'&#10  # Drush will try to save backups to this directory, so it must be&#10  # writeable even though you will almost never need to use it.&#10  '/drush-backups':&#10    source: local&#10    source_path: 'drush-backups'&#10  # Drupal Console will try to save backups to this directory, so it must be&#10  # writeable even though you will almost never need to use it.&#10  '/.console':&#10    source: local&#10    source_path: 'console'&#10&#10# Configuration of the build of this application.&#10build:&#10  flavor: composer&#10&#10# The hooks executed at various points in the lifecycle of the application.&#10hooks:&#10  # The build hook runs after Composer to finish preparing up your code.&#10  # No services are available but the disk is writeable.&#10  build: |&#10    set -e&#10  # The deploy hook runs after your application has been deployed and started.&#10  # Code cannot be modified at this point but the database is available.&#10  # The site is not accepting requests while this script runs so keep it&#10  # fast.&#10  deploy: |&#10    set -e&#10    php ./drush/platformsh_generate_drush_yml.php&#10    # if drupal is installed, will call the following drush commands:&#10    #   - `cache-rebuild`&#10    #   - `updatedb`&#10    #   - and if config files are present, `config-import`&#10    cd web&#10    bash $PLATFORM_APP_DIR/drush/platformsh_deploy_drupal.sh&#10&#10# The configuration of app when it is exposed to the web.&#10web:&#10  locations:&#10    # All requests not otherwise specified follow these rules.&#10    '/':&#10      # The folder from which to serve static assets, for this location.&#10      #&#10      # This is a filesystem path, relative to the application root.&#10      root: 'web'&#10&#10      # How long to allow static assets from this location to be cached.&#10      #&#10      # Can be a time in seconds, or -1 for no caching. Times can be&#10      # suffixed with "s" (seconds), "m" (minutes), "h" (hours), "d"&#10      # (days), "w" (weeks), "M" (months, as 30 days) or "y" (years, as&#10      # 365 days).&#10      expires: 5m&#10&#10      # Redirect any incoming request to Drupal's front controller.&#10      passthru: '/index.php'&#10&#10      # Deny access to all static files, except those specifically allowed below.&#10      allow: false&#10&#10      # Rules for specific URI patterns.&#10      rules:&#10        # Allow access to common static files.&#10        '\.(avif|webp|jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':&#10          allow: true&#10        '^/robots\.txt$':&#10          allow: true&#10        '^/sitemap\.xml$':&#10          allow: true&#10&#10        # Deny direct access to configuration files.&#10        '^/sites/sites\.php$':&#10          scripts: false&#10        '^/sites/[^/]+/settings.*?\.php$':&#10          scripts: false&#10&#10    # The files directory has its own special configuration rules.&#10    '/sites/default/files':&#10      # Allow access to all files in the public files directory.&#10      allow: true&#10      expires: 5m&#10      passthru: '/index.php'&#10      root: 'web/sites/default/files'&#10&#10      # Do not execute PHP scripts from the writeable mount.&#10      scripts: false&#10&#10      rules:&#10        # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.&#10        '^/sites/default/files/(css|js)':&#10          expires: 2w&#10&#10crons:&#10  # Run Drupal's cron tasks every 19 minutes.&#10  drupal:&#10    spec: '*/19 * * * *'&#10    commands:&#10      start: 'cd web ; drush core-cron'&#10&#10source:&#10  operations:&#10    auto-update:&#10      command: |&#10        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0&#10
+# This file describes an application. You can have multiple applications
+# in the same project.
+#
+# See https://docs.platform.sh/configuration/app.html
+
+# The name of this app. Must be unique within a project.
+name: 'drupal'
+
+# The runtime the application uses.
+type: 'php:8.3'
+
+dependencies:
+  php:
+    composer/composer: '^2.1'
+
+runtime:
+  # Enable the redis extension so Drupal can communicate with the Redis cache.
+  extensions:
+    - redis
+    - sodium
+    - apcu
+    - blackfire
+
+# The relationships of the application with services or other applications.
+#
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+  database: 'db:mysql'
+  redis: 'cache:redis'
+
+# The size of the persistent disk of the application (in MB).
+disk: 2048
+
+# The 'mounts' describe writable, persistent filesystem mounts in the application.
+mounts:
+  # The default Drupal files directory.
+  '/web/sites/default/files':
+    source: local
+    source_path: 'files'
+  # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
+  # file will automatically configure Drupal to use this directory.
+  '/tmp':
+    source: local
+    source_path: 'tmp'
+  # Private file uploads are stored outside the web root. The settings.platformsh.php
+  # file will automatically configure Drupal to use this directory.
+  '/private':
+    source: local
+    source_path: 'private'
+  # Drush needs a scratch space for its own caches.
+  '/.drush':
+    source: local
+    source_path: 'drush'
+  # Drush will try to save backups to this directory, so it must be
+  # writeable even though you will almost never need to use it.
+  '/drush-backups':
+    source: local
+    source_path: 'drush-backups'
+  # Drupal Console will try to save backups to this directory, so it must be
+  # writeable even though you will almost never need to use it.
+  '/.console':
+    source: local
+    source_path: 'console'
+
+# Configuration of the build of this application.
+build:
+  flavor: composer
+
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+  # The build hook runs after Composer to finish preparing up your code.
+  # No services are available but the disk is writeable.
+  build: |
+    set -e
+  # The deploy hook runs after your application has been deployed and started.
+  # Code cannot be modified at this point but the database is available.
+  # The site is not accepting requests while this script runs so keep it
+  # fast.
+  deploy: |
+    set -e
+    php ./drush/platformsh_generate_drush_yml.php
+    # if drupal is installed, will call the following drush commands:
+    #   - `cache-rebuild`
+    #   - `updatedb`
+    #   - and if config files are present, `config-import`
+    cd web
+    bash $PLATFORM_APP_DIR/drush/platformsh_deploy_drupal.sh
+
+# The configuration of app when it is exposed to the web.
+web:
+  locations:
+    # All requests not otherwise specified follow these rules.
+    '/':
+      # The folder from which to serve static assets, for this location.
+      #
+      # This is a filesystem path, relative to the application root.
+      root: 'web'
+
+      # How long to allow static assets from this location to be cached.
+      #
+      # Can be a time in seconds, or -1 for no caching. Times can be
+      # suffixed with "s" (seconds), "m" (minutes), "h" (hours), "d"
+      # (days), "w" (weeks), "M" (months, as 30 days) or "y" (years, as
+      # 365 days).
+      expires: 5m
+
+      # Redirect any incoming request to Drupal's front controller.
+      passthru: '/index.php'
+
+      # Deny access to all static files, except those specifically allowed below.
+      allow: false
+
+      # Rules for specific URI patterns.
+      rules:
+        # Allow access to common static files.
+        '\.(avif|webp|jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':
+          allow: true
+        '^/robots\.txt$':
+          allow: true
+        '^/sitemap\.xml$':
+          allow: true
+
+        # Deny direct access to configuration files.
+        '^/sites/sites\.php$':
+          scripts: false
+        '^/sites/[^/]+/settings.*?\.php$':
+          scripts: false
+
+    # The files directory has its own special configuration rules.
+    '/sites/default/files':
+      # Allow access to all files in the public files directory.
+      allow: true
+      expires: 5m
+      passthru: '/index.php'
+      root: 'web/sites/default/files'
+
+      # Do not execute PHP scripts from the writeable mount.
+      scripts: false
+
+      rules:
+        # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
+        '^/sites/default/files/(css|js)':
+          expires: 2w
+
+crons:
+  # Run Drupal's cron tasks every 19 minutes.
+  drupal:
+    spec: '*/19 * * * *'
+    commands:
+      start: 'cd web ; drush core-cron'
+
+source:
+  operations:
+    auto-update:
+      command: |
+        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
