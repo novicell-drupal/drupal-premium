@@ -160,7 +160,27 @@ class ScriptHandler {
       'token_replace' => [
         'deployer/config.yml'
       ]
-    ]
+    ],
+    'Platform' => [
+      'require-dev' => [
+        [
+          'package' => 'platformsh/config-reader',
+          'operator' => '^',
+          'version' => '2.0'
+        ]
+      ],
+      'dirs' => [
+        '.platform',
+      ],
+      'copy' => [
+        'examples/hosting/platform/.platform.app.yaml'        => '.platform.app.yaml',
+        'examples/hosting/platform/.platform/services.yaml'   => '.platform/services.yaml',
+        'examples/hosting/platform/.platform/routes.yaml'     => '.platform/routes.yaml',
+        'examples/hosting/platform/settings.platformsh.php'   => 'webroot/sites/settings.platformsh.php',
+        'examples/hosting/platform/sites.platformsh.php'      => 'webroot/sites/sites.platformsh.php',
+      ],
+      'token_replace' => []
+    ],
   ];
 
   /**

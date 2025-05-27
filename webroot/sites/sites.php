@@ -60,6 +60,10 @@ $sites['LOCAL_SITE'] = 'DOMAIN_NAME';
 $sites['STAGING_SITE'] = 'DOMAIN_NAME';
 $sites['PROD_SITE'] = 'DOMAIN_NAME';
 
+if (file_exists(__DIR__ . '/sites.platformsh.php')) {
+  include __DIR__ . '/sites.platformsh.php';
+};
+
 if (file_exists(__DIR__ . '/sites.local.php')) {
   include __DIR__ . '/sites.local.php';
 };

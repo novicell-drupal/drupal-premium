@@ -790,6 +790,11 @@ if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
   $settings['cache_prefix'] = 'PROJECT_NAME_';
 }
 
+// Platform.sh settings
+if (file_exists($app_root . '/sites/settings.platformsh.php')) {
+  include $app_root . '/sites/settings.platformsh.php';
+}
+
 if (file_exists($app_root . '/sites/default/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
   if (extension_loaded('redis') && !empty(getenv('REDIS_HOST'))) {
     $settings['redis.connection']['host'] = 'redis';
