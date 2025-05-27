@@ -42,7 +42,7 @@ class ScriptHandler {
       [
         'package' => 'drupal/gtm',
         'operator' => '^',
-        'version' => '1.6'
+        'version' => '1.9'
       ]
     ],
     'Content Hierarchy' => [
@@ -77,7 +77,7 @@ class ScriptHandler {
       [
         'package' => 'drupal/commerce',
         'operator' => '^',
-        'version' => '2.0'
+        'version' => '3.0'
       ]
     ]
   ];
