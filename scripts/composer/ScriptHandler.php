@@ -173,6 +173,7 @@ class ScriptHandler {
         '.platform',
       ],
       'copy' => [
+        'examples/hosting/platform/.environment'              => '.environment',
         'examples/hosting/platform/.platform.app.yaml'        => '.platform.app.yaml',
         'examples/hosting/platform/.platform/services.yaml'   => '.platform/services.yaml',
         'examples/hosting/platform/.platform/routes.yaml'     => '.platform/routes.yaml',
