@@ -1,0 +1,37 @@
+master:
+  version: VERSION
+  css:
+    theme:
+      css/master.css: {}
+  dependencies:
+    - PROJECT_NAME/theme-primary
+
+# Themes.
+theme:
+  version: VERSION
+  css:
+    theme:
+      css/theme/theme.css: {}
+
+theme-grey:
+  version: VERSION
+  css:
+    theme:
+      css/theme/theme-grey.css: {}
+  dependencies:
+    - PROJECT_NAME/theme
+
+# Previews.
+theme-preview:
+  version: VERSION
+  css:
+    theme:
+      css/preview/theme.css: {}
+  dependencies:
+    - PROJECT_NAME/theme-grey
+
+button-preview:
+  version: VERSION
+  css:
+    theme:
+      css/preview/button.css: {}

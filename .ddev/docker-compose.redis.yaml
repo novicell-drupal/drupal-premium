@@ -1,0 +1,15 @@
+# ddev redis recipe file
+services:
+  redis:
+    container_name: ddev-${DDEV_SITENAME}-redis
+    image: redis:6
+    restart: always
+    ports:
+      - 6379
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes: []
+  web:
+    links:
+      - redis:$DDEV_HOSTNAME
