@@ -1,6 +1,6 @@
 {
   "name": "novicell/drupal-premium",
-  "description": "Novicell Drupal Premium package for Drupal 9 projects",
+  "description": "Novicell Drupal Premium package for Drupal projects",
   "type": "project",
   "homepage": "https://www.drupal.org/project/drupal",
   "support": {
@@ -10,11 +10,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://packages.drupal.org/8"
-    },
-    {
-      "type": "composer",
-      "url": "https://packages.drupal.dk/php/"
+      "url": "https://packages.drupal.org/11"
     },
     {
       "type": "composer",
