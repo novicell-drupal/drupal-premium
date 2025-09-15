@@ -66,6 +66,13 @@ class ScriptHandler {
         'version' => '3.0'
       ]
     ],
+    'Premium Calendar' => [
+      [
+        'package' => 'novicell/premium_calendar',
+        'operator' => '^',
+        'version' => '1.0'
+      ]
+    ],
     'Premium Maps' => [
       [
         'package' => 'novicell/premium_maps',
