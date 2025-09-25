@@ -63,7 +63,7 @@ class ScriptHandler {
       [
         'package' => 'novicell/premium_articles',
         'operator' => '^',
-        'version' => '3.0'
+        'version' => '4.0'
       ]
     ],
     'Premium Calendar' => [
